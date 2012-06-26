@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{14C19EE4-C4AD-43CB-87D6-2926387D46C9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CloudNotes.Repositories</RootNamespace>
+    <AssemblyName>CloudNotes.Repositories</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Services.Client" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contracts\INotesRepository.cs" />
+    <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="Contracts\ITaskListsRepository.cs" />
+    <Compile Include="Contracts\IUsersRepository.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Relation\NoteAssociatedUserTableEntry.cs" />
+    <Compile Include="Entities\Relation\NoteOwnerTableEntry.cs" />
+    <Compile Include="Entities\Relation\NoteSubscriberTableEntry.cs" />
+    <Compile Include="Entities\NoteTableEntry.cs" />
+    <Compile Include="Entities\Relation\TaskListAssociatedUserTableEntry.cs" />
+    <Compile Include="Entities\Relation\TaskListSubscriberTableEntry.cs" />
+    <Compile Include="Entities\Relation\UserAssociatedNoteTableEntry.cs" />
+    <Compile Include="Entities\Relation\UserAssociatedTaskListTableEntry.cs" />
+    <Compile Include="Entities\Relation\UserOwnedNoteTableEntry.cs" />
+    <Compile Include="Entities\Relation\UserOwnedTaskListTableEntry.cs" />
+    <Compile Include="Entities\Relation\UserSubscribedNoteTableEntry.cs" />
+    <Compile Include="Entities\Relation\UserSubscribedTaskListTableEntry.cs" />
+    <Compile Include="Entities\TaskListTableEntry.cs" />
+    <Compile Include="Entities\UserTableEntry.cs" />
+    <Compile Include="Extensions\Mapping.cs" />
+    <Compile Include="Implementation\NotesRepository.cs" />
+    <Compile Include="Implementation\TableRepository.cs" />
+    <Compile Include="Contracts\IUnitOfWork.cs" />
+    <Compile Include="Implementation\TableDataContext.cs" />
+    <Compile Include="Implementation\TaskListsRepository.cs" />
+    <Compile Include="Implementation\UsersRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TablesBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CloudNotes.Domain\CloudNotes.Domain.csproj">
+      <Project>{B045D6E8-373D-4F70-A29A-4452C181CB45}</Project>
+      <Name>CloudNotes.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

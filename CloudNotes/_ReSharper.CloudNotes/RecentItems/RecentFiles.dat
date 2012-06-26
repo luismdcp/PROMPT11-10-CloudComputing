@@ -1,0 +1,51 @@
+﻿<RecentFiles>
+  <RecentFiles>
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Contracts/f:IUsersService.cs" caret="0" fromTop="0" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="1715" fromTop="26" />
+    <File id="B045D6E8-373D-4F70-A29A-4452C181CB45/d:Entities/f:Note.cs" caret="1254" fromTop="36" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:TaskListsService.cs" caret="0" fromTop="0" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Contracts/f:IUsersRepository.cs" caret="0" fromTop="0" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Contracts/f:INotesRepository.cs" caret="336" fromTop="8" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Contracts/f:ITaskListsRepository.cs" caret="368" fromTop="8" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Implementation/f:TaskListsRepository.cs" caret="3100" fromTop="39" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Implementation/f:NotesRepository.cs" caret="1238" fromTop="27" />
+    <File id="B045D6E8-373D-4F70-A29A-4452C181CB45/d:Entities/f:User.cs" caret="1344" fromTop="9" />
+    <File id="B045D6E8-373D-4F70-A29A-4452C181CB45/d:Entities/f:TaskList.cs" caret="629" fromTop="0" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Implementation/f:TableDataContext.cs" caret="599" fromTop="19" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/f:TablesBuilder.cs" caret="907" fromTop="17" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Views/d:Account/f:LogOn.cshtml" caret="1517" fromTop="48" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/f:RegisterDLL.cmd" caret="81" fromTop="2" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Views/d:Shared/f:Error.cshtml" caret="17" fromTop="0" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Views/f:_ViewStart.cshtml" caret="0" fromTop="0" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Views/f:Web.config" caret="2234" fromTop="0" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Views/d:Shared/f:_Layout.cshtml" caret="1043" fromTop="29" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/f:WebRole.cs" caret="0" fromTop="0" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/f:Web.config" caret="1407" fromTop="0" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/f:Global.asax.cs" caret="937" fromTop="29" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Views/d:Home/f:Index.cshtml" caret="87" fromTop="6" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:HomeController.cs" caret="946" fromTop="26" />
+  </RecentFiles>
+  <RecentEdits>
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/f:Web.config" caret="1312" fromTop="34" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/f:Web.config" caret="610" fromTop="11" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/f:RegisterDLL.cmd" caret="147" fromTop="8" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/f:RegisterDLL.cmd" caret="81" fromTop="2" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/f:Web.config" caret="75" fromTop="2" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/f:Web.config" caret="710" fromTop="14" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/f:Web.config" caret="2271" fromTop="15" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Views/d:Shared/f:_Layout.cshtml" caret="1043" fromTop="32" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Views/d:Shared/f:_Layout.cshtml" caret="25" fromTop="2" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Views/d:Shared/f:_Layout.cshtml" caret="365" fromTop="7" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Views/d:Shared/f:_Layout.cshtml" caret="586" fromTop="14" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Views/f:Web.config" caret="1474" fromTop="26" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Views/d:Shared/f:Error.cshtml" caret="7" fromTop="0" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:HomeController.cs" caret="0" fromTop="0" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Views/f:Web.config" caret="2498" fromTop="34" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/f:Web.config" caret="5158" fromTop="25" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:HomeController.cs" caret="849" fromTop="18" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Views/d:Home/f:Index.cshtml" caret="87" fromTop="6" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/f:Global.asax.cs" caret="0" fromTop="0" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:HomeController.cs" caret="936" fromTop="24" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:HomeController.cs" caret="829" fromTop="26" />
+  </RecentEdits>
+</RecentFiles>

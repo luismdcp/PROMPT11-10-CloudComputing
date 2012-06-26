@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{C11BABB0-F80C-4CEE-B78E-4DEF4E166445}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudNotes.Domain", "CloudNotes.Domain\CloudNotes.Domain.csproj", "{B045D6E8-373D-4F70-A29A-4452C181CB45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudNotes.Domain.Services", "CloudNotes.Domain.Services\CloudNotes.Domain.Services.csproj", "{7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{E9AEAD73-CEEE-4270-B30E-B7020305B9CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudNotes.Repositories", "CloudNotes.Repositories\CloudNotes.Repositories.csproj", "{14C19EE4-C4AD-43CB-87D6-2926387D46C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{F71B571F-7AB0-4D39-9F7D-A25E6C6920D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{2D260A8F-0D60-4AA0-9665-95995388C86A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudNotes.WebRole", "CloudNotes.WebRole\CloudNotes.WebRole.csproj", "{1E568A42-4207-4BC1-B8D8-6E173BA5B4C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B045D6E8-373D-4F70-A29A-4452C181CB45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B045D6E8-373D-4F70-A29A-4452C181CB45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B045D6E8-373D-4F70-A29A-4452C181CB45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B045D6E8-373D-4F70-A29A-4452C181CB45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14C19EE4-C4AD-43CB-87D6-2926387D46C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14C19EE4-C4AD-43CB-87D6-2926387D46C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14C19EE4-C4AD-43CB-87D6-2926387D46C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14C19EE4-C4AD-43CB-87D6-2926387D46C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E568A42-4207-4BC1-B8D8-6E173BA5B4C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E568A42-4207-4BC1-B8D8-6E173BA5B4C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E568A42-4207-4BC1-B8D8-6E173BA5B4C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E568A42-4207-4BC1-B8D8-6E173BA5B4C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B045D6E8-373D-4F70-A29A-4452C181CB45} = {C11BABB0-F80C-4CEE-B78E-4DEF4E166445}
+		{7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E} = {C11BABB0-F80C-4CEE-B78E-4DEF4E166445}
+		{14C19EE4-C4AD-43CB-87D6-2926387D46C9} = {E9AEAD73-CEEE-4270-B30E-B7020305B9CD}
+		{2D260A8F-0D60-4AA0-9665-95995388C86A} = {F71B571F-7AB0-4D39-9F7D-A25E6C6920D4}
+		{1E568A42-4207-4BC1-B8D8-6E173BA5B4C9} = {2D260A8F-0D60-4AA0-9665-95995388C86A}
+	EndGlobalSection
+EndGlobal

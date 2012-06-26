@@ -1,0 +1,1 @@
+﻿C:\Program Files\Windows Azure SDK\v1.6\ref\Microsoft.WindowsAzure.StorageClient.dll
