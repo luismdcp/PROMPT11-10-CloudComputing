@@ -9,3 +9,14 @@ D:\CloudNotes\CloudNotes\CloudNotes.Domain.Services\bin\Debug\Microsoft.WindowsA
 D:\CloudNotes\CloudNotes\CloudNotes.Domain.Services\obj\Debug\CloudNotes.Domain.Services.csprojResolveAssemblyReference.cache
 D:\CloudNotes\CloudNotes\CloudNotes.Domain.Services\obj\Debug\CloudNotes.Domain.Services.dll
 D:\CloudNotes\CloudNotes\CloudNotes.Domain.Services\obj\Debug\CloudNotes.Domain.Services.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain.Services\bin\Debug\CloudNotes.Domain.Services.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain.Services\bin\Debug\CloudNotes.Domain.Services.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain.Services\bin\Debug\CloudNotes.Domain.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain.Services\bin\Debug\CloudNotes.Repositories.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain.Services\bin\Debug\Microsoft.WindowsAzure.StorageClient.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain.Services\bin\Debug\CloudNotes.Domain.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain.Services\bin\Debug\CloudNotes.Repositories.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain.Services\bin\Debug\Microsoft.WindowsAzure.StorageClient.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain.Services\obj\Debug\CloudNotes.Domain.Services.csprojResolveAssemblyReference.cache
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain.Services\obj\Debug\CloudNotes.Domain.Services.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain.Services\obj\Debug\CloudNotes.Domain.Services.pdb

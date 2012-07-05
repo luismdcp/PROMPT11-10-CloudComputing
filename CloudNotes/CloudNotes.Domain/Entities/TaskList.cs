@@ -34,8 +34,9 @@ namespace CloudNotes.Domain.Entities
             AssociatedUsers = new Collection<User>();
         }
 
-        public TaskList(string partitionKey, string rowKey, User owner) : this(partitionKey, rowKey)
+        public TaskList(string partitionKey, string rowKey, string title, User owner) : this(partitionKey, rowKey)
         {
+            Title = title;
             Owner = owner;
         }
 
@@ -45,9 +46,9 @@ namespace CloudNotes.Domain.Entities
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (Title.Length > 20)
+            if (string.IsNullOrWhiteSpace(Title) || Title.Length > 20)
             {
-                yield return new ValidationResult("Title cannot be longer than 20 characters.", new[] { "Title" });
+                yield return new ValidationResult("Title cannot be empty, all whitespaces or longer than 20 characters.", new[] { "Title" });
             }
 
             if (Owner == null)

@@ -6,6 +6,5 @@ namespace CloudNotes.Repositories.Contracts
     {
         void AddAssociatedUser(TaskList taskList, User associatedUser);
         void DeleteAssociatedUser(TaskList taskList, User associatedUser);
-        void AddOrReplaceAssociatedUsers(TaskList taskList);
     }
 }

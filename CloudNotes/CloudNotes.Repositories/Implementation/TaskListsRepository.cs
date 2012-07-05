@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using CloudNotes.Domain.Entities;
 using CloudNotes.Repositories.Contracts;
 using CloudNotes.Repositories.Entities;
@@ -12,7 +11,7 @@ namespace CloudNotes.Repositories.Implementation
     {
         #region Fields
 
-        private readonly TableDataContext _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly TableRepository<TaskListTableEntry> _taskListsTableRepository;
         private readonly TableRepository<TaskListAssociatedUserTableEntry> _taskListAssociatedUsersTableRepository;
 
@@ -22,7 +21,7 @@ namespace CloudNotes.Repositories.Implementation
 
         public TaskListsRepository(IUnitOfWork unitOfWork)
         {
-            _unitOfWork = unitOfWork as TableDataContext;
+            _unitOfWork = unitOfWork;
             _taskListsTableRepository = new TableRepository<TaskListTableEntry>("TaskLists", _unitOfWork);
             _taskListAssociatedUsersTableRepository = new TableRepository<TaskListAssociatedUserTableEntry>("TaskListAssociatedUsers", _unitOfWork);
         }
@@ -70,11 +69,6 @@ namespace CloudNotes.Repositories.Implementation
         {
             var taskListAssociatedUsersTableEntry = new TaskListAssociatedUserTableEntry(taskList.PartitionKey, taskList.RowKey);
             _taskListAssociatedUsersTableRepository.Delete(taskListAssociatedUsersTableEntry);
-        }
-
-        public void AddOrReplaceAssociatedUsers(TaskList taskList)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion Public methods

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Data.Services.Common;
 
 namespace CloudNotes.Repositories.Entities
 {
+    [DataServiceKey(new[] { "PartitionKey", "RowKey" })]
     public abstract class BaseEntity
     {
         #region Properties
@@ -13,6 +15,11 @@ namespace CloudNotes.Repositories.Entities
         #endregion Properties
 
         #region Constructors
+
+        protected BaseEntity()
+        {
+            
+        }
 
         protected BaseEntity(string partitionKey, string rowKey)
         {

@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using System.Threading;
+﻿using System.Configuration;
 using System.Web.Mvc;
-using Microsoft.IdentityModel.Claims;
+using CloudNotes.Domain.Services.Implementation;
 
 namespace CloudNotes.WebRole.Controllers
 {
@@ -9,16 +8,15 @@ namespace CloudNotes.WebRole.Controllers
     {
         public ActionResult Index()
         {
-            IClaimsIdentity claimsIdentity = ((IClaimsPrincipal)(Thread.CurrentPrincipal)).Identities[0];
-            Claim id = claimsIdentity.Claims.FirstOrDefault(claim => claim.ClaimType ==
-              "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");
-            Claim provider = claimsIdentity.Claims.FirstOrDefault(claim => claim.ClaimType ==
-             "http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider");
-            ViewBag.Message = id.Value + " - " + provider.Value;
-
+            var t = ConfigurationManager.AppSettings["StorageConnectionString"];
+            UsersService service = new UsersService();
+            var t1 = service.Load();
+            var user = service.ManageUser();
+            var t2 = service.Load();
+            var temp = service.Get("users", user.RowKey);
             return View();
         }
-        
+
         public ActionResult About()
         {
             return View();

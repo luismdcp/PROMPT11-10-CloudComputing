@@ -62,7 +62,7 @@ namespace CloudNotes.Repositories.Extensions
 
         internal static User MapToUser(this UserTableEntry entry)
         {
-            var user = new User(entry.PartitionKey, entry.RowKey) {Name = entry.RowKey, Email = entry.Email};
+            var user = new User(entry.PartitionKey, entry.RowKey) {UserUniqueIdentifier = entry.RowKey, Email = entry.Email};
             return user;
         }
 

@@ -6,5 +6,7 @@
   <Module PersistentId="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="mscorlib" />
   <Module PersistentId="Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" ModuleId="Microsoft.WindowsAzure.StorageClient" />
   <Module PersistentId="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9" ModuleId="CloudNotes.WebRole" />
-  <Module PersistentId="22D471D3-8305-4394-AB67-6991E6EF81D1" ModuleId="CloudNotes.MVC" />
+  <Module PersistentId="444B935C-F274-43C7-A32D-DB4311470CBF" ModuleId="CloudNotes.Tests.Domain" />
+  <Module PersistentId="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" ModuleId="Microsoft.IdentityModel" />
+  <Module PersistentId="Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" ModuleId="Microsoft.WindowsAzure.StorageClient_1" />
 </Modules>

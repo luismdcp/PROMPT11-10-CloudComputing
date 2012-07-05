@@ -11,8 +11,8 @@
     <AzureStorageAccountName>luisprompt</AzureStorageAccountName>
     <AzureStorageAccountLabel>luisprompt</AzureStorageAccountLabel>
     <AzureDeploymentLabel>CloudNotes.Web.MVC</AzureDeploymentLabel>
-    <AzureSolutionConfiguration>Release</AzureSolutionConfiguration>
-    <AzureServiceConfiguration>Cloud</AzureServiceConfiguration>
+    <AzureSolutionConfiguration>Debug</AzureSolutionConfiguration>
+    <AzureServiceConfiguration>Local</AzureServiceConfiguration>
     <AzureAppendTimestampToDeploymentLabel>True</AzureAppendTimestampToDeploymentLabel>
     <AzureAllowUpgrade>True</AzureAllowUpgrade>
     <AzureEnableRemoteDesktop>False</AzureEnableRemoteDesktop>

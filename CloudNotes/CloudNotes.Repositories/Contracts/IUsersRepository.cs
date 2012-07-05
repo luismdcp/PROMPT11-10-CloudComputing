@@ -4,6 +4,6 @@ namespace CloudNotes.Repositories.Contracts
 {
     public interface IUsersRepository : IRepository<User>
     {
-
+        User GetOrAddCurrentUser();
     }
 }

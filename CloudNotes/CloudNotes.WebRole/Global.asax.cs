@@ -1,5 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Configuration;
+using System.Web.Mvc;
 using System.Web.Routing;
+using CloudNotes.Repositories;
 
 namespace CloudNotes.WebRole
 {
@@ -31,6 +33,7 @@ namespace CloudNotes.WebRole
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+            TablesBuilder.InitializeTables();
         }
     }
 }

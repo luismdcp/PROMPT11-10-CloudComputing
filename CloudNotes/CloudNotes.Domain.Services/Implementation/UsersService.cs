@@ -19,7 +19,7 @@ namespace CloudNotes.Domain.Services.Implementation
 
         public UsersService()
         {
-            _unitOfWork = new TableDataContext();
+            _unitOfWork = new AzureTablesUnitOfWork();
             _repository = new UsersRepository(_unitOfWork);
         }
 
@@ -53,6 +53,13 @@ namespace CloudNotes.Domain.Services.Implementation
         {
             _repository.Delete(entityToDelete);
             _unitOfWork.SubmitChanges();
+        }
+
+        public User ManageUser()
+        {
+            var user = _repository.GetOrAddCurrentUser();
+            _unitOfWork.SubmitChanges();
+            return user;
         }
 
         #endregion Public methods

@@ -15,9 +15,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{2D260A8F-0D60-4AA0-9665-95995388C86A}"
 EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CloudNotes.Web.MVC", "CloudNotes.Web.MVC\CloudNotes.Web.MVC.ccproj", "{33F58CF6-6D2A-4A80-AA99-6429158B254C}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudNotes.WebRole", "CloudNotes.WebRole\CloudNotes.WebRole.csproj", "{1E568A42-4207-4BC1-B8D8-6E173BA5B4C9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E727DFA9-7BD2-4E5B-A72D-5F7D2EB65549}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{2110ECDF-1F8B-4CCD-91D7-A558FBC31A88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudNotes.Tests.Domain", "CloudNotes.Tests.Domain\CloudNotes.Tests.Domain.csproj", "{444B935C-F274-43C7-A32D-DB4311470CBF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DC39481A-5BFF-4BE9-8859-BAFB5750F5E5}"
+	ProjectSection(SolutionItems) = preProject
+		CloudNotes.vsmdi = CloudNotes.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CloudNotes.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -35,10 +53,18 @@ Global
 		{14C19EE4-C4AD-43CB-87D6-2926387D46C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14C19EE4-C4AD-43CB-87D6-2926387D46C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14C19EE4-C4AD-43CB-87D6-2926387D46C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33F58CF6-6D2A-4A80-AA99-6429158B254C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33F58CF6-6D2A-4A80-AA99-6429158B254C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33F58CF6-6D2A-4A80-AA99-6429158B254C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33F58CF6-6D2A-4A80-AA99-6429158B254C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1E568A42-4207-4BC1-B8D8-6E173BA5B4C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1E568A42-4207-4BC1-B8D8-6E173BA5B4C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E568A42-4207-4BC1-B8D8-6E173BA5B4C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E568A42-4207-4BC1-B8D8-6E173BA5B4C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{444B935C-F274-43C7-A32D-DB4311470CBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{444B935C-F274-43C7-A32D-DB4311470CBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{444B935C-F274-43C7-A32D-DB4311470CBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{444B935C-F274-43C7-A32D-DB4311470CBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +74,10 @@ Global
 		{7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E} = {C11BABB0-F80C-4CEE-B78E-4DEF4E166445}
 		{14C19EE4-C4AD-43CB-87D6-2926387D46C9} = {E9AEAD73-CEEE-4270-B30E-B7020305B9CD}
 		{2D260A8F-0D60-4AA0-9665-95995388C86A} = {F71B571F-7AB0-4D39-9F7D-A25E6C6920D4}
+		{33F58CF6-6D2A-4A80-AA99-6429158B254C} = {2D260A8F-0D60-4AA0-9665-95995388C86A}
 		{1E568A42-4207-4BC1-B8D8-6E173BA5B4C9} = {2D260A8F-0D60-4AA0-9665-95995388C86A}
+		{2110ECDF-1F8B-4CCD-91D7-A558FBC31A88} = {E727DFA9-7BD2-4E5B-A72D-5F7D2EB65549}
+		{444B935C-F274-43C7-A32D-DB4311470CBF} = {2110ECDF-1F8B-4CCD-91D7-A558FBC31A88}
+		{DC39481A-5BFF-4BE9-8859-BAFB5750F5E5} = {2110ECDF-1F8B-4CCD-91D7-A558FBC31A88}
 	EndGlobalSection
 EndGlobal

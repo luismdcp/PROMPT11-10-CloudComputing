@@ -19,7 +19,7 @@ namespace CloudNotes.Domain.Services.Implementation
 
         public NotesService()
         {
-            _unitOfWork = new TableDataContext();
+            _unitOfWork = new AzureTablesUnitOfWork();
             _repository = new NotesRepository(_unitOfWork);
         }
 

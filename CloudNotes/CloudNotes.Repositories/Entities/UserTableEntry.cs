@@ -10,6 +10,11 @@
 
         #region Constructors
 
+        public UserTableEntry()
+        {
+            
+        }
+
         public UserTableEntry(string partitionKey, string rowKey) : base(partitionKey, rowKey)
         {
             

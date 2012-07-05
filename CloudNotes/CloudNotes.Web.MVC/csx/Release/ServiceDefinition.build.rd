@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CloudNotes.Web.MVC" generation="1" functional="0" release="0" Id="1a48953a-f295-41b0-8b80-f17398533b20" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CloudNotes.Web.MVC" generation="1" functional="0" release="0" Id="b5ac6a87-bb43-440a-8bb3-79e8ac442ea5" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="CloudNotes.Web.MVCGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -52,7 +52,7 @@
       </maps>
       <components>
         <groupHascomponents>
-          <role name="CloudNotes.WebRole" generation="1" functional="0" release="0" software="D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\csx\Release\roles\CloudNotes.WebRole" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaIISHost.exe " memIndex="1792" hostingEnvironment="frontendadmin" hostingEnvironmentVersion="2">
+          <role name="CloudNotes.WebRole" generation="1" functional="0" release="0" software="D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\csx\Release\roles\CloudNotes.WebRole" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaIISHost.exe " memIndex="1792" hostingEnvironment="frontendadmin" hostingEnvironmentVersion="2">
             <componentports>
               <inPort name="Endpoint1" protocol="http" portRanges="80" />
             </componentports>
@@ -79,9 +79,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="a8c0793c-327c-4b3a-ad98-131bfc9b10ff" ref="Microsoft.RedDog.Contract\ServiceContract\CloudNotes.Web.MVCContract@ServiceDefinition.build">
+    <implementation Id="c762fecc-5edc-46ab-82ce-484f29fc9ba1" ref="Microsoft.RedDog.Contract\ServiceContract\CloudNotes.Web.MVCContract@ServiceDefinition.build">
       <interfacereferences>
-        <interfaceReference Id="a043dd3f-9737-47fb-8c68-fbd63f442c16" ref="Microsoft.RedDog.Contract\Interface\CloudNotes.WebRole:Endpoint1@ServiceDefinition.build">
+        <interfaceReference Id="f8fbceaf-bc43-45e9-88ec-774e61f2fff3" ref="Microsoft.RedDog.Contract\Interface\CloudNotes.WebRole:Endpoint1@ServiceDefinition.build">
           <inPort>
             <inPortMoniker name="/CloudNotes.Web.MVC/CloudNotes.Web.MVCGroup/CloudNotes.WebRole:Endpoint1" />
           </inPort>

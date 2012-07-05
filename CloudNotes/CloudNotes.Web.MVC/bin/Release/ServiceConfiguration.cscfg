@@ -13,7 +13,7 @@
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=luisprompt;AccountKey=EGzUtKSo0RvBnMX4gqde8TQx0LErE9PQ5KFbo++WeURl8zPidAtt3tzQnzCSp7IH1rW8Ecct3OmNdB3gLwhA1Q==" />
-      <Setting name="CloudNotesSetting" value="DefaultEndpointsProtocol=http;AccountName=luisprompt;AccountKey=EGzUtKSo0RvBnMX4gqde8TQx0LErE9PQ5KFbo++WeURl8zPidAtt3tzQnzCSp7IH1rW8Ecct3OmNdB3gLwhA1Q==" />
+      <Setting name="CloudNotesSetting" value="UseDevelopmentStorage=true" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>

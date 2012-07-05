@@ -33,12 +33,16 @@ namespace CloudNotes.Domain.Entities
                 throw new ArgumentNullException("rowKey", "A note must have a non-empty RowKey.");
             }
 
+            Title = string.Empty;
+            Content = string.Empty;
             OrderingIndex = -1;
             AssociatedUsers = new Collection<User>();
         }
 
-        public Note(string partitionKey, string rowKey, User owner, TaskList containerList) : this(partitionKey, rowKey)
+        public Note(string partitionKey, string rowKey, string title, string content, User owner, TaskList containerList) : this(partitionKey, rowKey)
         {
+            Title = title;
+            Content = content;
             Owner = owner;
             ContainerList = containerList;
         }
@@ -49,14 +53,14 @@ namespace CloudNotes.Domain.Entities
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (Title.Length > 20)
+            if (string.IsNullOrWhiteSpace(Title) || Title.Length > 20)
             {
-                yield return new ValidationResult("Title cannot be longer than 20 characters.", new[] {"Title"});
+                yield return new ValidationResult("Title cannot be empty, all whitespaces or longer than 20 characters.", new[] {"Title"});
             }
 
-            if (Content.Length > 50)
+            if (string.IsNullOrWhiteSpace(Content) || Content.Length > 50)
             {
-                yield return new ValidationResult("Content cannot be longer than 50 characters.", new[] { "Content" });
+                yield return new ValidationResult("Content cannot be empty, all whitespaces or longer than 50 characters.", new[] { "Content" });
             }
 
             if (Owner == null)

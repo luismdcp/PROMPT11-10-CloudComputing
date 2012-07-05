@@ -10,7 +10,7 @@ namespace CloudNotes.Domain.Entities
     {
         #region Properties
 
-        public string Name { get; set; }
+        public string UserUniqueIdentifier { get; set; }
         public string Email { get; set; }
         public ICollection<TaskList> OwnedTaskLists { get; private set; }
         public ICollection<Note> OwnedNotes { get; private set; }
@@ -19,7 +19,7 @@ namespace CloudNotes.Domain.Entities
 
         #endregion Properties
 
-        #region Constructor
+        #region Constructors
 
         public User(string partitionKey, string rowKey) : base(partitionKey, rowKey)
         {
@@ -39,26 +39,36 @@ namespace CloudNotes.Domain.Entities
             AssociatedNotes = new Collection<Note>();
         }
 
-        #endregion Constructor
+        public User(string partitionKey, string rowKey, string userUniqueIdentifier, string email) : this(partitionKey, rowKey)
+        {
+            UserUniqueIdentifier = userUniqueIdentifier;
+            Email = email;
+        }
+
+        #endregion Constructors
 
         #region Validation
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (Name.Length > 10)
+            if (string.IsNullOrWhiteSpace(UserUniqueIdentifier))
             {
-                yield return new ValidationResult("Name cannot be longer than 10 characters.", new[] { "Name" });
+                yield return new ValidationResult("Name cannot be empty or all whitspace.", new[] { "Name" });
             }
 
-            const string emailRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
-                                      @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
-                                      @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
-
-            var re = new Regex(emailRegex);
-
-            if (!re.IsMatch(emailRegex))
+            if (!string.IsNullOrWhiteSpace(Email))
             {
-                yield return new ValidationResult("Email is not valid.", new[] { "Email" });
+                const string emailRegex = @"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+                                        + "@"
+                                        + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
+
+                var re = new Regex(emailRegex);
+                Match match = re.Match(Email);
+
+                if (!match.Success)
+                {
+                    yield return new ValidationResult("Email is not valid.", new[] { "Email" });
+                }   
             }
         }
 

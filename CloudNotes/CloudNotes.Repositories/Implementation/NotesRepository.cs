@@ -11,7 +11,7 @@ namespace CloudNotes.Repositories.Implementation
     {
         #region Fields
 
-        private readonly TableDataContext _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly TableRepository<NoteTableEntry> _notesTableRepository;
         private readonly TableRepository<NoteOwnerTableEntry> _noteOwnerTableRepository;
         private readonly TableRepository<NoteAssociatedUserTableEntry> _noteAssociatedUsersTableRepository;
@@ -22,7 +22,7 @@ namespace CloudNotes.Repositories.Implementation
 
         public NotesRepository(IUnitOfWork unitOfWork)
         {
-            _unitOfWork = unitOfWork as TableDataContext;
+            _unitOfWork = unitOfWork;
             _notesTableRepository = new TableRepository<NoteTableEntry>("Notes", _unitOfWork);
             _noteOwnerTableRepository = new TableRepository<NoteOwnerTableEntry>("NoteOwner", _unitOfWork);
             _noteAssociatedUsersTableRepository = new TableRepository<NoteAssociatedUserTableEntry>("NoteAssociatedUsers", _unitOfWork);
@@ -74,17 +74,6 @@ namespace CloudNotes.Repositories.Implementation
         {
             var noteAssociatedUserTableEntry = new NoteAssociatedUserTableEntry(note.RowKey, associatedUser.RowKey);
             _noteAssociatedUsersTableRepository.Delete(noteAssociatedUserTableEntry);
-        }
-
-        public void AddOrReplaceAssociatedUsers(Note note)
-        {
-            var noteAssociatedUsersTableEntries = note.AssociatedUsers.MapToNoteAssociatedUserTableEntries(note);
-
-            foreach (var noteAssociatedUsersTableEntry in noteAssociatedUsersTableEntries)
-            {
-                _unitOfWork.AttachTo("NoteAssociatedUsers", noteAssociatedUsersTableEntry);
-                _noteAssociatedUsersTableRepository.Update(noteAssociatedUsersTableEntry);
-            }
         }
 
         #endregion Public methods

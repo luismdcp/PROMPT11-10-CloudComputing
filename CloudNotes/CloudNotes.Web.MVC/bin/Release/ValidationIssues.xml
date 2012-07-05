@@ -10,5 +10,14 @@
       <Arguments>CloudNotes.WebRole;C:\Program Files\Reference Assemblies\Microsoft\Windows Identity Foundation\v3.5\Microsoft.IdentityModel.dll</Arguments>
       <HelpKeyword>WATValidationIssueWarning</HelpKeyword>
     </ValidationIssue>
+    <ValidationIssue Include="CloudNotes.WebRole|ServiceConfiguration.Cloud.cscfg|WAT170">
+      <ProjectName>CloudNotes.WebRole</ProjectName>
+      <FilenameWithExtension>ServiceConfiguration.Cloud.cscfg</FilenameWithExtension>
+      <Code>WAT170</Code>
+      <FileFullPath>bin\Release\ServiceConfiguration.cscfg</FileFullPath>
+      <WATMessage>True</WATMessage>
+      <Arguments>CloudNotesSetting;CloudNotes.WebRole;ServiceConfiguration.Cloud.cscfg</Arguments>
+      <HelpKeyword>WATValidationIssueWarning</HelpKeyword>
+    </ValidationIssue>
   </ItemGroup>
 </Project>

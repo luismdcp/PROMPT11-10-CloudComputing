@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="12280109-77a5-4122-9553-9a7a29a6732e" name="Luis@BLACKBEAUTY 2012-07-02 16:36:23" runUser="BlackBeauty\Luis" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="a9c45579-508c-4524-9966-e1f8cfbc3e28">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Luis_BLACKBEAUTY 2012-07-02 16_36_23">
+      <DeploymentItem filename="D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain\bin\Debug\CloudNotes.Domain.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-07-02T16:36:23.1067339+01:00" queuing="2012-07-02T16:36:23.1517365+01:00" start="2012-07-02T16:36:23.1567368+01:00" finish="2012-07-02T16:36:23.4367528+01:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="ATaskListWithAnAllWhitespaceTittleIsInvalid" storage="d:\backup cloudnotes\cloudnotes\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="a92d683e-6db6-da08-1853-c0e53902a155">
+      <Execution id="90f67d61-cb5c-4403-8a2e-ef1793ecbe26" />
+      <TestMethod codeBase="D:/Backup CloudNotes/CloudNotes/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ATaskListWithAnAllWhitespaceTittleIsInvalid" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="a92d683e-6db6-da08-1853-c0e53902a155" executionId="90f67d61-cb5c-4403-8a2e-ef1793ecbe26" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="90f67d61-cb5c-4403-8a2e-ef1793ecbe26" testId="a92d683e-6db6-da08-1853-c0e53902a155" testName="ATaskListWithAnAllWhitespaceTittleIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0240129" startTime="2012-07-02T16:36:23.1587369+01:00" endTime="2012-07-02T16:36:23.4207519+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="90f67d61-cb5c-4403-8a2e-ef1793ecbe26">
+    </UnitTestResult>
+  </Results>
+</TestRun>

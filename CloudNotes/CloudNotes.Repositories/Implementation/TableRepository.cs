@@ -9,7 +9,7 @@ namespace CloudNotes.Repositories.Implementation
         #region Fields
 
         private readonly string _entitySetName;
-        private readonly TableDataContext _dataContext;
+        private readonly IUnitOfWork _unitOfWork;
 
         #endregion Fields
 
@@ -18,7 +18,7 @@ namespace CloudNotes.Repositories.Implementation
         public TableRepository(string entitySetName, IUnitOfWork unitOfWork)
         {
             _entitySetName = entitySetName;
-            _dataContext = unitOfWork as TableDataContext;
+            _unitOfWork = unitOfWork;
         }
 
         #endregion Constructors
@@ -27,27 +27,27 @@ namespace CloudNotes.Repositories.Implementation
 
         public IQueryable<TEntity> Load()
         {
-            return _dataContext.CreateQuery<TEntity>(_entitySetName);
+            return _unitOfWork.Load<TEntity>(_entitySetName);
         }
 
         public TEntity Get(string partitionKey, string rowKey)
         {
-            return _dataContext.CreateQuery<TEntity>(_entitySetName).FirstOrDefault(n => n.PartitionKey == partitionKey && n.RowKey == rowKey);
+            return _unitOfWork.Get<TEntity>(_entitySetName, partitionKey, rowKey);
         }
 
         public void Add(TEntity entityToAdd)
         {
-            _dataContext.AddObject(_entitySetName, entityToAdd);
+            _unitOfWork.Add(entityToAdd, _entitySetName);
         }
 
         public void Update(TEntity entityToUpdate)
         {
-            _dataContext.UpdateObject(entityToUpdate);
+            _unitOfWork.Update(entityToUpdate);
         }
 
         public void Delete(TEntity entityToDelete)
         {
-            _dataContext.DeleteObject(entityToDelete);
+            _unitOfWork.Delete(entityToDelete);
         }
 
         #endregion Public methods

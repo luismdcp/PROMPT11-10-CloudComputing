@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CloudNotes.Domain
 {
@@ -21,6 +23,18 @@ namespace CloudNotes.Domain
         }
 
         #endregion Constructors
+
+        #region Public methods
+
+        public bool IsValid()
+        {
+            var validationResults = new List<ValidationResult>();
+            var validationContext = new ValidationContext(this, null, null);
+            Validator.TryValidateObject(this, validationContext, validationResults, true);
+            return validationResults.Count == 0;
+        }
+
+        #endregion
 
         #region Overrides
 

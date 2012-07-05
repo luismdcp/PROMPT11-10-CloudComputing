@@ -20,7 +20,7 @@ namespace CloudNotes.Domain.Services.Implementation
 
         public TaskListsService()
         {
-            _unitOfWork = new TableDataContext();
+            _unitOfWork = new AzureTablesUnitOfWork();
             _taskListsRepository = new TaskListsRepository(_unitOfWork);
             _noteRepository = new NotesRepository(_unitOfWork);
         }

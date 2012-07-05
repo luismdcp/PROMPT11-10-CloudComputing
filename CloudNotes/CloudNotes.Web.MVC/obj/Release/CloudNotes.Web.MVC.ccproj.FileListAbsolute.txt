@@ -2,13 +2,14 @@ D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\bin\Release\ServiceConfiguration.csc
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\bin\Release\ValidationIssues.xml
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\CloudNotes.WebRole.dll
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\CloudNotes.WebRole.pdb
+D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\EntityFramework.dll
+D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\EntityFramework.xml
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\Microsoft.Web.Infrastructure.dll
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.Diagnostics.dll
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.Diagnostics.xml
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.StorageClient.dll
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.StorageClient.xml
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\RegisterDLL.cmd
-D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Abstractions.dll
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Helpers.dll
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Helpers.xml
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Mvc.dll
@@ -16,7 +17,6 @@ D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\S
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Providers.dll
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Razor.dll
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Razor.xml
-D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Routing.dll
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.WebPages.Deployment.dll
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.WebPages.Deployment.xml
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.WebPages.dll
@@ -24,12 +24,6 @@ D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\S
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.WebPages.Razor.xml
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.WebPages.xml
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\Windows6.0-KB974405-x64.msu
-D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\bootstrap-responsive.css
-D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\bootstrap-responsive.min.css
-D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\bootstrap.css
-D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\bootstrap.min.css
-D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\images\glyphicons-halflings-white.png
-D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\images\glyphicons-halflings.png
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\Site.css
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png
@@ -88,8 +82,6 @@ D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Conte
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\FederationMetadata\2007-06\FederationMetadata.xml
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Global.asax
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\packages.config
-D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\bootstrap.js
-D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\bootstrap.min.js
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery-1.7.2-vsdoc.js
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery-1.7.2.js
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery-1.7.2.min.js
@@ -117,6 +109,123 @@ D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Views
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Views\Home\Index.cshtml
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Views\Shared\Error.cshtml
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Views\Shared\_Layout.cshtml
+D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Views\Shared\_LogOnPartial.cshtml
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Views\Web.config
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Views\_ViewStart.cshtml
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Web.config
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\bin\Release\ServiceConfiguration.cscfg
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\bin\Release\ValidationIssues.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\CloudNotes.Domain.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\CloudNotes.Domain.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\CloudNotes.Domain.Services.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\CloudNotes.Domain.Services.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\CloudNotes.Repositories.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\CloudNotes.Repositories.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\CloudNotes.WebRole.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\CloudNotes.WebRole.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\EntityFramework.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\EntityFramework.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\Microsoft.Web.Infrastructure.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.Diagnostics.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.Diagnostics.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.StorageClient.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.StorageClient.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\RegisterDLL.cmd
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Helpers.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Helpers.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Mvc.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Mvc.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Providers.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Razor.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.Razor.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.WebPages.Deployment.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.WebPages.Deployment.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.WebPages.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.WebPages.Razor.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.WebPages.Razor.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Web.WebPages.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\Windows6.0-KB974405-x64.msu
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\Site.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-icons_222222_256x240.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-icons_2e83ff_256x240.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-icons_454545_256x240.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-icons_888888_256x240.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\images\ui-icons_cd0a0a_256x240.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery-ui.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery.ui.accordion.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery.ui.all.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery.ui.autocomplete.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery.ui.base.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery.ui.button.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery.ui.core.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery.ui.datepicker.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery.ui.dialog.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery.ui.progressbar.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery.ui.resizable.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery.ui.selectable.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery.ui.slider.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery.ui.tabs.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\jquery.ui.theme.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\images\ui-icons_222222_256x240.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\images\ui-icons_454545_256x240.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\images\ui-icons_888888_256x240.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\jquery-ui.min.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\jquery.ui.accordion.min.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\jquery.ui.autocomplete.min.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\jquery.ui.button.min.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\jquery.ui.core.min.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\jquery.ui.datepicker.min.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\jquery.ui.dialog.min.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\jquery.ui.progressbar.min.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\jquery.ui.resizable.min.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\jquery.ui.selectable.min.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\jquery.ui.slider.min.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\jquery.ui.tabs.min.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Content\themes\base\minified\jquery.ui.theme.min.css
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\FederationMetadata\2007-06\FederationMetadata.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Global.asax
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\packages.config
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery-1.7.2-vsdoc.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery-1.7.2.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery-1.7.2.min.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery-ui-1.8.20.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery-ui-1.8.20.min.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery.unobtrusive-ajax.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery.unobtrusive-ajax.min.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery.validate-vsdoc.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery.validate.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery.validate.min.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery.validate.unobtrusive.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\jquery.validate.unobtrusive.min.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\MicrosoftAjax.debug.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\MicrosoftAjax.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\MicrosoftMvcAjax.debug.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\MicrosoftMvcAjax.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\MicrosoftMvcValidation.debug.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\MicrosoftMvcValidation.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Scripts\modernizr-2.5.3.js
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Views\Home\About.cshtml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Views\Home\Index.cshtml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Views\Shared\Error.cshtml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Views\Shared\_Layout.cshtml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Views\Web.config
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Views\_ViewStart.cshtml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\Web.config

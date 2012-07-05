@@ -7,3 +7,12 @@ D:\CloudNotes\CloudNotes\CloudNotes.Repositories\bin\Debug\Microsoft.WindowsAzur
 D:\CloudNotes\CloudNotes\CloudNotes.Repositories\obj\Debug\CloudNotes.Repositories.csprojResolveAssemblyReference.cache
 D:\CloudNotes\CloudNotes\CloudNotes.Repositories\obj\Debug\CloudNotes.Repositories.dll
 D:\CloudNotes\CloudNotes\CloudNotes.Repositories\obj\Debug\CloudNotes.Repositories.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Repositories\bin\Debug\CloudNotes.Repositories.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Repositories\bin\Debug\CloudNotes.Repositories.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Repositories\bin\Debug\CloudNotes.Domain.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Repositories\bin\Debug\Microsoft.WindowsAzure.StorageClient.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Repositories\bin\Debug\CloudNotes.Domain.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Repositories\bin\Debug\Microsoft.WindowsAzure.StorageClient.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Repositories\obj\Debug\CloudNotes.Repositories.csprojResolveAssemblyReference.cache
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Repositories\obj\Debug\CloudNotes.Repositories.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Repositories\obj\Debug\CloudNotes.Repositories.pdb
