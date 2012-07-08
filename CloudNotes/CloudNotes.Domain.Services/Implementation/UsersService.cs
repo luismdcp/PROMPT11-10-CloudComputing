@@ -2,7 +2,6 @@
 using CloudNotes.Domain.Entities;
 using CloudNotes.Domain.Services.Contracts;
 using CloudNotes.Repositories.Contracts;
-using CloudNotes.Repositories.Implementation;
 
 namespace CloudNotes.Domain.Services.Implementation
 {
@@ -17,10 +16,10 @@ namespace CloudNotes.Domain.Services.Implementation
 
         #region Constructors
 
-        public UsersService()
+        public UsersService(IUnitOfWork unitOfWork, IUsersRepository usersRepository)
         {
-            _unitOfWork = new AzureTablesUnitOfWork();
-            _repository = new UsersRepository(_unitOfWork);
+            _unitOfWork = unitOfWork;
+            _repository = usersRepository;
         }
 
         #endregion Constructors
@@ -39,7 +38,7 @@ namespace CloudNotes.Domain.Services.Implementation
 
         public void Add(User entityToAdd)
         {
-            _repository.Add(entityToAdd);
+            _repository.Create(entityToAdd);
             _unitOfWork.SubmitChanges();
         }
 

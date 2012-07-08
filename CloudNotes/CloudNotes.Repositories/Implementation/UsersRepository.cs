@@ -13,7 +13,6 @@ namespace CloudNotes.Repositories.Implementation
         #region Fields
 
         private readonly IUnitOfWork _unitOfWork;
-        private readonly TableRepository<UserTableEntry> _userTableRepository;
 
         #endregion Fields
 
@@ -22,7 +21,6 @@ namespace CloudNotes.Repositories.Implementation
         public UsersRepository(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _userTableRepository = new TableRepository<UserTableEntry>("Users", _unitOfWork);
         }
 
         #endregion Constructors
@@ -31,31 +29,31 @@ namespace CloudNotes.Repositories.Implementation
 
         public IQueryable<User> Load()
         {
-            var users = _userTableRepository.Load().ToList();
-            return users.Select(userTableEntry => userTableEntry.MapToUser()).AsQueryable();
+            var usersTableEntries = _unitOfWork.Load<UserTableEntry>("Users");
+            return usersTableEntries.Select(userTableEntry => userTableEntry.MapToUser()).AsQueryable();
         }
 
         public User Get(string partitionKey, string rowKey)
         {
-            return _userTableRepository.Get(partitionKey, rowKey).MapToUser();
+            return _unitOfWork.Get<UserTableEntry>("Users", partitionKey, rowKey).MapToUser();
         }
 
-        public void Add(User entityToAdd)
+        public void Create(User entityToAdd)
         {
             var userTableEntry = entityToAdd.MapToUserTableEntry();
-            _userTableRepository.Add(userTableEntry);
+            _unitOfWork.Add(userTableEntry, "Users");
         }
 
         public void Update(User entityToUpdate)
         {
             var userTableEntry = entityToUpdate.MapToUserTableEntry();
-            _userTableRepository.Update(userTableEntry);
+            _unitOfWork.Update(userTableEntry);
         }
 
         public void Delete(User entityToDelete)
         {
             var userTableEntry = entityToDelete.MapToUserTableEntry();
-            _userTableRepository.Delete(userTableEntry);
+            _unitOfWork.Delete(userTableEntry);
         }
 
         public User GetOrAddCurrentUser()
@@ -79,12 +77,12 @@ namespace CloudNotes.Repositories.Implementation
                 userUniqueIdentifier = Thread.CurrentPrincipal.Identity.Name;
             }
 
-            var newOrExitingUserEntry = _userTableRepository.Load().Where(u => u.RowKey == userUniqueIdentifier).FirstOrDefault();
+            var newOrExitingUserEntry = _unitOfWork.Load<UserTableEntry>("Users").Where(u => u.RowKey == userUniqueIdentifier).FirstOrDefault();
 
             if (newOrExitingUserEntry == null)
             {
                 var user = new User("users", userUniqueIdentifier, userUniqueIdentifier, userEmailAddress);
-                Add(user);
+                Create(user);
                 return user;
             }
 

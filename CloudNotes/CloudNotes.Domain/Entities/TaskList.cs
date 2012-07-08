@@ -61,64 +61,64 @@ namespace CloudNotes.Domain.Entities
 
         #region Public methods
 
-        public void AddNote(Note newNote)
-        {
-            newNote.OrderingIndex = Notes.Count - 1;
-            Notes.Add(newNote);
-            newNote.ContainerList = this;
-        }
+        //public void AddNote(Note newNote)
+        //{
+        //    newNote.OrderingIndex = Notes.Count;
+        //    Notes.Add(newNote);
+        //    newNote.ContainerList = this;
+        //}
 
-        public void MoveUp(Note note)
-        {
-            int index = Notes.IndexOf(note);
-            Note previousNote = Notes[index - 1];
+        //public void MoveUp(Note note)
+        //{
+        //    int index = Notes.IndexOf(note);
+        //    Note previousNote = Notes[index - 1];
 
-            if (index == -1)
-            {
-                throw new ArgumentOutOfRangeException("note");
-            }
+        //    if (index == -1)
+        //    {
+        //        throw new ArgumentOutOfRangeException("note");
+        //    }
 
-            if (index == 0)
-            {
-                return;
-            }
+        //    if (index == 0)
+        //    {
+        //        return;
+        //    }
 
-            Swap(Notes, index, index - 1);
-            note.OrderingIndex = index - 1;
-            previousNote.OrderingIndex = index;
-        }
+        //    Swap(Notes, index, index - 1);
+        //    note.OrderingIndex = index - 1;
+        //    previousNote.OrderingIndex = index;
+        //}
 
-        public void MoveDown(Note note)
-        {
-            int index = Notes.IndexOf(note);
-            Note nextNote = Notes[index + 1];
+        //public void MoveDown(Note note)
+        //{
+        //    int index = Notes.IndexOf(note);
+        //    Note nextNote = Notes[index + 1];
 
-            if (index == -1)
-            {
-                throw new ArgumentOutOfRangeException("note");
-            }
+        //    if (index == -1)
+        //    {
+        //        throw new ArgumentOutOfRangeException("note");
+        //    }
 
-            if (index == 0)
-            {
-                return;
-            }
+        //    if (index == 0)
+        //    {
+        //        return;
+        //    }
 
-            Swap(Notes, index, index + 1);
-            note.OrderingIndex = index + 1;
-            nextNote.OrderingIndex = index;
-        }
+        //    Swap(Notes, index, index + 1);
+        //    note.OrderingIndex = index + 1;
+        //    nextNote.OrderingIndex = index;
+        //}
 
         #endregion Public methods
 
-        #region Private methods
+        //#region Private methods
 
-        private static void Swap(IList<Note> notesList, int index1, int index2)
-        {
-            Note temp = notesList[index1];
-            notesList[index1] = notesList[index2];
-            notesList[index2] = temp;
-        }
+        //private static void Swap(IList<Note> notesList, int index1, int index2)
+        //{
+        //    Note temp = notesList[index1];
+        //    notesList[index1] = notesList[index2];
+        //    notesList[index2] = temp;
+        //}
 
-        #endregion Private methods
+        //#endregion Private methods
     }
 }

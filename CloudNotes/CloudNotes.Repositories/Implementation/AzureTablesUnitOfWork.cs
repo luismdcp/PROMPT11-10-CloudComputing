@@ -1,6 +1,9 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data.Services.Client;
 using System.Linq;
+using System.Xml;
+using CloudNotes.Infrastructure.Exceptions;
 using CloudNotes.Repositories.Contracts;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.StorageClient;
@@ -20,7 +23,8 @@ namespace CloudNotes.Repositories.Implementation
         public AzureTablesUnitOfWork()
         {
             var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
-            _context = new TableServiceContext(storageAccount.TableEndpoint.AbsoluteUri, storageAccount.Credentials);
+            _context = new TableServiceContext(storageAccount.TableEndpoint.AbsoluteUri, storageAccount.Credentials)
+                           {IgnoreResourceNotFoundException = true};
         }
 
         #endregion Constructors
@@ -58,9 +62,66 @@ namespace CloudNotes.Repositories.Implementation
 
         public void SubmitChanges()
         {
-            _context.SaveChangesWithRetries(SaveChangesOptions.Batch);
+            try
+            {
+                _context.SaveChangesWithRetries(SaveChangesOptions.Batch);
+            }
+            catch (Exception ex)
+            {
+                throw MapTableServiceContextException(ex);
+            }
         }
 
         #endregion Public methods
+
+        #region Private methods
+
+        private static Exception MapTableServiceContextException(Exception exception)
+        {
+            Exception returnException = null;
+
+            while (!(exception is DataServiceClientException) && (exception != null))
+            {
+                exception = exception.InnerException;    
+            }
+
+            if (exception == null)
+            {
+                return new Exception("Unknown error.");
+            }
+
+            try
+            {
+                var xml = new XmlDocument();
+                xml.LoadXml(exception.Message);
+                var namespaceManager = new XmlNamespaceManager(xml.NameTable);
+                namespaceManager.AddNamespace("n", "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata");
+                var errorCode = xml.SelectSingleNode("/n:error/n:code", namespaceManager).InnerText;
+
+                switch (errorCode)
+                {
+                    case "UpdateConditionNotSatisfied":
+                        returnException = new ConcurrencyException();
+                        break;
+                    case "EntityAlreadyExists":
+                        returnException = new EntityAlreadyExistsException();
+                        break;
+                    case "InvalidValueType":
+                        returnException = new InvalidValueTypeException();
+                        break;
+                    default:
+                        returnException = new Exception("An error occurred when saving changes.");
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                returnException = new Exception("An error occurred when saving changes.", ex);
+            }
+
+            return returnException;
+        }
+
+        #endregion Private methods
     }
 }

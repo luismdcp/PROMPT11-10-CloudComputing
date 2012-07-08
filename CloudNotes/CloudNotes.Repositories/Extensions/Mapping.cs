@@ -39,11 +39,6 @@ namespace CloudNotes.Repositories.Extensions
             return associatedUsers.Select(user => new NoteAssociatedUserTableEntry(note.RowKey, user.RowKey)).ToList();
         }
 
-        internal static ICollection<NoteSubscriberTableEntry> MapToNoteSubscribersTableEntries(this ICollection<User> subscribers, Note note)
-        {
-            return subscribers.Select(user => new NoteSubscriberTableEntry(note.RowKey, user.RowKey)).ToList();
-        }
-
         internal static TaskList MapToTaskList(this TaskListTableEntry entry)
         {
             var taskList = new TaskList(entry.PartitionKey, entry.RowKey)

@@ -8,5 +8,6 @@
   <Module PersistentId="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9" ModuleId="CloudNotes.WebRole" />
   <Module PersistentId="444B935C-F274-43C7-A32D-DB4311470CBF" ModuleId="CloudNotes.Tests.Domain" />
   <Module PersistentId="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" ModuleId="Microsoft.IdentityModel" />
-  <Module PersistentId="Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" ModuleId="Microsoft.WindowsAzure.StorageClient_1" />
+  <Module PersistentId="F445AEEE-C5F8-4108-9193-5D5108F57BB0" ModuleId="DependencyInjection" />
+  <Module PersistentId="CA18BBDE-F0A4-4172-A900-075C9FAD6959" ModuleId="CloudNotes.Infrastructure.Exceptions" />
 </Modules>

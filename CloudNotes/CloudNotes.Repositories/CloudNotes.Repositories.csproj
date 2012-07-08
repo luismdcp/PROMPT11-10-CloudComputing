@@ -38,7 +38,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Services.Client" />
-    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\INotesRepository.cs" />
@@ -48,22 +48,13 @@
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Relation\NoteAssociatedUserTableEntry.cs" />
     <Compile Include="Entities\Relation\NoteOwnerTableEntry.cs" />
-    <Compile Include="Entities\Relation\NoteSubscriberTableEntry.cs" />
     <Compile Include="Entities\NoteTableEntry.cs" />
     <Compile Include="Entities\Relation\TaskListAssociatedUserTableEntry.cs" />
-    <Compile Include="Entities\Relation\TaskListSubscriberTableEntry.cs" />
-    <Compile Include="Entities\Relation\UserAssociatedNoteTableEntry.cs" />
-    <Compile Include="Entities\Relation\UserAssociatedTaskListTableEntry.cs" />
-    <Compile Include="Entities\Relation\UserOwnedNoteTableEntry.cs" />
-    <Compile Include="Entities\Relation\UserOwnedTaskListTableEntry.cs" />
-    <Compile Include="Entities\Relation\UserSubscribedNoteTableEntry.cs" />
-    <Compile Include="Entities\Relation\UserSubscribedTaskListTableEntry.cs" />
     <Compile Include="Entities\TaskListTableEntry.cs" />
     <Compile Include="Entities\UserTableEntry.cs" />
     <Compile Include="Extensions\Mapping.cs" />
     <Compile Include="Implementation\AzureTablesUnitOfWork.cs" />
     <Compile Include="Implementation\NotesRepository.cs" />
-    <Compile Include="Implementation\TableRepository.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="Implementation\TaskListsRepository.cs" />
     <Compile Include="Implementation\UsersRepository.cs" />
@@ -75,6 +66,10 @@
     <ProjectReference Include="..\CloudNotes.Domain\CloudNotes.Domain.csproj">
       <Project>{B045D6E8-373D-4F70-A29A-4452C181CB45}</Project>
       <Name>CloudNotes.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudNotes.Infrastructure.Exceptions\CloudNotes.Infrastructure.Exceptions.csproj">
+      <Project>{CA18BBDE-F0A4-4172-A900-075C9FAD6959}</Project>
+      <Name>CloudNotes.Infrastructure.Exceptions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

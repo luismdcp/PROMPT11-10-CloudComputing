@@ -1,6 +1,6 @@
 ﻿namespace CloudNotes.Repositories.Entities
 {
-    internal class TaskListTableEntry : BaseEntity
+    public class TaskListTableEntry : BaseEntity
     {
         #region Properties
 

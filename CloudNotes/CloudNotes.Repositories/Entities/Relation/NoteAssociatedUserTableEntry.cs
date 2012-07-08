@@ -1,6 +1,6 @@
 ﻿namespace CloudNotes.Repositories.Entities.Relation
 {
-    internal class NoteAssociatedUserTableEntry : BaseEntity
+    public class NoteAssociatedUserTableEntry : BaseEntity
     {
         #region Constructors
 

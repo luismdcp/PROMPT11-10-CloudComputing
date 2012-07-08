@@ -12,8 +12,6 @@ namespace CloudNotes.Repositories.Implementation
         #region Fields
 
         private readonly IUnitOfWork _unitOfWork;
-        private readonly TableRepository<TaskListTableEntry> _taskListsTableRepository;
-        private readonly TableRepository<TaskListAssociatedUserTableEntry> _taskListAssociatedUsersTableRepository;
 
         #endregion Fields
 
@@ -22,8 +20,6 @@ namespace CloudNotes.Repositories.Implementation
         public TaskListsRepository(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _taskListsTableRepository = new TableRepository<TaskListTableEntry>("TaskLists", _unitOfWork);
-            _taskListAssociatedUsersTableRepository = new TableRepository<TaskListAssociatedUserTableEntry>("TaskListAssociatedUsers", _unitOfWork);
         }
 
         #endregion Constructors
@@ -32,43 +28,43 @@ namespace CloudNotes.Repositories.Implementation
 
         public IQueryable<TaskList> Load()
         {
-            var taskLisTabletEntries = _taskListsTableRepository.Load().ToList();
+            var taskLisTabletEntries = _unitOfWork.Load<TaskListTableEntry>("TaskLists");
             return taskLisTabletEntries.Select(taskListTableEntry => taskListTableEntry.MapToTaskList()).AsQueryable();
         }
 
         public TaskList Get(string partitionKey, string rowKey)
         {
-            return _taskListsTableRepository.Get(partitionKey, rowKey).MapToTaskList();
+            return _unitOfWork.Get<TaskListTableEntry>("TaskLists", partitionKey, rowKey).MapToTaskList();
         }
 
-        public void Add(TaskList entityToAdd)
+        public void Create(TaskList entityToAdd)
         {
             var taskListTableEntry = entityToAdd.MapToTaskListTableEntry();
-            _taskListsTableRepository.Add(taskListTableEntry);
+            _unitOfWork.Add(taskListTableEntry, "TaskLists");
         }
 
         public void Update(TaskList entityToUpdate)
         {
             var taskListTableEntry = entityToUpdate.MapToTaskListTableEntry();
-            _taskListsTableRepository.Update(taskListTableEntry);
+            _unitOfWork.Update(taskListTableEntry);
         }
 
         public void Delete(TaskList entityToDelete)
         {
             var taskListTableEntry = entityToDelete.MapToTaskListTableEntry();
-            _taskListsTableRepository.Delete(taskListTableEntry);
+            _unitOfWork.Delete(taskListTableEntry);
         }
 
-        public void AddAssociatedUser(TaskList taskList, User associatedUser)
+        public void AddAssociatedUser(TaskList taskList, User userToAssociate)
         {
             var taskListAssociatedUsersTableEntry = new TaskListAssociatedUserTableEntry(taskList.PartitionKey, taskList.RowKey);
-            _taskListAssociatedUsersTableRepository.Add(taskListAssociatedUsersTableEntry);
+            _unitOfWork.Add(taskListAssociatedUsersTableEntry, "TaskListAssociatedUsers");
         }
 
-        public void DeleteAssociatedUser(TaskList taskList, User associatedUser)
+        public void DeleteAssociatedUser(TaskList taskList, User userToAssociate)
         {
             var taskListAssociatedUsersTableEntry = new TaskListAssociatedUserTableEntry(taskList.PartitionKey, taskList.RowKey);
-            _taskListAssociatedUsersTableRepository.Delete(taskListAssociatedUsersTableEntry);
+            _unitOfWork.Delete(taskListAssociatedUsersTableEntry);
         }
 
         #endregion Public methods

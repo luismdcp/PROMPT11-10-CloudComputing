@@ -49,6 +49,9 @@
     <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -219,6 +222,10 @@
     <ProjectReference Include="..\CloudNotes.Repositories\CloudNotes.Repositories.csproj">
       <Project>{14C19EE4-C4AD-43CB-87D6-2926387D46C9}</Project>
       <Name>CloudNotes.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DependencyInjection\CloudNotes.Infrastructure.DependencyInjection.csproj">
+      <Project>{F445AEEE-C5F8-4108-9193-5D5108F57BB0}</Project>
+      <Name>CloudNotes.Infrastructure.DependencyInjection</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

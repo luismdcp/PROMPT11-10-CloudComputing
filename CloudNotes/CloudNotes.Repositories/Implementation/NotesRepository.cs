@@ -12,9 +12,6 @@ namespace CloudNotes.Repositories.Implementation
         #region Fields
 
         private readonly IUnitOfWork _unitOfWork;
-        private readonly TableRepository<NoteTableEntry> _notesTableRepository;
-        private readonly TableRepository<NoteOwnerTableEntry> _noteOwnerTableRepository;
-        private readonly TableRepository<NoteAssociatedUserTableEntry> _noteAssociatedUsersTableRepository;
 
         #endregion Fields
 
@@ -23,9 +20,6 @@ namespace CloudNotes.Repositories.Implementation
         public NotesRepository(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _notesTableRepository = new TableRepository<NoteTableEntry>("Notes", _unitOfWork);
-            _noteOwnerTableRepository = new TableRepository<NoteOwnerTableEntry>("NoteOwner", _unitOfWork);
-            _noteAssociatedUsersTableRepository = new TableRepository<NoteAssociatedUserTableEntry>("NoteAssociatedUsers", _unitOfWork);
         }
 
         #endregion Constructors
@@ -34,46 +28,46 @@ namespace CloudNotes.Repositories.Implementation
 
         public IQueryable<Note> Load()
         {
-            var noteEntries = _notesTableRepository.Load().ToList();
-            return noteEntries.Select(noteTableEntry => noteTableEntry.MapToNote()).AsQueryable();
+            var notesTableEntries = _unitOfWork.Load<NoteTableEntry>("Notes");
+            return notesTableEntries.Select(noteTableEntry => noteTableEntry.MapToNote()).AsQueryable();
         }
 
         public Note Get(string partitionKey, string rowKey)
         {
-            return _notesTableRepository.Get(partitionKey, rowKey).MapToNote();
+            return _unitOfWork.Get<NoteTableEntry>("Notes", partitionKey, rowKey).MapToNote();
         }
 
-        public void Add(Note entityToAdd)
+        public void Create(Note entityToAdd)
         {
             var noteTableEntry = entityToAdd.MapToNoteTableEntry();
-            _notesTableRepository.Add(noteTableEntry);
+            _unitOfWork.Add(noteTableEntry, "Notes");
 
             var noteOwnerTableEntry = new NoteOwnerTableEntry(entityToAdd.Owner.RowKey, entityToAdd.RowKey);
-            _noteOwnerTableRepository.Add(noteOwnerTableEntry);
+            _unitOfWork.Add(noteOwnerTableEntry, "NoteOwner");
         }
 
         public void Update(Note entityToUpdate)
         {
-            var noteEntry = entityToUpdate.MapToNoteTableEntry();
-            _notesTableRepository.Update(noteEntry);
+            var noteTableEntry = entityToUpdate.MapToNoteTableEntry();
+            _unitOfWork.Update(noteTableEntry);
         }
 
         public void Delete(Note entityToDelete)
         {
-            var noteEntry = entityToDelete.MapToNoteTableEntry();
-            _notesTableRepository.Delete(noteEntry);
+            var noteTableEntry = entityToDelete.MapToNoteTableEntry();
+            _unitOfWork.Delete(noteTableEntry);
         }
 
-        public void AddAssociatedUser(Note note, User associatedUser)
+        public void AddAssociatedUser(Note note, User userToAssociate)
         {
-            var noteAssociatedUserTableEntry = new NoteAssociatedUserTableEntry(note.RowKey, associatedUser.RowKey);
-            _noteAssociatedUsersTableRepository.Add(noteAssociatedUserTableEntry);
+            var noteAssociatedUserTableEntry = new NoteAssociatedUserTableEntry(note.RowKey, userToAssociate.RowKey);
+            _unitOfWork.Add(noteAssociatedUserTableEntry, "NoteAssociatedUsers");
         }
 
-        public void DeleteAssociatedUser(Note note, User associatedUser)
+        public void DeleteAssociatedUser(Note note, User userToAssociate)
         {
-            var noteAssociatedUserTableEntry = new NoteAssociatedUserTableEntry(note.RowKey, associatedUser.RowKey);
-            _noteAssociatedUsersTableRepository.Delete(noteAssociatedUserTableEntry);
+            var noteAssociatedUserTableEntry = new NoteAssociatedUserTableEntry(note.RowKey, userToAssociate.RowKey);
+            _unitOfWork.Delete(noteAssociatedUserTableEntry);
         }
 
         #endregion Public methods

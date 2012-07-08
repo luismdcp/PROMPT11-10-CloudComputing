@@ -58,3 +58,43 @@ D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.Web
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.csprojResolveAssemblyReference.cache
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.dll
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\RegisterDLL.cmd
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Windows6.0-KB974405-x64.msu
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.WebRole.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.WebRole.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.Services.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Repositories.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\DependencyInjection.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\EntityFramework.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.Web.Infrastructure.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.Diagnostics.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.StorageClient.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\StructureMap.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Helpers.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Mvc.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Providers.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Razor.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Deployment.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Razor.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.Services.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Repositories.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\DependencyInjection.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\EntityFramework.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.Diagnostics.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.StorageClient.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\StructureMap.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\StructureMap.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Mvc.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Razor.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Helpers.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Deployment.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Razor.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.csprojResolveAssemblyReference.cache
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.Exceptions.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.Exceptions.pdb

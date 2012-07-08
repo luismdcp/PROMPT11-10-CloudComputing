@@ -63,7 +63,7 @@ namespace CloudNotes.Domain.Entities
                                         + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
 
                 var re = new Regex(emailRegex);
-                Match match = re.Match(Email);
+                var match = re.Match(Email);
 
                 if (!match.Success)
                 {

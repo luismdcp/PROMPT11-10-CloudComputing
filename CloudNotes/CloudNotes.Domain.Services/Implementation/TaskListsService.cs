@@ -2,7 +2,6 @@
 using CloudNotes.Domain.Entities;
 using CloudNotes.Domain.Services.Contracts;
 using CloudNotes.Repositories.Contracts;
-using CloudNotes.Repositories.Implementation;
 
 namespace CloudNotes.Domain.Services.Implementation
 {
@@ -18,11 +17,11 @@ namespace CloudNotes.Domain.Services.Implementation
 
         #region Constructors
 
-        public TaskListsService()
+        public TaskListsService(IUnitOfWork unitOfWork, ITaskListsRepository taskListsRepository, INotesRepository notesRepository)
         {
-            _unitOfWork = new AzureTablesUnitOfWork();
-            _taskListsRepository = new TaskListsRepository(_unitOfWork);
-            _noteRepository = new NotesRepository(_unitOfWork);
+            _unitOfWork = unitOfWork;
+            _taskListsRepository = taskListsRepository;
+            _noteRepository = notesRepository;
         }
 
         #endregion Constructors
@@ -41,7 +40,7 @@ namespace CloudNotes.Domain.Services.Implementation
 
         public void Add(TaskList entityToAdd)
         {
-            _taskListsRepository.Add(entityToAdd);
+            _taskListsRepository.Create(entityToAdd);
             _unitOfWork.SubmitChanges();
         }
 
@@ -74,7 +73,7 @@ namespace CloudNotes.Domain.Services.Implementation
         public void CopyNote(TaskList taskListSource, TaskList taskListDestination, Note note)
         {
             note.PartitionKey = taskListDestination.RowKey;
-            _noteRepository.Add(note);
+            _noteRepository.Create(note);
             _unitOfWork.SubmitChanges();
         }
 
@@ -90,7 +89,7 @@ namespace CloudNotes.Domain.Services.Implementation
                               };
 
             _noteRepository.Delete(note);
-            _noteRepository.Add(newNote);
+            _noteRepository.Create(newNote);
             _unitOfWork.SubmitChanges();
         }
 

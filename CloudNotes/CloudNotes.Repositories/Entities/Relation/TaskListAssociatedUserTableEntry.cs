@@ -1,6 +1,6 @@
 ﻿namespace CloudNotes.Repositories.Entities.Relation
 {
-    internal class TaskListAssociatedUserTableEntry : BaseEntity
+    public class TaskListAssociatedUserTableEntry : BaseEntity
     {
         #region Constructors
 

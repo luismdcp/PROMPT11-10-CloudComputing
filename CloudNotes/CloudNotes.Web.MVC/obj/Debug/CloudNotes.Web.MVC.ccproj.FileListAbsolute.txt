@@ -1,2 +1,3 @@
 D:\CloudNotes\CloudNotes\CloudNotes.Web.MVC\bin\Debug\ServiceConfiguration.cscfg
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Web.MVC\bin\Debug\ServiceConfiguration.cscfg
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Web.MVC\bin\Debug\ServiceConfiguration.cscfg

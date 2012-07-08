@@ -1,6 +1,6 @@
 ﻿namespace CloudNotes.Repositories.Entities
 {
-    internal class UserTableEntry : BaseEntity
+    public class UserTableEntry : BaseEntity
     {
         #region Properties
 
