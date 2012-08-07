@@ -2,11 +2,3 @@ D:\CloudNotes\CloudNotes\CloudNotes.Domain\bin\Debug\CloudNotes.Domain.dll
 D:\CloudNotes\CloudNotes\CloudNotes.Domain\bin\Debug\CloudNotes.Domain.pdb
 D:\CloudNotes\CloudNotes\CloudNotes.Domain\obj\Debug\CloudNotes.Domain.dll
 D:\CloudNotes\CloudNotes\CloudNotes.Domain\obj\Debug\CloudNotes.Domain.pdb
-D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain\bin\Debug\CloudNotes.Domain.dll
-D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain\bin\Debug\CloudNotes.Domain.pdb
-D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain\obj\Debug\CloudNotes.Domain.dll
-D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain\obj\Debug\CloudNotes.Domain.pdb
-D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Domain\bin\Debug\CloudNotes.Domain.dll
-D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Domain\bin\Debug\CloudNotes.Domain.pdb
-D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Domain\obj\Debug\CloudNotes.Domain.dll
-D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Domain\obj\Debug\CloudNotes.Domain.pdb

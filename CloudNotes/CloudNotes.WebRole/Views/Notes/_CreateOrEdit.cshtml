@@ -1,0 +1,23 @@
+﻿@model Note
+
+@using (@Html.BeginFieldset("Note"))
+{
+    <div class="control-group">
+        @Html.Label("Title", "Title", new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextBoxFor(n => n.Title, new { @class = "input-xlarge", placeholder = "Type the title" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.Label("Content", "Content", new { @class = "control-label" })
+        <div class="controls">
+            @Html.TextAreaFor(n => n.Content, 5, 5, new { @class = "input-xlarge", placeholder = "Type the content" })
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.Label("Closed?", "IsClosed", new { @class = "control-label" })
+        <div class="controls">
+            @Html.CheckBoxFor(n => n.IsClosed, new { @class = "checkbox" })
+        </div>
+    </div>
+}

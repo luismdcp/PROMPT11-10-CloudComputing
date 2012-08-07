@@ -1,0 +1,19 @@
+﻿@model IEnumerable<TaskList>
+
+@{
+    ViewBag.Title = "Copy Note";
+}
+
+@if (TempData["AlertMessage"] != null)
+{
+    @Html.DisplayForAlertMessage((string) TempData["AlertMessage"])
+}
+
+@using (Html.BeginForm("CopyNote", "Notes", new { noteTitle = @ViewBag.NoteToCopy }, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.Partial("_CopyOrMove", Model)
+
+    <div class="form-actions">
+        @Html.Button("submit", "Copy", new { @class = "btn btn-primary" }) | @Html.ActionLink("Back to List", "Index")
+    </div>
+}

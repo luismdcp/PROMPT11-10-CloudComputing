@@ -4,7 +4,10 @@ namespace CloudNotes.Repositories.Contracts
 {
     public interface INotesRepository : IRepository<Note>
     {
-        void AddAssociatedUser(Note note, User userToAssociate);
-        void DeleteAssociatedUser(Note note, User userToAssociate);
+        Note GetByTitle(string title, TaskList containerTaskList);
+        Note GetByTitle(string title, string containerTaskListRowKey);
+        void AddAssociatedUser(Note note, User userToAdd);
+        void RemoveAssociatedUser(Note note, User userToRemove);
+        void LoadNotes(TaskList taskList);
     }
 }

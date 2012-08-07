@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
@@ -12,6 +11,7 @@ namespace CloudNotes.Domain.Entities
 
         public string UserUniqueIdentifier { get; set; }
         public string Email { get; set; }
+        public string Name { get; set; }
         public ICollection<TaskList> OwnedTaskLists { get; private set; }
         public ICollection<Note> OwnedNotes { get; private set; }
         public ICollection<TaskList> AssociatedTaskLists { get; private set; }
@@ -21,27 +21,18 @@ namespace CloudNotes.Domain.Entities
 
         #region Constructors
 
-        public User(string partitionKey, string rowKey) : base(partitionKey, rowKey)
+        public User()
         {
-            if (string.IsNullOrWhiteSpace(partitionKey))
-            {
-                throw new ArgumentNullException("partitionKey", "A user must have a non-empty PartitionKey.");
-            }
-
-            if (string.IsNullOrWhiteSpace(rowKey))
-            {
-                throw new ArgumentNullException("rowKey", "A user must have a non-empty RowKey.");
-            }
-
             OwnedTaskLists = new Collection<TaskList>();
             OwnedNotes = new Collection<Note>();
             AssociatedTaskLists = new Collection<TaskList>();
             AssociatedNotes = new Collection<Note>();
         }
 
-        public User(string partitionKey, string rowKey, string userUniqueIdentifier, string email) : this(partitionKey, rowKey)
+        public User(string userUniqueIdentifier, string name, string email) : this()
         {
             UserUniqueIdentifier = userUniqueIdentifier;
+            Name = name;
             Email = email;
         }
 
@@ -51,9 +42,9 @@ namespace CloudNotes.Domain.Entities
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (string.IsNullOrWhiteSpace(UserUniqueIdentifier))
+            if (string.IsNullOrWhiteSpace(Name) || Name.Length > 10)
             {
-                yield return new ValidationResult("Name cannot be empty or all whitspace.", new[] { "Name" });
+                yield return new ValidationResult("Name cannot be empty, all whitespaces or longer than 10 characters.", new[] { "Name" });
             }
 
             if (!string.IsNullOrWhiteSpace(Email))
@@ -68,10 +59,32 @@ namespace CloudNotes.Domain.Entities
                 if (!match.Success)
                 {
                     yield return new ValidationResult("Email is not valid.", new[] { "Email" });
-                }   
+                }
             }
         }
 
         #endregion Validation
+
+        #region Public methods
+
+        public override bool Equals(object o)
+        {
+            if (ReferenceEquals(null, o)) return false;
+            if (ReferenceEquals(this, o)) return true;
+            if (o.GetType() != typeof (User)) return false;
+            return Equals((User) o);
+        }
+
+        public bool Equals(User other)
+        {
+            return !ReferenceEquals(null, other);
+        }
+
+        public override int GetHashCode()
+        {
+            return PartitionKey.GetHashCode() ^ RowKey.GetHashCode();
+        }
+
+        #endregion Public methods
     }
 }

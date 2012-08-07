@@ -9,7 +9,7 @@ namespace CloudNotes.Domain.Entities
     {
         #region Properties
 
-        public string Title { get; set; }
+        public String Title { get; set; }
         public User Owner { get; set; }
         public IList<Note> Notes { get; private set; }
         public ICollection<User> AssociatedUsers { get; private set; }
@@ -18,23 +18,13 @@ namespace CloudNotes.Domain.Entities
 
         #region Constructors
 
-        public TaskList(string partitionKey, string rowKey) : base(partitionKey, rowKey)
+        public TaskList()
         {
-            if (string.IsNullOrWhiteSpace(partitionKey))
-            {
-                throw new ArgumentNullException("partitionKey", "A taskList must have a non-empty PartitionKey.");
-            }
-
-            if (string.IsNullOrWhiteSpace(rowKey))
-            {
-                throw new ArgumentNullException("rowKey", "A taskList must have a non-empty RowKey.");
-            }
-
             Notes = new Collection<Note>();
             AssociatedUsers = new Collection<User>();
         }
 
-        public TaskList(string partitionKey, string rowKey, string title, User owner) : this(partitionKey, rowKey)
+        public TaskList(string title, User owner) : this()
         {
             Title = title;
             Owner = owner;
@@ -46,9 +36,9 @@ namespace CloudNotes.Domain.Entities
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (string.IsNullOrWhiteSpace(Title) || Title.Length > 20)
+            if (string.IsNullOrWhiteSpace(Title) || Title.Length > 15)
             {
-                yield return new ValidationResult("Title cannot be empty, all whitespaces or longer than 20 characters.", new[] { "Title" });
+                yield return new ValidationResult("Title cannot be empty, all whitespaces or longer than 15 characters.", new[] { "Title" });
             }
 
             if (Owner == null)
@@ -58,67 +48,5 @@ namespace CloudNotes.Domain.Entities
         }
 
         #endregion Validation
-
-        #region Public methods
-
-        //public void AddNote(Note newNote)
-        //{
-        //    newNote.OrderingIndex = Notes.Count;
-        //    Notes.Add(newNote);
-        //    newNote.ContainerList = this;
-        //}
-
-        //public void MoveUp(Note note)
-        //{
-        //    int index = Notes.IndexOf(note);
-        //    Note previousNote = Notes[index - 1];
-
-        //    if (index == -1)
-        //    {
-        //        throw new ArgumentOutOfRangeException("note");
-        //    }
-
-        //    if (index == 0)
-        //    {
-        //        return;
-        //    }
-
-        //    Swap(Notes, index, index - 1);
-        //    note.OrderingIndex = index - 1;
-        //    previousNote.OrderingIndex = index;
-        //}
-
-        //public void MoveDown(Note note)
-        //{
-        //    int index = Notes.IndexOf(note);
-        //    Note nextNote = Notes[index + 1];
-
-        //    if (index == -1)
-        //    {
-        //        throw new ArgumentOutOfRangeException("note");
-        //    }
-
-        //    if (index == 0)
-        //    {
-        //        return;
-        //    }
-
-        //    Swap(Notes, index, index + 1);
-        //    note.OrderingIndex = index + 1;
-        //    nextNote.OrderingIndex = index;
-        //}
-
-        #endregion Public methods
-
-        //#region Private methods
-
-        //private static void Swap(IList<Note> notesList, int index1, int index2)
-        //{
-        //    Note temp = notesList[index1];
-        //    notesList[index1] = notesList[index2];
-        //    notesList[index2] = temp;
-        //}
-
-        //#endregion Private methods
     }
 }

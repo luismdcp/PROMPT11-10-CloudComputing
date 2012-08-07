@@ -1,0 +1,19 @@
+﻿@model Note
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@if (ViewBag.ValidationErrors != null)
+{
+    @Html.DisplayForValidationErrors((IEnumerable<ValidationResult>) ViewBag.ValidationErrors)
+}
+
+@using (Html.BeginForm("Create", "Notes", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.Partial("_CreateOrEdit", Model)
+
+    <div class="form-actions">
+        @Html.Button("submit", "Create", new { @class = "btn btn-primary" }) | @Html.ActionLink("Back to List", "Index")
+    </div>
+}

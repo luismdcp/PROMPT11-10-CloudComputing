@@ -1,0 +1,16 @@
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\obj\Debug\CloudNotes.Tests.Repositories.csprojResolveAssemblyReference.cache
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Tests.Repositories.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Tests.Repositories.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Domain.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Repositories.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Moq.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Microsoft.WindowsAzure.StorageClient.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Infrastructure.Exceptions.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Domain.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Repositories.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Moq.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Moq.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Microsoft.WindowsAzure.StorageClient.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Infrastructure.Exceptions.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\obj\Debug\CloudNotes.Tests.Repositories.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\obj\Debug\CloudNotes.Tests.Repositories.pdb

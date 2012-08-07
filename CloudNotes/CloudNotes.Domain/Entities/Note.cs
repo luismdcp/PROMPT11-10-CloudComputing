@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -15,31 +14,21 @@ namespace CloudNotes.Domain.Entities
         public int OrderingIndex { get; set; }
         public TaskList ContainerList { get; set; }
         public User Owner { get; set; }
-        public ICollection<User> AssociatedUsers { get; private set; }
+        public ICollection<User> AssociatedUsers { get; set; }
 
         #endregion Properties
 
         #region Constructors
 
-        public Note(string partitionKey, string rowKey) : base(partitionKey, rowKey) 
+        public Note()
         {
-            if (string.IsNullOrWhiteSpace(partitionKey))
-            {
-                throw new ArgumentNullException("partitionKey", "A note must have a non-empty PartitionKey.");
-            }
-
-            if (string.IsNullOrWhiteSpace(rowKey))
-            {
-                throw new ArgumentNullException("rowKey", "A note must have a non-empty RowKey.");
-            }
-
             Title = string.Empty;
             Content = string.Empty;
             OrderingIndex = -1;
             AssociatedUsers = new Collection<User>();
         }
 
-        public Note(string partitionKey, string rowKey, string title, string content, User owner, TaskList containerList) : this(partitionKey, rowKey)
+        public Note(string title, string content, User owner, TaskList containerList) : this()
         {
             Title = title;
             Content = content;
@@ -53,14 +42,14 @@ namespace CloudNotes.Domain.Entities
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (string.IsNullOrWhiteSpace(Title) || Title.Length > 20)
+            if (string.IsNullOrWhiteSpace(Title) || Title.Length > 10)
             {
-                yield return new ValidationResult("Title cannot be empty, all whitespaces or longer than 20 characters.", new[] {"Title"});
+                yield return new ValidationResult("Title cannot be empty, all whitespaces or longer than 10 characters.", new[] { "Title" });
             }
 
-            if (string.IsNullOrWhiteSpace(Content) || Content.Length > 50)
+            if (string.IsNullOrWhiteSpace(Content) || Content.Length > 30)
             {
-                yield return new ValidationResult("Content cannot be empty, all whitespaces or longer than 50 characters.", new[] { "Content" });
+                yield return new ValidationResult("Content cannot be empty, all whitespaces or longer than 30 characters.", new[] { "Content" });
             }
 
             if (Owner == null)

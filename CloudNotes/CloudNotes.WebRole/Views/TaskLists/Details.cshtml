@@ -1,0 +1,15 @@
+﻿@model TaskList
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<form class="form-horizontal">
+    @Html.Partial("_DetailsOrDelete", Model)
+</form>
+
+@Html.Partial("_AssociatedUsers", Model.AssociatedUsers)
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

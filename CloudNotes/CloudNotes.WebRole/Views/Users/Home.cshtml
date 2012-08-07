@@ -1,0 +1,33 @@
+﻿@model User
+
+@{
+    ViewBag.Title = "Register";
+}
+
+@if (ViewBag.ValidationErrors != null)
+{
+    @Html.DisplayForValidationErrors((IEnumerable<ValidationResult>) ViewBag.ValidationErrors)
+}
+
+@using (Html.BeginForm("Home", "Users", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    using (Html.BeginFieldset("User"))
+    {
+        <div class="control-group">
+            @Html.Label("Name", "Name", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(u => u.Name, new { @class = "input-xlarge", placeholder = "Type the Name" })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.Label("Email", "Email", new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(u => u.Email, new { @class = "input-xlarge", placeholder = "Type the Email" })
+            </div>
+        </div>
+    }
+
+    <div class="form-actions">
+        @Html.Button("submit", "Register", new { @class = "btn btn-primary" })
+    </div>
+}

@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data.Services.Client;
 using System.Linq;
+using System.Reflection;
 using System.Xml;
 using CloudNotes.Infrastructure.Exceptions;
 using CloudNotes.Repositories.Contracts;
@@ -23,48 +24,63 @@ namespace CloudNotes.Repositories.Implementation
         public AzureTablesUnitOfWork()
         {
             var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
-            _context = new TableServiceContext(storageAccount.TableEndpoint.AbsoluteUri, storageAccount.Credentials)
-                           {IgnoreResourceNotFoundException = true};
+            _context = new TableServiceContext(storageAccount.TableEndpoint.AbsoluteUri, storageAccount.Credentials) { IgnoreResourceNotFoundException = true };
         }
 
         #endregion Constructors
 
         #region Public methods
 
-        public IQueryable<T> Load<T>(string entitySetName)
+        public IQueryable<T> Load<T>(string entitySetName) where T : TableServiceEntity
         {
             return _context.CreateQuery<T>(entitySetName);
         }
 
-        public T Get<T>(string entitySetName, string partitionKey, string rowKey)
+        public T Get<T>(string entitySetName, string partitionKey, string rowKey) where T : TableServiceEntity
         {
-            var query = _context.CreateQuery<T>(entitySetName);
-            query.AddQueryOption("PartitionKey", partitionKey);
-            query.AddQueryOption("RowKey", rowKey);
-
-            return query.Execute().FirstOrDefault();
+            var entities = _context.CreateQuery<T>(entitySetName).Where(e => e.PartitionKey == partitionKey && e.RowKey == rowKey);
+            return entities.FirstOrDefault();
         }
 
-        public void Add<T>(T entityToAdd, string entitySetName)
+        public void Create<T>(T entityToCreate, string entitySetName) where T : TableServiceEntity
         {
-            _context.AddObject(entitySetName, entityToAdd);
+            _context.AddObject(entitySetName, entityToCreate);
         }
 
-        public void Update<T>(T entityToUpdate)
+        public void Update<T>(string entitySetName, T entityToUpdate) where T : TableServiceEntity
         {
-            _context.UpdateObject(entityToUpdate);
+            var entities = _context.CreateQuery<T>(entitySetName).Where(e => e.PartitionKey == entityToUpdate.PartitionKey && e.RowKey == entityToUpdate.RowKey);
+            var entity = entities.FirstOrDefault();
+
+            if (entity != null)
+            {
+                Type t = entityToUpdate.GetType();
+                PropertyInfo[] pi = t.GetProperties();
+
+                foreach (PropertyInfo p in pi)
+                {
+                    p.SetValue(entity, p.GetValue(entityToUpdate, null), null);
+                }
+
+                _context.UpdateObject(entity); 
+            }
         }
 
-        public void Delete<T>(T entityToDelete)
+        public void Delete<T>(string entitySetName, string partitionKey, string rowKey) where T : TableServiceEntity
         {
-            _context.DeleteObject(entityToDelete);
+            var entityToDelete = Get<T>(entitySetName, partitionKey, rowKey);
+
+            if (entityToDelete != null)
+            {
+                _context.DeleteObject(entityToDelete);           
+            }
         }
 
         public void SubmitChanges()
         {
             try
             {
-                _context.SaveChangesWithRetries(SaveChangesOptions.Batch);
+                _context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -82,7 +98,7 @@ namespace CloudNotes.Repositories.Implementation
 
             while (!(exception is DataServiceClientException) && (exception != null))
             {
-                exception = exception.InnerException;    
+                exception = exception.InnerException;
             }
 
             if (exception == null)
@@ -96,22 +112,27 @@ namespace CloudNotes.Repositories.Implementation
                 xml.LoadXml(exception.Message);
                 var namespaceManager = new XmlNamespaceManager(xml.NameTable);
                 namespaceManager.AddNamespace("n", "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata");
-                var errorCode = xml.SelectSingleNode("/n:error/n:code", namespaceManager).InnerText;
-
-                switch (errorCode)
+                var selectSingleNode = xml.SelectSingleNode("/n:error/n:code", namespaceManager);
+                
+                if (selectSingleNode != null)
                 {
-                    case "UpdateConditionNotSatisfied":
-                        returnException = new ConcurrencyException();
-                        break;
-                    case "EntityAlreadyExists":
-                        returnException = new EntityAlreadyExistsException();
-                        break;
-                    case "InvalidValueType":
-                        returnException = new InvalidValueTypeException();
-                        break;
-                    default:
-                        returnException = new Exception("An error occurred when saving changes.");
-                        break;
+                    var errorCode = selectSingleNode.InnerText;
+
+                    switch (errorCode)
+                    {
+                        case "UpdateConditionNotSatisfied":
+                            returnException = new ConcurrencyException();
+                            break;
+                        case "EntityAlreadyExists":
+                            returnException = new EntityAlreadyExistsException();
+                            break;
+                        case "InvalidValueType":
+                            returnException = new InvalidValueTypeException();
+                            break;
+                        default:
+                            returnException = new Exception("An error occurred when saving changes.");
+                            break;
+                    }
                 }
             }
             catch (Exception ex)

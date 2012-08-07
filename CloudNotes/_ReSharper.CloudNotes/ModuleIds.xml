@@ -2,12 +2,9 @@
   <Module PersistentId="B045D6E8-373D-4F70-A29A-4452C181CB45" ModuleId="CloudNotes.Domain" />
   <Module PersistentId="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E" ModuleId="CloudNotes.Domain.Services" />
   <Module PersistentId="14C19EE4-C4AD-43CB-87D6-2926387D46C9" ModuleId="CloudNotes.Repositories_1" />
-  <Module PersistentId="System.ComponentModel.DataAnnotations, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" ModuleId="System.ComponentModel.DataAnnotations" />
-  <Module PersistentId="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="mscorlib" />
-  <Module PersistentId="Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" ModuleId="Microsoft.WindowsAzure.StorageClient" />
+  <Module PersistentId="2110ECDF-1F8B-4CCD-91D7-A558FBC31A88/d:CloudNotes.Tests" ModuleId="System.ComponentModel.DataAnnotations" />
   <Module PersistentId="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9" ModuleId="CloudNotes.WebRole" />
+  <Module PersistentId="835C512C-C8A5-40F8-810B-FED445AC5A6C" ModuleId="CloudNotes.Infrastructure.DependencyInjection" />
+  <Module PersistentId="5871F52E-169E-4E23-BAC4-57857ED65D81" ModuleId="CloudNotes.Infrastructure.Exceptions" />
   <Module PersistentId="444B935C-F274-43C7-A32D-DB4311470CBF" ModuleId="CloudNotes.Tests.Domain" />
-  <Module PersistentId="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" ModuleId="Microsoft.IdentityModel" />
-  <Module PersistentId="F445AEEE-C5F8-4108-9193-5D5108F57BB0" ModuleId="DependencyInjection" />
-  <Module PersistentId="CA18BBDE-F0A4-4172-A900-075C9FAD6959" ModuleId="CloudNotes.Infrastructure.Exceptions" />
 </Modules>

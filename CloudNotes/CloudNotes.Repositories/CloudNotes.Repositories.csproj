@@ -45,7 +45,6 @@
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\ITaskListsRepository.cs" />
     <Compile Include="Contracts\IUsersRepository.cs" />
-    <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Relation\NoteAssociatedUserTableEntry.cs" />
     <Compile Include="Entities\Relation\NoteOwnerTableEntry.cs" />
     <Compile Include="Entities\NoteTableEntry.cs" />
@@ -68,7 +67,7 @@
       <Name>CloudNotes.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\CloudNotes.Infrastructure.Exceptions\CloudNotes.Infrastructure.Exceptions.csproj">
-      <Project>{CA18BBDE-F0A4-4172-A900-075C9FAD6959}</Project>
+      <Project>{5871F52E-169E-4E23-BAC4-57857ED65D81}</Project>
       <Name>CloudNotes.Infrastructure.Exceptions</Name>
     </ProjectReference>
   </ItemGroup>

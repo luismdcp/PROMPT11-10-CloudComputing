@@ -1,9 +1,12 @@
-﻿namespace CloudNotes.Repositories.Entities
+﻿using Microsoft.WindowsAzure.StorageClient;
+
+namespace CloudNotes.Repositories.Entities
 {
-    public class NoteTableEntry : BaseEntity
+    public class NoteTableEntry : TableServiceEntity
     {
         #region Properties
 
+        public string Title { get; set; }
         public string Content { get; set; }
         public bool IsClosed { get; set; }
         public int OrderingIndex { get; set; }
@@ -12,9 +15,14 @@
 
         #region Constructors
 
-        public NoteTableEntry(string partitionKey, string rowKey) : base(partitionKey, rowKey)
+        public NoteTableEntry()
         {
             
+        }
+
+        public NoteTableEntry(string partitionKey, string rowKey) : base(partitionKey, rowKey)
+        {
+
         }
 
         #endregion Constructors

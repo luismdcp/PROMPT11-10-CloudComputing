@@ -1,4 +1,5 @@
-﻿using CloudNotes.Domain.Entities;
+﻿using System;
+using CloudNotes.Domain.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CloudNotes.Tests.Domain
@@ -11,124 +12,152 @@ namespace CloudNotes.Tests.Domain
         [TestMethod]
         public void ANoteWithAnEmptyTittleIsInvalid()
         {
-            var user = new User("userPartitionKey", "userRowKey");
-            var taskList = new TaskList("taskListPartitionKey", "taskListRowKey");
+            // Arrange
+            var user = new User("TestUser", "test@test.org") { PartitionKey = "Users", RowKey = "TestUser" };
+            var taskList = new TaskList("Test title", user) { PartitionKey = "TestUser", RowKey = Guid.NewGuid().ToString() };
             var invalidTitle = string.Empty;
-            var validContent = "ipsum lorum";
-            var note = new Note("notePartitionKey", "noteRowKey", invalidTitle, validContent, user, taskList);
+            const string validContent = "Test content";
+            var note = new Note(invalidTitle, validContent, user, taskList) { PartitionKey = taskList.RowKey, RowKey = Guid.NewGuid().ToString() };
 
+            // Act
             var validationResult = note.IsValid();
 
+            // Assert
             Assert.IsFalse(validationResult);
         }
 
         [TestMethod]
         public void ANoteWithAnAllWhitespaceTittleIsInvalid()
         {
-            var user = new User("userPartitionKey", "userRowKey");
-            var taskList = new TaskList("taskListPartitionKey", "taskListRowKey");
-            var invalidTitle = " ";
-            var validContent = "ipsum lorum";
-            var note = new Note("notePartitionKey", "noteRowKey", invalidTitle, validContent, user, taskList);
+            // Arrange
+            var user = new User("TestUser", "test@test.org") { PartitionKey = "Users", RowKey = "TestUser" };
+            var taskList = new TaskList("Test title", user) { PartitionKey = "TestUser", RowKey = Guid.NewGuid().ToString() };
+            const string invalidTitle = " ";
+            const string validContent = "Test content";
+            var note = new Note(invalidTitle, validContent, user, taskList) { PartitionKey = taskList.RowKey, RowKey = Guid.NewGuid().ToString() };
 
+            // Act
             var validationResult = note.IsValid();
 
+            // Assert
             Assert.IsFalse(validationResult);
         }
 
         [TestMethod]
-        public void ANoteWithATittleLongerThan20CharactersIsInvalid()
+        public void ANoteWithATittleLongerThan10CharactersIsInvalid()
         {
-            var user = new User("userPartitionKey", "userRowKey");
-            var taskList = new TaskList("taskListPartitionKey", "taskListRowKey");
-            var invalidTitle = "averylonginvalidtitle";
-            var validContent = "ipsum lorum";
-            var note = new Note("notePartitionKey", "noteRowKey", invalidTitle, validContent, user, taskList);
+            // Arrange
+            var user = new User("TestUser", "test@test.org") { PartitionKey = "Users", RowKey = "TestUser" };
+            var taskList = new TaskList("Test title", user) { PartitionKey = "TestUser", RowKey = Guid.NewGuid().ToString() };
+            const string invalidTitle = "A very long invalid title";
+            const string validContent = "Test content";
+            var note = new Note(invalidTitle, validContent, user, taskList) { PartitionKey = taskList.RowKey, RowKey = Guid.NewGuid().ToString() };
 
+            // Act
             var validationResult = note.IsValid();
 
+            // Assert
             Assert.IsFalse(validationResult);
         }
 
         [TestMethod]
         public void ANoteWithAnAllWhitespaceContentIsInvalid()
         {
-            var user = new User("userPartitionKey", "userRowKey");
-            var taskList = new TaskList("taskListPartitionKey", "taskListRowKey");
-            var validTitle = "ipsum lorum";
-            var invalidContent = " ";
-            var note = new Note("notePartitionKey", "noteRowKey", validTitle, invalidContent, user, taskList);
+            // Arrange
+            var user = new User("TestUser", "test@test.org") { PartitionKey = "Users", RowKey = "TestUser" };
+            var taskList = new TaskList("Test title", user) { PartitionKey = "TestUser", RowKey = Guid.NewGuid().ToString() };
+            const string validTitle = "Test title";
+            const string invalidContent = " ";
+            var note = new Note(validTitle, invalidContent, user, taskList) { PartitionKey = taskList.RowKey, RowKey = Guid.NewGuid().ToString() };
 
+            // Act
             var validationResult = note.IsValid();
 
+            // Assert
             Assert.IsFalse(validationResult);
         }
 
         [TestMethod]
         public void ANoteWithAnEmptyContentIsInvalid()
         {
-            var user = new User("userPartitionKey", "userRowKey");
-            var taskList = new TaskList("taskListPartitionKey", "taskListRowKey");
-            var validTitle = "ipsum lorum";
-            var invalidContent = string.Empty;
-            var note = new Note("notePartitionKey", "noteRowKey", validTitle, invalidContent, user, taskList);
+            // Arrange
+            var user = new User("TestUser", "test@test.org") { PartitionKey = "Users", RowKey = "TestUser" };
+            var taskList = new TaskList("Test title", user);
+            const string validTitle = "Test title";
+            string invalidContent = string.Empty;
+            var note = new Note(validTitle, invalidContent, user, taskList) { PartitionKey = taskList.RowKey, RowKey = Guid.NewGuid().ToString() };
 
+            // Act
             var validationResult = note.IsValid();
 
+            // Assert
             Assert.IsFalse(validationResult);
         }
 
         [TestMethod]
         public void ANoteWithContentLongerThan50CharactersIsInvalid()
         {
-            var user = new User("userPartitionKey", "userRowKey");
-            var taskList = new TaskList("taskListPartitionKey", "taskListRowKey");
-            var validTitle = "ipsum lorum";
-            var invalidContent = "blablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla";
-            var note = new Note("notePartitionKey", "noteRowKey", validTitle, invalidContent, user, taskList);
+            // Arrange
+            var user = new User("TestUser", "test@test.org") { PartitionKey = "Users", RowKey = "TestUser" };
+            var taskList = new TaskList("Test title", user) { PartitionKey = "TestUser", RowKey = Guid.NewGuid().ToString() };
+            const string validTitle = "Test title";
+            const string invalidContent = "blablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla";
+            var note = new Note(validTitle, invalidContent, user, taskList) { PartitionKey = taskList.RowKey, RowKey = Guid.NewGuid().ToString() };
 
+            // Act
             var validationResult = note.IsValid();
 
+            // Assert
             Assert.IsFalse(validationResult);
         }
 
         [TestMethod]
         public void ANoteWithANullOwnerIsInvalid()
         {
-            var taskList = new TaskList("taskListPartitionKey", "taskListRowKey");
-            var validTitle = "ipsum lorum";
-            var validContent = "ipsum lorum";
-            var note = new Note("notePartitionKey", "noteRowKey", validTitle, validContent, null, taskList);
+            // Arrange
+            var user = new User("TestUser", "test@test.org") { PartitionKey = "Users", RowKey = "TestUser" };
+            var taskList = new TaskList("Test title", user);
+            const string validTitle = "Test title";
+            const string validContent = "Test content";
+            var note = new Note(validTitle, validContent, null, taskList) { PartitionKey = taskList.RowKey, RowKey = Guid.NewGuid().ToString() };
 
+            // Act
             var validationResult = note.IsValid();
 
+            // Assert
             Assert.IsFalse(validationResult);
         }
 
         [TestMethod]
         public void ANoteWithANullContainerListIsInvalid()
         {
-            var user = new User("userPartitionKey", "userRowKey");
-            var validTitle = "ipsum lorum";
-            var validContent = "ipsum lorum";
-            var note = new Note("notePartitionKey", "noteRowKey", validTitle, validContent, user, null);
+            // Arrange
+            var user = new User("TestUser", "test@test.org") { PartitionKey = "Users", RowKey = "TestUser" };
+            const string validTitle = "Test title";
+            const string validContent = "Test content";
+            var note = new Note(validTitle, validContent, user, null) { PartitionKey = string.Empty, RowKey = Guid.NewGuid().ToString() };
 
+            // Act
             var validationResult = note.IsValid();
 
+            // Assert
             Assert.IsFalse(validationResult);
         }
 
         [TestMethod]
         public void ANoteWithAllValidPropertiesIsValid()
         {
-            var user = new User("userPartitionKey", "userRowKey");
-            var taskList = new TaskList("taskListPartitionKey", "taskListRowKey");
-            var validTitle = "ipsum lorum";
-            var validContent = "ipsum lorum";
-            var note = new Note("notePartitionKey", "noteRowKey", validTitle, validContent, user, taskList);
+            // Arrange
+            var user = new User("TestUser", "test@test.org") { PartitionKey = "Users", RowKey = "TestUser" };
+            var taskList = new TaskList("Test title", user) { PartitionKey = "TestUser", RowKey = Guid.NewGuid().ToString() };
+            const string validTitle = "Test title";
+            const string validContent = "Test content";
+            var note = new Note(validTitle, validContent, user, taskList) { PartitionKey = taskList.RowKey, RowKey = Guid.NewGuid().ToString() };
 
+            // Act
             var validationResult = note.IsValid();
 
+            // Assert
             Assert.IsTrue(validationResult);
         }
 
@@ -139,48 +168,60 @@ namespace CloudNotes.Tests.Domain
         [TestMethod]
         public void ATaskListWithAnEmptyTittleIsInvalid()
         {
-            var user = new User("userPartitionKey", "userRowKey");
+            // Arrange
+            var user = new User("TestUser", "test@test.org") { PartitionKey = "Users", RowKey = "TestUser" };
             var invalidTitle = string.Empty;
-            var taskList = new TaskList("taskListPartitionKey", "taskListRowKey", invalidTitle, user);
+            var taskList = new TaskList(invalidTitle, user) { PartitionKey = "TestUser", RowKey = Guid.NewGuid().ToString() };
 
+            // Act
             var validationResult = taskList.IsValid();
 
+            // Assert
             Assert.IsFalse(validationResult);
         }
 
         [TestMethod]
         public void ATaskListWithAnAllWhitespaceTittleIsInvalid()
         {
-            var user = new User("userPartitionKey", "userRowKey");
-            var invalidTitle = " ";
-            var taskList = new TaskList("taskListPartitionKey", "taskListRowKey", invalidTitle, user);
+            // Arrange
+            var user = new User("TestUser", "test@test.org") { PartitionKey = "Users", RowKey = "TestUser" };
+            const string invalidTitle = " ";
+            var taskList = new TaskList(invalidTitle, user) { PartitionKey = "TestUser", RowKey = Guid.NewGuid().ToString() };
 
+            // Act
             var validationResult = taskList.IsValid();
 
+            // Assert
             Assert.IsFalse(validationResult);
         }
 
         [TestMethod]
         public void ATaskListWithATittleLongerThan20CharactersIsInvalid()
         {
-            var user = new User("userPartitionKey", "userRowKey");
-            var invalidTitle = "aninvalidtittlewihtmoretahn20characters";
-            var taskList = new TaskList("taskListPartitionKey", "taskListRowKey", invalidTitle, user);
+            // Arrange
+            var user = new User("TestUser", "test@test.org") { PartitionKey = "Users", RowKey = "TestUser" };
+            const string invalidTitle = "An invalid tittle with more than 10 characters";
+            var taskList = new TaskList(invalidTitle, user) { PartitionKey = "TestUser", RowKey = Guid.NewGuid().ToString() };
 
+            // Act
             var validationResult = taskList.IsValid();
 
+            // Assert
             Assert.IsFalse(validationResult);
         }
 
         [TestMethod]
         public void ATaskListWithAllPropertiesValidIsValid()
         {
-            var user = new User("userPartitionKey", "userRowKey");
-            var validTitle = "ipsum lorum";
-            var taskList = new TaskList("taskListPartitionKey", "taskListRowKey", validTitle, user);
+            // Arrange
+            var user = new User("TestUser", "test@test.org") { PartitionKey = "Users", RowKey = "TestUser" };
+            const string validTitle = "Test Title";
+            var taskList = new TaskList(validTitle, user) { PartitionKey = "TestUser", RowKey = Guid.NewGuid().ToString() };
 
+            // Act
             var validationResult = taskList.IsValid();
 
+            // Assert
             Assert.IsTrue(validationResult);
         }
 
@@ -191,40 +232,52 @@ namespace CloudNotes.Tests.Domain
         [TestMethod]
         public void AUserWithAnEmptyNameIdentitiferIdentityProviderIsInvalid()
         {
-            var user = new User("userPartitionKey", "userRowKey", string.Empty, string.Empty);
+            // Arrange
+            var user = new User(string.Empty, string.Empty) { PartitionKey = "Users", RowKey = string.Empty };
 
+            // Act
             var validationResult = user.IsValid();
 
+            // Assert
             Assert.IsFalse(validationResult);
         }
 
         [TestMethod]
         public void AUserWithAnAllWhitespaceNameIdentitiferIdentityProviderIsInvalid()
         {
-            var user = new User("userPartitionKey", "userRowKey", " ", string.Empty);
+            // Arrange
+            var user = new User(" ", string.Empty) { PartitionKey = "Users", RowKey = " " };
 
+            // Act
             var validationResult = user.IsValid();
 
+            // Assert
             Assert.IsFalse(validationResult);
         }
 
         [TestMethod]
         public void AUserWithAnInvalidEmailIsInvalid()
         {
-            var user = new User("userPartitionKey", "userRowKey", "nameidnetifieridentityprovider", "ipsumlorum");
+            // Arrange
+            var user = new User("TestUser", "Invalid email") { PartitionKey = "Users", RowKey = "TestUser" };
 
+            // Act
             var validationResult = user.IsValid();
 
+            // Assert
             Assert.IsFalse(validationResult);
         }
 
         [TestMethod]
         public void AUserWithAValidEmailIsValid()
         {
-            var user = new User("userPartitionKey", "userRowKey", "nameidentifieridentityprovider", "test@test.com");
+            // Arrange
+            var user = new User("TestUser", "test@test.com") { PartitionKey = "Users", RowKey = "TestUser" };
 
+            // Act
             var validationResult = user.IsValid();
 
+            // Assert
             Assert.IsTrue(validationResult);
         }
 

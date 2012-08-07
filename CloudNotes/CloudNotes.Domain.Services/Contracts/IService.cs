@@ -6,7 +6,7 @@ namespace CloudNotes.Domain.Services.Contracts
     {
         IQueryable<TEntity> Load();
         TEntity Get(string partitionKey, string rowKey);
-        void Add(TEntity entityToAdd);
+        void Create(TEntity entityToCreate);
         void Update(TEntity entityToUpdate);
         void Delete(TEntity entityToDelete);
     }

@@ -1,6 +1,8 @@
-﻿namespace CloudNotes.Repositories.Entities
+﻿using Microsoft.WindowsAzure.StorageClient;
+
+namespace CloudNotes.Repositories.Entities
 {
-    public class TaskListTableEntry : BaseEntity
+    public class TaskListTableEntry : TableServiceEntity
     {
         #region Properties
 
@@ -10,9 +12,14 @@
 
         #region Constructors
 
-        public TaskListTableEntry(string partitionKey, string rowKey) : base(partitionKey, rowKey)
+        public TaskListTableEntry()
         {
             
+        }
+
+        public TaskListTableEntry(string partitionKey, string rowKey) : base(partitionKey, rowKey)
+        {
+
         }
 
         #endregion Constructors

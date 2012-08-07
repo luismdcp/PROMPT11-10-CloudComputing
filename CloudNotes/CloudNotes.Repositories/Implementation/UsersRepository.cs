@@ -1,8 +1,9 @@
 ﻿using System.Linq;
-using System.Threading;
+using System.Security.Principal;
 using CloudNotes.Domain.Entities;
 using CloudNotes.Repositories.Contracts;
 using CloudNotes.Repositories.Entities;
+using CloudNotes.Repositories.Entities.Relation;
 using CloudNotes.Repositories.Extensions;
 using Microsoft.IdentityModel.Claims;
 
@@ -29,64 +30,109 @@ namespace CloudNotes.Repositories.Implementation
 
         public IQueryable<User> Load()
         {
-            var usersTableEntries = _unitOfWork.Load<UserTableEntry>("Users");
-            return usersTableEntries.Select(userTableEntry => userTableEntry.MapToUser()).AsQueryable();
+            return _unitOfWork.Load<UserTableEntry>("Users").ToList().Select(userTableEntry => userTableEntry.MapToUser()).AsQueryable();
         }
 
         public User Get(string partitionKey, string rowKey)
         {
-            return _unitOfWork.Get<UserTableEntry>("Users", partitionKey, rowKey).MapToUser();
+            var result = _unitOfWork.Get<UserTableEntry>("Users", partitionKey, rowKey);
+
+            if (result != null)
+            {
+                return result.MapToUser();
+            }
+
+            return null;
         }
 
-        public void Create(User entityToAdd)
+        public void Create(User entityToCreate)
         {
-            var userTableEntry = entityToAdd.MapToUserTableEntry();
-            _unitOfWork.Add(userTableEntry, "Users");
+            entityToCreate.PartitionKey = "Users";
+            entityToCreate.RowKey = entityToCreate.UserUniqueIdentifier;
+
+            var userTableEntry = entityToCreate.MapToUserTableEntry();
+            _unitOfWork.Create(userTableEntry, "Users");
         }
 
         public void Update(User entityToUpdate)
         {
-            var userTableEntry = entityToUpdate.MapToUserTableEntry();
-            _unitOfWork.Update(userTableEntry);
+            _unitOfWork.Update("Users", entityToUpdate.MapToUserTableEntry());
         }
 
         public void Delete(User entityToDelete)
         {
-            var userTableEntry = entityToDelete.MapToUserTableEntry();
-            _unitOfWork.Delete(userTableEntry);
+            _unitOfWork.Delete<UserTableEntry>("Users", entityToDelete.PartitionKey, entityToDelete.RowKey);
         }
 
-        public User GetOrAddCurrentUser()
+        public bool UserExists(IPrincipal principal)
         {
-            string userUniqueIdentifier;
-            string userEmailAddress = string.Empty;
-            var claimsPrincipal = Thread.CurrentPrincipal as IClaimsPrincipal;
+            string userUniqueIdentifier = string.Empty;
+            var claimsPrincipal = principal as IClaimsPrincipal;
 
             if (claimsPrincipal != null)
             {
-                IClaimsIdentity claimsIdentity = claimsPrincipal.Identities[0];
-                Claim nameIdentifierClaim = claimsIdentity.Claims.FirstOrDefault(claim => claim.ClaimType == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");
-                Claim emailAddressClaim = claimsIdentity.Claims.FirstOrDefault(claim => claim.ClaimType == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
-                Claim identityProviderClaim = claimsIdentity.Claims.FirstOrDefault(claim => claim.ClaimType == "http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider");
+                var claimsIdentity = claimsPrincipal.Identities[0];
+                var nameIdentifierClaim = claimsIdentity.Claims.FirstOrDefault(c => c.ClaimType == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");
+                var identityProviderClaim = claimsIdentity.Claims.FirstOrDefault(c => c.ClaimType == "http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider");
 
-                userUniqueIdentifier = nameIdentifierClaim.Value + identityProviderClaim.Value;
-                userEmailAddress = emailAddressClaim == null ? string.Empty : emailAddressClaim.Value;
+                userUniqueIdentifier = string.Format("{0}_{1}", nameIdentifierClaim.Value, identityProviderClaim.Value);
             }
-            else
+
+            var existingUserEntry = _unitOfWork.Get<UserTableEntry>("Users", "Users", userUniqueIdentifier);
+            return existingUserEntry != null;
+        }
+
+        public User GetByUniqueIdentifier(string uniqueIdentifier)
+        {
+            var userEntry = _unitOfWork.Get<UserTableEntry>("Users", "Users", uniqueIdentifier);
+            return userEntry.MapToUser();
+        }
+
+        public void LoadNoteOwner(Note note)
+        {
+            var noteOwnerEntry = _unitOfWork.Load<NoteOwnerTableEntry>("NoteOwner").Where(o => o.RowKey == note.RowKey).FirstOrDefault();
+
+            if (noteOwnerEntry != null)
             {
-                userUniqueIdentifier = Thread.CurrentPrincipal.Identity.Name;
+                var owner = Get("Users", noteOwnerEntry.PartitionKey);
+                note.Owner = owner;
             }
+        }
 
-            var newOrExitingUserEntry = _unitOfWork.Load<UserTableEntry>("Users").Where(u => u.RowKey == userUniqueIdentifier).FirstOrDefault();
+        public void LoadNoteAssociatedUsers(Note note)
+        {
+            var noteAssociatedUsersEntries = _unitOfWork.Load<NoteAssociatedUserTableEntry>("NoteAssociatedUsers").Where(n => n.PartitionKey == note.RowKey);
 
-            if (newOrExitingUserEntry == null)
+            foreach (var noteAssociatedUserTableEntry in noteAssociatedUsersEntries)
             {
-                var user = new User("users", userUniqueIdentifier, userUniqueIdentifier, userEmailAddress);
-                Create(user);
-                return user;
-            }
+                var associatedUser = Get("Users", noteAssociatedUserTableEntry.RowKey);
 
-            return newOrExitingUserEntry.MapToUser();
+                if (associatedUser != null)
+                {
+                    note.AssociatedUsers.Add(associatedUser);
+                }
+            }
+        }
+
+        public void LoadTaskListOwner(TaskList taskList)
+        {
+            var owner = Get("Users", taskList.PartitionKey);
+            taskList.Owner = owner;
+        }
+
+        public void LoadTaskListAssociatedUsers(TaskList taskList)
+        {
+            var taskListAssociatedUsersEntries = _unitOfWork.Load<TaskListAssociatedUserTableEntry>("TaskListAssociatedUsers").Where(n => n.PartitionKey == taskList.RowKey);
+
+            foreach (var taskListAssociatedUserTableEntry in taskListAssociatedUsersEntries)
+            {
+                var associatedUser = Get("Users", taskListAssociatedUserTableEntry.RowKey);
+
+                if (associatedUser != null)
+                {
+                    taskList.AssociatedUsers.Add(associatedUser);
+                }
+            }
         }
 
         #endregion Public methods

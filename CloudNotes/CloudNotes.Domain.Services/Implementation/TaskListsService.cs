@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using CloudNotes.Domain.Entities;
 using CloudNotes.Domain.Services.Contracts;
 using CloudNotes.Repositories.Contracts;
@@ -11,17 +12,19 @@ namespace CloudNotes.Domain.Services.Implementation
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly ITaskListsRepository _taskListsRepository;
-        private readonly INotesRepository _noteRepository;
+        private readonly INotesRepository _notesRepository;
+        private readonly IUsersService _usersService;
 
         #endregion Fields
 
         #region Constructors
 
-        public TaskListsService(IUnitOfWork unitOfWork, ITaskListsRepository taskListsRepository, INotesRepository notesRepository)
+        public TaskListsService(IUnitOfWork unitOfWork, ITaskListsRepository taskListsRepository, INotesRepository notesRepository, IUsersService usersService)
         {
             _unitOfWork = unitOfWork;
             _taskListsRepository = taskListsRepository;
-            _noteRepository = notesRepository;
+            _notesRepository = notesRepository;
+            _usersService = usersService;
         }
 
         #endregion Constructors
@@ -38,9 +41,23 @@ namespace CloudNotes.Domain.Services.Implementation
             return _taskListsRepository.Get(partitionKey, rowKey);
         }
 
-        public void Add(TaskList entityToAdd)
+        public TaskList GetByTitleAndOwner(string title, User owner)
         {
-            _taskListsRepository.Create(entityToAdd);
+            return _taskListsRepository.GetByTitleAndOwner(title, owner);
+        }
+
+        public TaskList GetTaskListEagerLoaded(string taskListTitle, User user)
+        {
+            var taskList = GetByTitleAndOwner(taskListTitle.Replace('-', ' '), user);
+            _usersService.LoadTaskListOwner(taskList);
+            _usersService.LoadTaskListAssociatedUsers(taskList);
+
+            return taskList;
+        }
+
+        public void Create(TaskList entityToCreate)
+        {
+            _taskListsRepository.Create(entityToCreate);
             _unitOfWork.SubmitChanges();
         }
 
@@ -56,6 +73,16 @@ namespace CloudNotes.Domain.Services.Implementation
             _unitOfWork.SubmitChanges();
         }
 
+        public IEnumerable<TaskList> GetTaskListsUserIsAssociated(User user)
+        {
+            return _taskListsRepository.GetTaskListsAssociatedByUser(user);
+        }
+
+        public IEnumerable<TaskList> GetTaskListsOwnedByUser(User user)
+        {
+            return _taskListsRepository.GetTaskListsOwnedByUser(user);
+        }
+
         public void AddAssociatedUser(TaskList taskList, User associatedUser)
         {
             taskList.AssociatedUsers.Add(associatedUser);
@@ -63,33 +90,10 @@ namespace CloudNotes.Domain.Services.Implementation
             _unitOfWork.SubmitChanges();
         }
 
-        public void DeleteAssociatedUser(TaskList taskList, User associatedUser)
+        public void RemoveAssociatedUser(TaskList taskList, User associatedUser)
         {
             taskList.AssociatedUsers.Remove(associatedUser);
-            _taskListsRepository.DeleteAssociatedUser(taskList, associatedUser);
-            _unitOfWork.SubmitChanges();
-        }
-
-        public void CopyNote(TaskList taskListSource, TaskList taskListDestination, Note note)
-        {
-            note.PartitionKey = taskListDestination.RowKey;
-            _noteRepository.Create(note);
-            _unitOfWork.SubmitChanges();
-        }
-
-        public void MoveNote(TaskList taskListSource, TaskList taskListDestination, Note note)
-        {
-            var newNote = new Note(taskListDestination.RowKey, note.RowKey)
-                              {
-                                  IsClosed = note.IsClosed,
-                                  OrderingIndex = note.OrderingIndex,
-                                  Owner = note.Owner,
-                                  Title = note.Title,
-                                  ContainerList = taskListDestination
-                              };
-
-            _noteRepository.Delete(note);
-            _noteRepository.Create(newNote);
+            _taskListsRepository.RemoveAssociatedUser(taskList, associatedUser);
             _unitOfWork.SubmitChanges();
         }
 

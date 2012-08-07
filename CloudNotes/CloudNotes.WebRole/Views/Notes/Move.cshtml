@@ -1,0 +1,19 @@
+﻿@model IEnumerable<TaskList>
+
+@{
+    ViewBag.Title = "Move Note";
+}
+
+@if (TempData["AlertMessage"] != null)
+{
+    @Html.DisplayForAlertMessage((string) TempData["AlertMessage"])
+}
+
+@using (Html.BeginForm("MoveNote", "Notes", new { noteTitle = @ViewBag.NoteToMove }, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.Partial("_CopyOrMove", Model)
+
+    <div class="form-actions">
+        @Html.Button("submit", "Move", new { @class = "btn btn-primary" }) | @Html.ActionLink("Back to List", "Index")
+    </div>
+}

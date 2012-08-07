@@ -1,0 +1,19 @@
+﻿@model Note
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@if (ViewBag.ValidationErrors != null)
+{
+    @Html.DisplayForValidationErrors((IEnumerable<ValidationResult>) ViewBag.ValidationErrors)
+}
+
+@using (Html.BeginForm("Edit", "Notes", new { ViewBag.TaskListTitle, noteTitle = Model.Title.Replace(' ', '-') }, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.Partial("_CreateOrEdit", Model)
+
+    <div class="form-actions">
+        @Html.Button("submit", "Save Changes", new { @class = "btn btn-primary" })  | @Html.ActionLink("Back to List", "Index", new { ViewBag.TaskListTitle })
+    </div>
+}

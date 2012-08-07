@@ -1,0 +1,47 @@
+﻿@model IPagedList<TaskList>
+           
+@if (IsAjax)
+{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = "TaskLists";
+    var pageSize = AppConfiguration.PageSize;
+}
+
+@Html.ActionLink("Create New", "Create")
+
+<br/>
+<br/>
+
+<table class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr>
+            <th>@Ajax.ActionLink("Title", "Index", new { sortOrder = ViewBag.TitleSortParam }, 
+                                                   new AjaxOptions { UpdateTargetId = "main", Url = Url.Action("Index", new { sortOrder = ViewBag.TitleSortParam }) })</th>
+            <th>@Ajax.ActionLink("Created At", "Index", new { sortOrder = ViewBag.CreatedSortParam }, 
+                                                        new AjaxOptions { UpdateTargetId = "main", Url = Url.Action("Index", new { sortOrder = ViewBag.CreatedSortParam }) })</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var taskList in Model)
+        {
+            <tr>
+                <td>@taskList.Title</td>
+                <td>@taskList.Timestamp.ToShortDateString()</td>
+                <td>@Html.ActionLink("Details", "Details", new { taskListTitle = taskList.Title.Replace(' ', '-') }) |
+                    @Html.ActionLink("Edit", "Edit", new { taskListTitle = taskList.Title.Replace(' ', '-') }) |
+                    @Html.ActionLink("Delete", "Delete", new { taskListTitle = taskList.Title.Replace(' ', '-') }) |
+                    @Html.ActionLink("Notes", "Index", "Notes", new { taskListTitle = taskList.Title.Replace(' ', '-') }, null) |
+                    @Html.ActionLink("Users", "AssociateUsersToTaskList", "Users", new { taskListTitle = taskList.Title.Replace(' ', '-') }, null)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.Count > 0 && Model.Count > pageSize)
+{
+    @Html.Partial("_Paging") 
+}

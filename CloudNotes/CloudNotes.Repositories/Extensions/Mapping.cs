@@ -6,14 +6,16 @@ using CloudNotes.Repositories.Entities.Relation;
 
 namespace CloudNotes.Repositories.Extensions
 {
-    internal static class Mapping
+    public static class Mapping
     {
-        internal static Note MapToNote(this NoteTableEntry entry)
+        public static Note MapToNote(this NoteTableEntry entry)
         {
-            var note = new Note(entry.PartitionKey, entry.RowKey)
-                            {
+            var note = new Note
+                           {
+                                PartitionKey = entry.PartitionKey,
+                                RowKey = entry.RowKey,
                                 Timestamp = entry.Timestamp,
-                                Title = entry.RowKey,
+                                Title = entry.Title,
                                 Content = entry.Content,
                                 IsClosed = entry.IsClosed,
                                 OrderingIndex = entry.OrderingIndex
@@ -22,49 +24,42 @@ namespace CloudNotes.Repositories.Extensions
             return note;
         }
 
-        internal static NoteTableEntry MapToNoteTableEntry(this Note note)
+        public static NoteTableEntry MapToNoteTableEntry(this Note note)
         {
             var noteTableEntry = new NoteTableEntry(note.PartitionKey, note.RowKey)
-                                     {
-                                         Content = note.Content,
-                                         IsClosed = note.IsClosed,
-                                         OrderingIndex = note.OrderingIndex
-                                     };
+            {
+                Title = note.Title,
+                Content = note.Content,
+                IsClosed = note.IsClosed,
+                OrderingIndex = note.OrderingIndex
+            };
 
             return noteTableEntry;
         }
 
-        internal static ICollection<NoteAssociatedUserTableEntry> MapToNoteAssociatedUserTableEntries(this ICollection<User> associatedUsers, Note note)
+        public static ICollection<NoteAssociatedUserTableEntry> MapToNoteAssociatedUserTableEntries(this ICollection<User> associatedUsers, Note note)
         {
             return associatedUsers.Select(user => new NoteAssociatedUserTableEntry(note.RowKey, user.RowKey)).ToList();
         }
 
-        internal static TaskList MapToTaskList(this TaskListTableEntry entry)
+        public static TaskList MapToTaskList(this TaskListTableEntry entry)
         {
-            var taskList = new TaskList(entry.PartitionKey, entry.RowKey)
-                               {Timestamp = entry.Timestamp, Title = entry.RowKey};
-
-            return taskList;
+            return new TaskList { PartitionKey = entry.PartitionKey, RowKey = entry.RowKey, Timestamp = entry.Timestamp, Title = entry.Title };
         }
 
-        internal static TaskListTableEntry MapToTaskListTableEntry(this TaskList taskList)
+        public static TaskListTableEntry MapToTaskListTableEntry(this TaskList taskList)
         {
-            var taskListTableEntry = new TaskListTableEntry(taskList.PartitionKey, taskList.RowKey)
-                                         {Title = taskList.Title};
-
-            return taskListTableEntry;
+            return new TaskListTableEntry(taskList.PartitionKey, taskList.RowKey) { Title = taskList.Title };
         }
 
-        internal static User MapToUser(this UserTableEntry entry)
+        public static User MapToUser(this UserTableEntry entry)
         {
-            var user = new User(entry.PartitionKey, entry.RowKey) {UserUniqueIdentifier = entry.RowKey, Email = entry.Email};
-            return user;
+            return new User(entry.RowKey, entry.Name, entry.Email) { PartitionKey = entry.PartitionKey, RowKey = entry.RowKey};
         }
 
-        internal static UserTableEntry MapToUserTableEntry(this User user)
+        public static UserTableEntry MapToUserTableEntry(this User user)
         {
-            var userTableEntry = new UserTableEntry(user.PartitionKey, user.RowKey) {Email = user.Email};
-            return userTableEntry;
+            return new UserTableEntry(user.PartitionKey, user.RowKey) { Email = user.Email, Name = user.Name};
         }
     }
 }

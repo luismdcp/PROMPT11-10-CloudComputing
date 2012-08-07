@@ -1,0 +1,21 @@
+﻿@model Note
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@if (ViewBag.ValidationErrors != null)
+{
+    @Html.DisplayForValidationErrors((IEnumerable<ValidationResult>)ViewBag.ValidationErrors)
+}
+
+<h3>Are you sure you want to delete this?</h3>
+
+@using (Html.BeginForm("Delete", "Notes", new { ViewBag.TaskListTitle }, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.Partial("_DetailsOrDelete", Model)
+    
+    <div class="form-actions">
+        @Html.Button("submit", "Delete", new { @class = "btn btn-primary" }) | @Html.ActionLink("Back to List", "Index", new { ViewBag.TaskListTitle })
+    </div>
+}
