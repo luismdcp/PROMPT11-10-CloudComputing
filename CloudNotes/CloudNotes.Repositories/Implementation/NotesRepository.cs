@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using CloudNotes.Domain.Entities;
 using CloudNotes.Repositories.Contracts;
 using CloudNotes.Repositories.Entities;
 using CloudNotes.Repositories.Entities.Relation;
 using CloudNotes.Repositories.Extensions;
+using CloudNotes.Repositories.Helpers;
 
 namespace CloudNotes.Repositories.Implementation
 {
@@ -29,102 +32,120 @@ namespace CloudNotes.Repositories.Implementation
 
         public IQueryable<Note> Load()
         {
-            return _unitOfWork.Load<NoteTableEntry>("Notes").ToList().Select(notesTableEntry => notesTableEntry.MapToNote()).AsQueryable();
+            return _unitOfWork.Load<NoteEntity>("Notes").ToList().Select(notesTableEntry => notesTableEntry.MapToNote()).AsQueryable();
         }
 
         public Note Get(string partitionKey, string rowKey)
         {
-            var result = _unitOfWork.Get<NoteTableEntry>("Notes", partitionKey, rowKey);
-
-            if (result != null)
-            {
-                return result.MapToNote();
-            }
-
-            return null;
-        }
-
-        public Note GetByTitle(string title, TaskList containerList)
-        {
-            var result = _unitOfWork.Load<NoteTableEntry>("Notes").Where(n => n.PartitionKey == containerList.RowKey && n.Title == title).FirstOrDefault();
-
-            if (result != null)
-            {
-                var note = result.MapToNote();
-                note.ContainerList = containerList;
-                return note;
-            }
-
-            return null;
-        }
-
-        public Note GetByTitle(string title, string containerTaskListRowKey)
-        {
-            var result = _unitOfWork.Load<NoteTableEntry>("Notes").Where(n => n.PartitionKey == containerTaskListRowKey && n.Title == title).FirstOrDefault();
+            var result = _unitOfWork.Get<NoteEntity>("Notes", t => t.PartitionKey == partitionKey && t.RowKey == rowKey);
             return result != null ? result.MapToNote() : null;
+        }
+
+        public Note Get(Expression<Func<Note, bool>> filter)
+        {
+            return _unitOfWork.Get("Notes", filter);
+        }
+
+        public bool NoteWithTitleExists(string title, TaskList container)
+        {
+            var containerKeys = string.Format("{0}+{1}", container.PartitionKey, container.RowKey);
+            var note = _unitOfWork.Get<Note>("Notes", n => n.ContainerKeys == containerKeys && n.Title == title);
+            return note != null;
         }
 
         public void Create(Note entityToCreate)
         {
             var maxOrderingIndex = -1;
-            var result = _unitOfWork.Load<NoteTableEntry>("Notes").Where(n => n.PartitionKey == entityToCreate.ContainerList.RowKey).ToList().OrderByDescending(n => n.OrderingIndex).Take(1);
+            var result = _unitOfWork.Load<NoteEntity>("Notes", n => n.PartitionKey == entityToCreate.Owner.RowKey).ToList();
 
-            if (result.Count() == 1)
+            if (result.Any())
             {
-                maxOrderingIndex = result.ToList()[0].OrderingIndex;
+                maxOrderingIndex = result.Max(n => n.OrderingIndex);
             }
 
-            entityToCreate.PartitionKey = entityToCreate.ContainerList.RowKey;
-            entityToCreate.RowKey = Guid.NewGuid().ToString();
+            entityToCreate.PartitionKey = entityToCreate.Owner.RowKey;
+            entityToCreate.RowKey = ShortGuid.NewGuid();
             entityToCreate.OrderingIndex = maxOrderingIndex + 1;
+            entityToCreate.ContainerKeys = string.Format("{0}+{1}", entityToCreate.Container.PartitionKey, entityToCreate.Container.RowKey);
 
-            var noteTableEntry = entityToCreate.MapToNoteTableEntry();
-            _unitOfWork.Create(noteTableEntry, "Notes");
+            var noteEntity = entityToCreate.MapToNoteEntity();
+            _unitOfWork.Create(noteEntity, "Notes");
 
-            var noteOwnerTableEntry = new NoteOwnerTableEntry(entityToCreate.Owner.RowKey, entityToCreate.RowKey);
-            _unitOfWork.Create(noteOwnerTableEntry, "NoteOwner");
+            var noteSharePartitionKey = string.Format("{0}+{1}", entityToCreate.PartitionKey, entityToCreate.RowKey);
+            var noteShare = new NoteShareEntity(noteSharePartitionKey, entityToCreate.Owner.RowKey);
+            _unitOfWork.Create(noteShare, "NoteShares");
 
-            var noteAssociatedUserTableEntry = new NoteAssociatedUserTableEntry(entityToCreate.RowKey, entityToCreate.Owner.RowKey);
-            _unitOfWork.Create(noteAssociatedUserTableEntry, "NoteAssociatedUsers");
+            var taskListNoteEntityPartitionKey = string.Format("{0}+{1}", entityToCreate.Container.PartitionKey, entityToCreate.Container.RowKey);
+            var taskListNoteEntityRowKey = string.Format("{0}+{1}", entityToCreate.PartitionKey, entityToCreate.RowKey);
+            var taskListNoteEntity = new TaskListNoteEntity(taskListNoteEntityPartitionKey, taskListNoteEntityRowKey);
+            _unitOfWork.Create(taskListNoteEntity, "TaskListNotes");
         }
 
         public void Update(Note entityToUpdate)
         {
-            _unitOfWork.Update("Notes", entityToUpdate.MapToNoteTableEntry());
+            _unitOfWork.Update("Notes", entityToUpdate.MapToNoteEntity());
         }
 
         public void Delete(Note entityToDelete)
         {
-            _unitOfWork.Delete<NoteTableEntry>("Notes", entityToDelete.PartitionKey, entityToDelete.RowKey);
-            _unitOfWork.Delete<NoteOwnerTableEntry>("NoteOwner", entityToDelete.Owner.PartitionKey, entityToDelete.RowKey);
+            _unitOfWork.Delete<NoteEntity>("Notes", entityToDelete.PartitionKey, entityToDelete.RowKey);
 
-            var associatedUsers = _unitOfWork.Load<NoteAssociatedUserTableEntry>("NoteAssociatedUsers").Where(n => n.PartitionKey == entityToDelete.RowKey);
+            var taskListNoteRowKey = string.Format("{0}+{1}", entityToDelete.PartitionKey, entityToDelete.RowKey);
+            var taskListNote = _unitOfWork.Get<TaskListEntity>("TaskListNotes", tn => tn.RowKey == taskListNoteRowKey);
+            _unitOfWork.Delete<TaskListEntity>("TaskListNotes", taskListNote.PartitionKey, taskListNote.RowKey);
 
-            foreach (var noteAssociatedUserTableEntry in associatedUsers)
+            var noteSharePartitionKey = string.Format("{0}+{1}", entityToDelete.PartitionKey, entityToDelete.RowKey);
+            var shares = _unitOfWork.Load<NoteShareEntity>("NoteShares").Where(n => n.PartitionKey == noteSharePartitionKey);
+
+            foreach (var share in shares)
             {
-                _unitOfWork.Delete<NoteAssociatedUserTableEntry>("NoteAssociatedUsers", noteAssociatedUserTableEntry.PartitionKey, noteAssociatedUserTableEntry.RowKey);
+                _unitOfWork.Delete<NoteShareEntity>("NoteShares", share.PartitionKey, share.RowKey);
             }
         }
 
-        public void AddAssociatedUser(Note note, User userToAdd)
+        public void AddShare(Note note, string userId)
         {
-            var noteAssociatedUserTableEntry = new NoteAssociatedUserTableEntry(note.RowKey, userToAdd.RowKey);
-            _unitOfWork.Create(noteAssociatedUserTableEntry, "NoteAssociatedUsers");
+            var sharePartitionKey = string.Format("{0}+{1}", note.PartitionKey, note.RowKey);
+            var share = new NoteShareEntity(sharePartitionKey, userId);
+            _unitOfWork.Create(share, "NoteShares");
         }
 
-        public void RemoveAssociatedUser(Note note, User userToRemove)
+        public void RemoveShare(Note note, string userId)
         {
-            _unitOfWork.Delete<NoteAssociatedUserTableEntry>("NoteAssociatedUsers", note.RowKey, userToRemove.RowKey);
+            var sharePartitionKey = string.Format("{0}+{1}", note.PartitionKey, note.RowKey);
+            _unitOfWork.Delete<NoteShareEntity>("NoteShares", sharePartitionKey, userId);
         }
 
         public void LoadNotes(TaskList taskList)
         {
-            var notes = _unitOfWork.Load<NoteTableEntry>("Notes").Where(n => n.PartitionKey == taskList.RowKey).ToList().OrderBy(t => t.OrderingIndex);
+            var buffer = new List<Note>();
+            var taskListNotePartitionKey = string.Format("{0}+{1}", taskList.PartitionKey, taskList.RowKey);
+            var taskListNotes = _unitOfWork.Load<TaskListNoteEntity>("TaskListNotes", n => n.PartitionKey == taskListNotePartitionKey);
 
-            foreach (var noteTableEntry in notes)
+            foreach (var taskListNote in taskListNotes)
             {
-                taskList.Notes.Add(noteTableEntry.MapToNote());
+                var noteKeys = taskListNote.RowKey.Split('+');
+                var notePartitionKey = noteKeys[0];
+                var noteRowKey = noteKeys[1];
+
+                var note = Get(notePartitionKey, noteRowKey);
+
+                if (note != null)
+                {
+                    buffer.Add(note);
+                }
             }
+
+            foreach (var note in buffer.OrderBy(n => n.OrderingIndex))
+            {
+                taskList.Notes.Add(note);
+            }
+        }
+
+        public bool HasPermissionToEdit(User user, Note note)
+        {
+            var noteSharePartitionKey = string.Format("{0}+{1}", note.PartitionKey, note.RowKey);
+            return _unitOfWork.Get<NoteShareEntity>("NoteShares", ns => ns.PartitionKey == noteSharePartitionKey && ns.RowKey == user.RowKey) != null;
         }
 
         #endregion Public methods

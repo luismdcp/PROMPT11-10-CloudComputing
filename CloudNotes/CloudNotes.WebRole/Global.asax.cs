@@ -4,6 +4,7 @@ using System.Web.Routing;
 using CloudNotes.Infrastructure.DependencyInjection;
 using CloudNotes.Repositories;
 using CloudNotes.WebRole.Helpers;
+using System.Web.Http;
 
 namespace CloudNotes.WebRole
 {
@@ -18,45 +19,50 @@ namespace CloudNotes.WebRole
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapHttpRoute("Default API Route", "api/{controller}/{id}", new { controller = "Lists", id = UrlParameter.Optional });
+
+            routes.MapRoute(
+                "Files", // Route name
+                "Files/Note/{noteOwnerId}/{noteId}/{action}/{fileName}", // URL with parameters
+                new { controller = "Files", action = "Index", fileName = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "NotesIndexCreate", // Route name
+                "Notes/TaskList/{taskListOwnerId}/{taskListId}/{action}", // URL with parameters
+                new { controller = "Notes", action = "Index" } // Parameter defaults
+            );
+
             routes.MapRoute(
                 "Notes", // Route name
-                "TaskList/{taskListTitle}/Notes/{action}/{noteTitle}", // URL with parameters
-                new { controller = "Notes", action = "Index", noteTitle = UrlParameter.Optional } // Parameter defaults
+                "Notes/{noteOwnerId}/{noteId}/{action}",
+                new { controller = "Notes" } // Parameter defaults
             );
 
             routes.MapRoute(
-                "UsersAssociateTaskList", // Route name
-                "Users/Associate/TaskList/{taskListTitle}", // URL with parameters
-                new { controller = "Users", action = "AssociateUsersToTaskList" } // Parameter defaults
-            );
-
-            routes.MapRoute(
-                "UsersAssociateNote", // Route name
-                "Users/Associate/TaskList/{taskListTitle}/Note/{noteTitle}", // URL with parameters
-                new { controller = "Users", action = "AssociateUsersToNote" } // Parameter defaults
+                "TaskLists", // Route name
+                "TaskLists/{taskListOwnerId}/{taskListId}/{action}",
+                new { controller = "TaskLists", taskListOwnerId = UrlParameter.Optional, taskListId = UrlParameter.Optional } // Parameter defaults
             );
 
             routes.MapRoute(
                 "Default", // Route name
-                "{controller}/{action}/{taskListTitle}", // URL with parameters
-                new { controller = "Users", action = "Home", taskListTitle = UrlParameter.Optional } // Parameter defaults
+                "{controller}/{action}", // URL with parameters
+                new { controller = "Users", action = "Home" } // Parameter defaults
             );
-
         }
 
         protected void Application_Start()
         {
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
-
             StructureMapBootstrapper.Start();
-
             AreaRegistration.RegisterAllAreas();
-
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
             ModelBinders.Binders[typeof(IPrincipal)] = new PrincipalModelBinder();
             TablesBuilder.InitializeTables();
+            ContainerBuilder.InitializeContainer();
         }
     }
 }

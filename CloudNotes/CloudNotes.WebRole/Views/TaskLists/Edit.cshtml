@@ -4,16 +4,50 @@
     ViewBag.Title = "Edit";
 }
 
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var taskListsHub = $.connection.tasklistsHub;
+
+            $("#submitButton").click(function () {
+                taskListsHub.editTaskList($('#Title').val(), '@Model.RowKey');
+            });
+
+            taskListsHub.broadcastTaskListDelete = function (taskListId) {
+                var currentTaskListId = '@Model.RowKey';
+
+                if (currentTaskListId == taskListId) {
+                    $('#form').before($('<div class="alert"><button type="button" class="close" data-dismiss="alert">×</button><strong>Warning!</strong> The tasklist you are editing was deleted by someone else.</div>').fadeIn('slow'));
+                }
+            };
+
+            taskListsHub.broadcastTaskListChanges = function (title, taskListId) {
+                var currentTaskListId = '@Model.RowKey';
+                
+                if (currentTaskListId == taskListId) {
+                    $('#Title').animate({ 'opacity': 0 }, 300, function () {
+                        $('#Title').val(title);
+                    }).animate({ 'opacity': 1 }, 300);
+                }
+            };
+
+            $.connection.hub.start();
+        });
+    </script>  
+}
+
 @if (ViewBag.ValidationErrors != null)
 {
     @Html.DisplayForValidationErrors((IEnumerable<ValidationResult>) ViewBag.ValidationErrors)
 }
 
-@using (Html.BeginForm("Edit", "TaskLists", FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm("Edit", "TaskLists", FormMethod.Post, new { @class = "form-horizontal", id = "form" }))
 {
     @Html.Partial("_CreateOrEdit", Model)
 
     <div class="form-actions">
-        @Html.Button("submit", "Save Changes", new { @class = "btn btn-primary" })  | @Html.ActionLink("Back to List", "Index")
+        @Html.Button("submit", "Save Changes", new { @class = "btn btn-primary", id = "submitButton" })  | 
+        @Html.RouteLink("Back to List", "Default", new RouteValueDictionary { { "controller", "TaskLists" }, { "action", "Index" } })
     </div>
 }

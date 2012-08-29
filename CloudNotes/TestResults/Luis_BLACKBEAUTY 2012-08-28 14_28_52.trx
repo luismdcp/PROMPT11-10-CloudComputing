@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="fc443ca1-71cf-468c-801b-dfe0fa896a01" name="Luis@BLACKBEAUTY 2012-08-28 14:28:52" runUser="BlackBeauty\Luis" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="a9c45579-508c-4524-9966-e1f8cfbc3e28">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment runDeploymentRoot="Luis_BLACKBEAUTY 2012-08-28 14_28_52">
+      <DeploymentItem filename="D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Domain\bin\Debug\CloudNotes.Domain.dll" />
+      <DeploymentItem filename="D:\PROMPT11-10-CloudComputing\CloudNotes\packages\Moq.4.0.10827\lib\NET40\Moq.dll" />
+      <DeploymentItem filename="C:\Program Files\Windows Azure SDK\v1.6\ref\Microsoft.WindowsAzure.StorageClient.dll" />
+      <DeploymentItem filename="D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Repositories\bin\Debug\CloudNotes.Repositories.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific>
+        <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">
+          <AssemblyResolution>
+            <TestDirectory useLoadContext="true" />
+          </AssemblyResolution>
+        </UnitTestRunConfig>
+        <WebTestRunConfiguration testTypeId="4e7599fa-5ecb-43e9-a887-cd63cf72d207">
+          <Browser name="Internet Explorer 7.0">
+            <Headers>
+              <Header name="User-Agent" value="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)" />
+              <Header name="Accept" value="*/*" />
+              <Header name="Accept-Language" value="{{$IEAcceptLanguage}}" />
+              <Header name="Accept-Encoding" value="GZIP" />
+            </Headers>
+          </Browser>
+        </WebTestRunConfiguration>
+      </TestTypeSpecific>
+      <AgentRule name="LocalMachineDefaultRole">
+        <DataCollectors>
+          <DataCollector uri="datacollector://microsoft/CodeCoverage/1.0" assemblyQualifiedName="Microsoft.VisualStudio.TestTools.CodeCoverage.CoveragePlugIn, Microsoft.VisualStudio.QualityTools.Plugins.CodeCoverage, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" friendlyName="Code Coverage">
+            <Configuration>
+              <CodeCoverage xmlns="">
+                <Regular>
+                  <CodeCoverageItem binaryFile="D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Domain\bin\Debug\CloudNotes.Domain.dll" pdbFile="D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Domain\bin\Debug\CloudNotes.Domain.instr.pdb" instrumentInPlace="true" />
+                  <CodeCoverageItem binaryFile="D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Repositories\bin\Debug\CloudNotes.Repositories.dll" pdbFile="D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Repositories\bin\Debug\CloudNotes.Repositories.instr.pdb" instrumentInPlace="true" />
+                </Regular>
+              </CodeCoverage>
+            </Configuration>
+          </DataCollector>
+          <DataCollector uri="datacollector://microsoft/TraceDebugger/1.0" assemblyQualifiedName="Microsoft.VisualStudio.TraceCollector.TraceDebuggerDataCollector, Microsoft.VisualStudio.TraceCollector, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" friendlyName="IntelliTrace">
+          </DataCollector>
+          <DataCollector uri="datacollector://microsoft/AspNetProfiler/1.0" assemblyQualifiedName="Microsoft.VisualStudio.PerformanceTools.DataCollection.AspNetProfileDataCollector, Microsoft.VisualStudio.PerformanceTools.DataCollection, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" friendlyName="ASP.NET Profiler">
+          </DataCollector>
+        </DataCollectors>
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-08-28T14:28:52.6835608+01:00" queuing="2012-08-28T14:28:55.3947159+01:00" start="2012-08-28T14:29:02.7081342+01:00" finish="2012-08-28T14:29:10.6365877+01:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="61" executed="61" passed="60" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <ResultFiles>
+      <ResultFile path="BLACKBEAUTY\data.coverage" />
+    </ResultFiles>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TaskListsRepositoryUpdateCallsUpdateFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="243a3723-c759-1bdb-8565-43030030c8e3">
+      <Execution id="e438357b-d57f-4b47-8179-8022b8b5bcc3" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TaskListsRepositoryUpdateCallsUpdateFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="ANoteWithAllValidPropertiesIsValid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="c14c078d-036a-ef14-90a0-c1d1a047c940">
+      <Execution id="0245524e-d6b8-47e9-ba70-65104e386c2d" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ANoteWithAllValidPropertiesIsValid" />
+    </UnitTest>
+    <UnitTest name="TaskListsRepositoryRemoveShareCallsDeleteFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="1c5a4485-18eb-1fb7-a783-fbf6aecbe579">
+      <Execution id="9a05d74a-cb44-4a7f-8cf5-b2614d7a8b98" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TaskListsRepositoryRemoveShareCallsDeleteFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="TaskListsRepositoryHasPermisionToEditCallsGetFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="6eb006b0-f141-29b2-0ec3-c52e70221b01">
+      <Execution id="cd9292df-91b3-4134-b937-e7bc6728c2e7" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TaskListsRepositoryHasPermisionToEditCallsGetFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="NotesRepositoryAddShareCallsCreateFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="7d6998de-08bc-b5a5-f97c-68e4a87d69dc">
+      <Execution id="132987db-c2e7-494b-bf9b-5f94cd3f533e" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="NotesRepositoryAddShareCallsCreateFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="ANoteWithAnAllWhitespaceTittleIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="07851a54-f9f2-0370-ef52-acf62480dca3">
+      <Execution id="12886094-e5d1-4537-bc33-f5df1ec2f04b" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ANoteWithAnAllWhitespaceTittleIsInvalid" />
+    </UnitTest>
+    <UnitTest name="ANoteWithATittleLongerThan10CharactersIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="fd2d9e08-8f5d-4406-828f-63af07dc5bf7">
+      <Execution id="597f4641-36ca-4b7d-9a91-6705c1d132b4" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ANoteWithATittleLongerThan10CharactersIsInvalid" />
+    </UnitTest>
+    <UnitTest name="ANoteWithAnAllWhitespaceContentIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="00d57f25-d21b-e712-e7ff-b98a3d6f01aa">
+      <Execution id="de3487d6-144f-429c-94af-40614b857c91" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ANoteWithAnAllWhitespaceContentIsInvalid" />
+    </UnitTest>
+    <UnitTest name="AUserWithAnInvalidEmailIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="68595d26-57a1-321d-c72e-7ab1ba9f7821">
+      <Execution id="53f922ea-68f7-49d6-a7d3-f89c3bb4b75a" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AUserWithAnInvalidEmailIsInvalid" />
+    </UnitTest>
+    <UnitTest name="NotesRepositoryLoadNotesCallsLoadAndGetsFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="ec7711e0-6e36-94b0-fa70-9adecfa8a8f1">
+      <Execution id="9de14c7b-a56a-42ba-bd9e-5e3ee302ff2f" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="NotesRepositoryLoadNotesCallsLoadAndGetsFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="AUserWithAnEmptyNameIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="2b244028-df83-e3b8-91b4-eb0f42ff37fe">
+      <Execution id="46527eeb-a611-42c9-a3b6-9ff9926f4a21" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AUserWithAnEmptyNameIsInvalid" />
+    </UnitTest>
+    <UnitTest name="NotesRepositoryUpdateCallsUpdateFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="a780d5d0-43e2-3171-7945-424274cf7cfb">
+      <Execution id="b59b61ff-207c-426e-bee4-b97b6cd36ef7" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="NotesRepositoryUpdateCallsUpdateFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="NotesRepositoryLoadCallsLoadFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="17943233-8015-a282-b442-243916829980">
+      <Execution id="37983a22-d11e-4ea1-a316-4afef27bd7f0" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="NotesRepositoryLoadCallsLoadFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryCreateCallsCreateFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="8e102b5d-e958-b297-bb65-7f1f98f7fdce">
+      <Execution id="f60f36d7-15fc-4d30-872c-aae9b6ed220d" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryCreateCallsCreateFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="NotesRepositoryRemoveShareCallsDeleteFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="c775d00d-9095-a8a9-2433-76c5a0405657">
+      <Execution id="d904acea-ad7c-4fca-a6fb-12fc597b3031" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="NotesRepositoryRemoveShareCallsDeleteFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryUserIsRegisteredCallsLoadFromTheUnitOfWorkForAnExistingUser" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="54e67131-47df-e2cb-c7bc-1b2b43b86483">
+      <Execution id="0846a453-7cfa-4faa-ae14-f74bd2d83c1e" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryUserIsRegisteredCallsLoadFromTheUnitOfWorkForAnExistingUser" />
+    </UnitTest>
+    <UnitTest name="AUserWithAnNameThatHasTheCharacterPlusIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="e7bbd4b2-5c95-3563-fc1e-37f3d3d4a55d">
+      <Execution id="8a3be035-db64-47f7-a0cb-ce2e06e81dcb" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AUserWithAnNameThatHasTheCharacterPlusIsInvalid" />
+    </UnitTest>
+    <UnitTest name="NotesRepositoryGetWihtFilterCallsGetFromTheUnitOfWorkAndReturnsAnExistingNote" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="5d59f492-e6d2-4a32-8cb5-8bac5548a5fd">
+      <Execution id="dfc20255-5fc1-43e7-8b0f-2297d5a12fc5" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="NotesRepositoryGetWihtFilterCallsGetFromTheUnitOfWorkAndReturnsAnExistingNote" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryLoadNoteOwnerCallsLoadAndGetFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="e3d8badb-d961-d4d2-2fc7-38832d7198cd">
+      <Execution id="0c25a5aa-3064-4f54-810d-f22e335d42f6" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryLoadNoteOwnerCallsLoadAndGetFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="TaskListsRepositoryDeleteCallsDeleteFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="846215b7-3a17-549a-a8bb-e3c8573dbdf6">
+      <Execution id="e77544fe-c4da-420c-91a2-c4ce3f888c5b" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TaskListsRepositoryDeleteCallsDeleteFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="ANoteWithAnEmptyTittleIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="157b3a3d-66d6-d440-327f-479b45016df4">
+      <Execution id="ade9a2a1-ecff-44c8-9d77-fc1ad0ca94b2" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ANoteWithAnEmptyTittleIsInvalid" />
+    </UnitTest>
+    <UnitTest name="ANoteWithANullContainerListIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="2096f5a0-1903-5db2-2c40-833b3a14e68d">
+      <Execution id="7a56d700-5ff3-40c5-9456-31f60eff6c35" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ANoteWithANullContainerListIsInvalid" />
+    </UnitTest>
+    <UnitTest name="ANoteWithAnEmptyContentIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="852657b0-510e-88d6-c043-399bc17187ed">
+      <Execution id="efeeb925-5a54-4caa-b989-ceeeaca0bc0f" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ANoteWithAnEmptyContentIsInvalid" />
+    </UnitTest>
+    <UnitTest name="NotesRepositoryCreateCallsCreateFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="b3e5450c-7394-e772-4c0f-83c0f0cc9085">
+      <Execution id="56e4d52b-9669-440a-9099-fb869ba9a5c1" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="NotesRepositoryCreateCallsCreateFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="NotesRepositoryHasPermisionToEditCallsGetFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="1d280656-e2df-5314-433f-b3591c27440d">
+      <Execution id="41165ed6-be40-4123-a3de-6b7ff3a26e73" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="NotesRepositoryHasPermisionToEditCallsGetFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryLoadCallsLoadFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="31c722d8-5747-84ab-dbe0-e3286ae27d8d">
+      <Execution id="437cb926-b87d-45a0-82c9-423a85fa2291" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryLoadCallsLoadFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="TaskListRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsAnExistingTaskList" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="ffc79e9b-00ea-8cc7-18d0-a502995f20d0">
+      <Execution id="64f5edf9-b764-4ca8-990d-16ee75c66163" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TaskListRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsAnExistingTaskList" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryLoadTaskListOwnerCallsLoadAndGetFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="087d9898-edea-6433-a4ef-23fb3738fd61">
+      <Execution id="7bd2c36a-2b29-4bfc-acd3-f84450f68c8f" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryLoadTaskListOwnerCallsLoadAndGetFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="TaskListsRepositoryGetSharedCallsLoadFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="9ca52fa0-c559-7623-fd35-fc2380d7afd8">
+      <Execution id="d577bbb0-d6a6-46eb-9d37-887a9c2a5099" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TaskListsRepositoryGetSharedCallsLoadFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="ATaskListWithAnAllWhitespaceTittleIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="a92d683e-6db6-da08-1853-c0e53902a155">
+      <Execution id="cca0c008-645c-4df1-b691-5b917a4588de" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ATaskListWithAnAllWhitespaceTittleIsInvalid" />
+    </UnitTest>
+    <UnitTest name="NotesRepositoryNoteWithTitleExistsCallsGetFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="4b614527-e28c-581c-d382-32a4d4aafc06">
+      <Execution id="d4888de1-52e0-48c8-8ebe-c1448ba59314" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="NotesRepositoryNoteWithTitleExistsCallsGetFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="ATaskListWithAllPropertiesValidIsValid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="71f98d0e-df98-5602-5fd6-919d9101bb93">
+      <Execution id="8c147d7a-ba96-4701-a726-4289fe6a8681" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ATaskListWithAllPropertiesValidIsValid" />
+    </UnitTest>
+    <UnitTest name="TaskListsRepositoryLoadCallsLoadFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="23d50d4e-c7ad-15c6-58f2-b5a0b49d6762">
+      <Execution id="cb40e061-c572-4593-bf78-917166da9eb2" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TaskListsRepositoryLoadCallsLoadFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="ATaskListWithAnEmptyTittleIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="b0f72c88-e8e6-d5ef-9b19-7fed7babeddb">
+      <Execution id="9cc366e7-0c1a-46cd-9464-07c7d880f991" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ATaskListWithAnEmptyTittleIsInvalid" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryDeleteCallsDeleteFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="1a6e3131-7b28-7bfb-ebe5-62afff858b9e">
+      <Execution id="55c72ecd-6805-40d9-92be-b96ccd703653" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryDeleteCallsDeleteFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="AUserWithAnNameAllWhitespacesIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="0e9aff77-2b4b-fe40-b395-e45251f0a1ee">
+      <Execution id="ec67099f-25ef-4f70-a5dd-6a53c42653c0" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AUserWithAnNameAllWhitespacesIsInvalid" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryUserIsRegisteredCallsLoadFromTheUnitOfWorkForANewUser" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="207fa172-124e-7710-3ae1-207f7e188ab7">
+      <Execution id="f488c8ed-2f61-4e93-a52b-59889fad51a9" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryUserIsRegisteredCallsLoadFromTheUnitOfWorkForANewUser" />
+    </UnitTest>
+    <UnitTest name="ANoteWithANullOwnerIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="e814db0b-a976-414f-8c66-ad00681e848f">
+      <Execution id="203868b7-c784-4930-a478-63f6a5d7fdd9" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ANoteWithANullOwnerIsInvalid" />
+    </UnitTest>
+    <UnitTest name="AUserWithAnNameThatHasTheCharacterHypenIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="710056e6-b337-9739-6344-1fd443c7a2b3">
+      <Execution id="433e37a0-f0f6-4217-adef-9479d3c6a5f1" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AUserWithAnNameThatHasTheCharacterHypenIsInvalid" />
+    </UnitTest>
+    <UnitTest name="NotesRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsAnExistingNote" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="53bf3163-df0e-9e62-fb0d-6671ad5acf2e">
+      <Execution id="60d8e5b8-595a-4110-bf9f-edba78c90645" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="NotesRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsAnExistingNote" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryGetByIdentifiersCallsLoadFromTheUnitOfWorkForAnExistingUser" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="2ebf2434-3f8b-3932-cf00-13d37349040e">
+      <Execution id="641dbc8b-73dd-49cf-b866-8d237c89fa92" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryGetByIdentifiersCallsLoadFromTheUnitOfWorkForAnExistingUser" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryLoadTaskListAssociatedUsersCallsLoadAndGetFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="34307c16-295e-e803-42c0-fc1c9dc9e42e">
+      <Execution id="36e80e56-841a-4af0-9c80-fbaa0ef55e2a" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryLoadTaskListAssociatedUsersCallsLoadAndGetFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsNullForANonExistingUser" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="8f90efd1-0a3e-6847-1469-eec0d3368773">
+      <Execution id="6e089c8d-da38-4c1c-9cb8-b4a0183f9bb9" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsNullForANonExistingUser" />
+    </UnitTest>
+    <UnitTest name="TaskListsRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsNullForANonExistingTaskList" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="8d3bfe9f-40a5-6515-7c0c-d1c6b7990ea3">
+      <Execution id="18a8456f-398e-454d-b358-61d5128daddb" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TaskListsRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsNullForANonExistingTaskList" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsAExistingUser" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="b8b966b4-c265-1627-ba5e-4d3e17d291be">
+      <Execution id="b8a388f8-31a7-4d95-b97f-8b103256e4c3" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsAExistingUser" />
+    </UnitTest>
+    <UnitTest name="ANoteWithContentLongerThan50CharactersIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="7a009e26-62e5-1f69-5cdb-854dc672f6ae">
+      <Execution id="23f9f619-56db-4d57-8cef-e8409afc87a1" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ANoteWithContentLongerThan50CharactersIsInvalid" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryParseIdentityProviderParsesGoogleCorrectly" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="d6129223-175a-65cf-54ae-8d91d8e336cb">
+      <Execution id="150533da-174d-491f-87b8-4c3dd537717f" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryParseIdentityProviderParsesGoogleCorrectly" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryParseIdentityProviderParsesYahooCorrectly" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="56cb2ba6-bd19-5c25-a99a-9bed17136d50">
+      <Execution id="9851727f-8720-4344-bde2-de94a09a7d80" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryParseIdentityProviderParsesYahooCorrectly" />
+    </UnitTest>
+    <UnitTest name="NotesRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsNullForANonExistingNote" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="a49419de-351d-ddee-3740-c07af74b36d5">
+      <Execution id="b930623d-5d5f-4c00-ad9a-be0c6a20844b" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="NotesRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsNullForANonExistingNote" />
+    </UnitTest>
+    <UnitTest name="NotesRepositoryDeleteCallsDeletesFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="2d4e2a1a-222a-051d-2148-b1b6eab73111">
+      <Execution id="71611862-a115-42d7-b2da-0006788fbf37" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="NotesRepositoryDeleteCallsDeletesFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryGetByIdentifiersCallsLoadFromTheUnitOfWorkForNonExistingUser" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="a6c1fa83-a867-97da-f19d-bbb05c37bcee">
+      <Execution id="9a52e522-49a4-4c3c-9974-29c0aff9d6f2" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryGetByIdentifiersCallsLoadFromTheUnitOfWorkForNonExistingUser" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryParseIdentityProviderParsesWindowsLiveIDCorrectly" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="83144cc2-eba3-40b7-3a94-8375dcee99f1">
+      <Execution id="029d53c8-1d6b-419f-a611-da036894c06a" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryParseIdentityProviderParsesWindowsLiveIDCorrectly" />
+    </UnitTest>
+    <UnitTest name="ATaskListWithATittleLongerThan20CharactersIsInvalid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="14c0b5c2-e01e-d3c7-468e-9874da6b0406">
+      <Execution id="c1c3058e-1984-4fd1-b229-0e2c549814ca" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ATaskListWithATittleLongerThan20CharactersIsInvalid" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryGetCallsWithFilterGetFromTheUnitOfWorkAndReturnsAExistingTaskList" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="9863ea66-4389-d916-e2df-c69ea144bb25">
+      <Execution id="bafe4a5f-4356-4f0b-a211-8ac40787fc8e" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryGetCallsWithFilterGetFromTheUnitOfWorkAndReturnsAExistingTaskList" />
+    </UnitTest>
+    <UnitTest name="TaskListRepositoryLoadContainerCallsGetsFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="7a76042e-b11e-169d-7b16-2fadf1332acd">
+      <Execution id="ddc9f22e-2423-4c2b-bc04-ab97421b46ea" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TaskListRepositoryLoadContainerCallsGetsFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryLoadShareCallsLoadAndGetFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="07ee8892-7054-180f-ddec-a98630f0764f">
+      <Execution id="67a1e74d-36d5-4e1e-b2c4-5f1e57f4b94f" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryLoadShareCallsLoadAndGetFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="TaskListsRepositoryAddShareCallsCreateFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="289b20e7-b260-bab8-9e9b-721680a9b151">
+      <Execution id="8483191f-bce2-4eee-8adb-571824b357d9" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TaskListsRepositoryAddShareCallsCreateFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="TaskListsRepositoryGetCallsWithFilterGetFromTheUnitOfWorkAndReturnsAExistingTaskList" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="ad8e41a5-ec19-61e8-ab78-b0066874f9a4">
+      <Execution id="9f54f502-e007-4f51-bb96-5b089c18a9fc" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TaskListsRepositoryGetCallsWithFilterGetFromTheUnitOfWorkAndReturnsAExistingTaskList" />
+    </UnitTest>
+    <UnitTest name="AUserWithAValidEmailIsValid" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.domain\bin\debug\cloudnotes.tests.domain.dll" id="7d09f543-4324-80a8-54ae-156dcda31038">
+      <Execution id="5072adb9-3789-4079-8cf4-80fbfe006543" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Domain/bin/Debug/CloudNotes.Tests.Domain.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Domain.DomainTests, CloudNotes.Tests.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AUserWithAValidEmailIsValid" />
+    </UnitTest>
+    <UnitTest name="TaskListsRepositoryCreateCallsCreatesFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="68515e07-492a-8340-8ae8-e1f724f6552a">
+      <Execution id="4ca88878-f156-4ba4-ade3-23e125430d12" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TaskListsRepositoryCreateCallsCreatesFromTheUnitOfWork" />
+    </UnitTest>
+    <UnitTest name="UsersRepositoryUpdateCallsUpdateFromTheUnitOfWork" storage="d:\prompt11-10-cloudcomputing\cloudnotes\cloudnotes.tests.repositories\bin\debug\cloudnotes.tests.repositories.dll" id="da07899b-e0b9-f639-2145-62f05a55637a">
+      <Execution id="bf56a7ac-983b-4e4a-8626-9391e5950804" />
+      <TestMethod codeBase="D:/PROMPT11-10-CloudComputing/CloudNotes/CloudNotes.Tests.Repositories/bin/Debug/CloudNotes.Tests.Repositories.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CloudNotes.Tests.Repositories.RepositoriesTests, CloudNotes.Tests.Repositories, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UsersRepositoryUpdateCallsUpdateFromTheUnitOfWork" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="00d57f25-d21b-e712-e7ff-b98a3d6f01aa" executionId="de3487d6-144f-429c-94af-40614b857c91" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="07851a54-f9f2-0370-ef52-acf62480dca3" executionId="12886094-e5d1-4537-bc33-f5df1ec2f04b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="07ee8892-7054-180f-ddec-a98630f0764f" executionId="67a1e74d-36d5-4e1e-b2c4-5f1e57f4b94f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="087d9898-edea-6433-a4ef-23fb3738fd61" executionId="7bd2c36a-2b29-4bfc-acd3-f84450f68c8f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0e9aff77-2b4b-fe40-b395-e45251f0a1ee" executionId="ec67099f-25ef-4f70-a5dd-6a53c42653c0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="14c0b5c2-e01e-d3c7-468e-9874da6b0406" executionId="c1c3058e-1984-4fd1-b229-0e2c549814ca" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="157b3a3d-66d6-d440-327f-479b45016df4" executionId="ade9a2a1-ecff-44c8-9d77-fc1ad0ca94b2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="17943233-8015-a282-b442-243916829980" executionId="37983a22-d11e-4ea1-a316-4afef27bd7f0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1a6e3131-7b28-7bfb-ebe5-62afff858b9e" executionId="55c72ecd-6805-40d9-92be-b96ccd703653" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1c5a4485-18eb-1fb7-a783-fbf6aecbe579" executionId="9a05d74a-cb44-4a7f-8cf5-b2614d7a8b98" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1d280656-e2df-5314-433f-b3591c27440d" executionId="41165ed6-be40-4123-a3de-6b7ff3a26e73" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="207fa172-124e-7710-3ae1-207f7e188ab7" executionId="f488c8ed-2f61-4e93-a52b-59889fad51a9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2096f5a0-1903-5db2-2c40-833b3a14e68d" executionId="7a56d700-5ff3-40c5-9456-31f60eff6c35" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="23d50d4e-c7ad-15c6-58f2-b5a0b49d6762" executionId="cb40e061-c572-4593-bf78-917166da9eb2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="243a3723-c759-1bdb-8565-43030030c8e3" executionId="e438357b-d57f-4b47-8179-8022b8b5bcc3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="289b20e7-b260-bab8-9e9b-721680a9b151" executionId="8483191f-bce2-4eee-8adb-571824b357d9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2b244028-df83-e3b8-91b4-eb0f42ff37fe" executionId="46527eeb-a611-42c9-a3b6-9ff9926f4a21" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2d4e2a1a-222a-051d-2148-b1b6eab73111" executionId="71611862-a115-42d7-b2da-0006788fbf37" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2ebf2434-3f8b-3932-cf00-13d37349040e" executionId="641dbc8b-73dd-49cf-b866-8d237c89fa92" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="31c722d8-5747-84ab-dbe0-e3286ae27d8d" executionId="437cb926-b87d-45a0-82c9-423a85fa2291" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="34307c16-295e-e803-42c0-fc1c9dc9e42e" executionId="36e80e56-841a-4af0-9c80-fbaa0ef55e2a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4b614527-e28c-581c-d382-32a4d4aafc06" executionId="d4888de1-52e0-48c8-8ebe-c1448ba59314" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="53bf3163-df0e-9e62-fb0d-6671ad5acf2e" executionId="60d8e5b8-595a-4110-bf9f-edba78c90645" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="54e67131-47df-e2cb-c7bc-1b2b43b86483" executionId="0846a453-7cfa-4faa-ae14-f74bd2d83c1e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="56cb2ba6-bd19-5c25-a99a-9bed17136d50" executionId="9851727f-8720-4344-bde2-de94a09a7d80" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5d59f492-e6d2-4a32-8cb5-8bac5548a5fd" executionId="dfc20255-5fc1-43e7-8b0f-2297d5a12fc5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="68515e07-492a-8340-8ae8-e1f724f6552a" executionId="4ca88878-f156-4ba4-ade3-23e125430d12" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="68595d26-57a1-321d-c72e-7ab1ba9f7821" executionId="53f922ea-68f7-49d6-a7d3-f89c3bb4b75a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6eb006b0-f141-29b2-0ec3-c52e70221b01" executionId="cd9292df-91b3-4134-b937-e7bc6728c2e7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="710056e6-b337-9739-6344-1fd443c7a2b3" executionId="433e37a0-f0f6-4217-adef-9479d3c6a5f1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="71f98d0e-df98-5602-5fd6-919d9101bb93" executionId="8c147d7a-ba96-4701-a726-4289fe6a8681" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7a009e26-62e5-1f69-5cdb-854dc672f6ae" executionId="23f9f619-56db-4d57-8cef-e8409afc87a1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7a76042e-b11e-169d-7b16-2fadf1332acd" executionId="ddc9f22e-2423-4c2b-bc04-ab97421b46ea" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7d09f543-4324-80a8-54ae-156dcda31038" executionId="5072adb9-3789-4079-8cf4-80fbfe006543" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7d6998de-08bc-b5a5-f97c-68e4a87d69dc" executionId="132987db-c2e7-494b-bf9b-5f94cd3f533e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="83144cc2-eba3-40b7-3a94-8375dcee99f1" executionId="029d53c8-1d6b-419f-a611-da036894c06a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="846215b7-3a17-549a-a8bb-e3c8573dbdf6" executionId="e77544fe-c4da-420c-91a2-c4ce3f888c5b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="852657b0-510e-88d6-c043-399bc17187ed" executionId="efeeb925-5a54-4caa-b989-ceeeaca0bc0f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8d3bfe9f-40a5-6515-7c0c-d1c6b7990ea3" executionId="18a8456f-398e-454d-b358-61d5128daddb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8e102b5d-e958-b297-bb65-7f1f98f7fdce" executionId="f60f36d7-15fc-4d30-872c-aae9b6ed220d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8f90efd1-0a3e-6847-1469-eec0d3368773" executionId="6e089c8d-da38-4c1c-9cb8-b4a0183f9bb9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9863ea66-4389-d916-e2df-c69ea144bb25" executionId="bafe4a5f-4356-4f0b-a211-8ac40787fc8e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9ca52fa0-c559-7623-fd35-fc2380d7afd8" executionId="d577bbb0-d6a6-46eb-9d37-887a9c2a5099" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a49419de-351d-ddee-3740-c07af74b36d5" executionId="b930623d-5d5f-4c00-ad9a-be0c6a20844b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a6c1fa83-a867-97da-f19d-bbb05c37bcee" executionId="9a52e522-49a4-4c3c-9974-29c0aff9d6f2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a780d5d0-43e2-3171-7945-424274cf7cfb" executionId="b59b61ff-207c-426e-bee4-b97b6cd36ef7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a92d683e-6db6-da08-1853-c0e53902a155" executionId="cca0c008-645c-4df1-b691-5b917a4588de" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ad8e41a5-ec19-61e8-ab78-b0066874f9a4" executionId="9f54f502-e007-4f51-bb96-5b089c18a9fc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b0f72c88-e8e6-d5ef-9b19-7fed7babeddb" executionId="9cc366e7-0c1a-46cd-9464-07c7d880f991" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b3e5450c-7394-e772-4c0f-83c0f0cc9085" executionId="56e4d52b-9669-440a-9099-fb869ba9a5c1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b8b966b4-c265-1627-ba5e-4d3e17d291be" executionId="b8a388f8-31a7-4d95-b97f-8b103256e4c3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c14c078d-036a-ef14-90a0-c1d1a047c940" executionId="0245524e-d6b8-47e9-ba70-65104e386c2d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c775d00d-9095-a8a9-2433-76c5a0405657" executionId="d904acea-ad7c-4fca-a6fb-12fc597b3031" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d6129223-175a-65cf-54ae-8d91d8e336cb" executionId="150533da-174d-491f-87b8-4c3dd537717f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="da07899b-e0b9-f639-2145-62f05a55637a" executionId="bf56a7ac-983b-4e4a-8626-9391e5950804" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e3d8badb-d961-d4d2-2fc7-38832d7198cd" executionId="0c25a5aa-3064-4f54-810d-f22e335d42f6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e7bbd4b2-5c95-3563-fc1e-37f3d3d4a55d" executionId="8a3be035-db64-47f7-a0cb-ce2e06e81dcb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e814db0b-a976-414f-8c66-ad00681e848f" executionId="203868b7-c784-4930-a478-63f6a5d7fdd9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ec7711e0-6e36-94b0-fa70-9adecfa8a8f1" executionId="9de14c7b-a56a-42ba-bd9e-5e3ee302ff2f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fd2d9e08-8f5d-4406-828f-63af07dc5bf7" executionId="597f4641-36ca-4b7d-9a91-6705c1d132b4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ffc79e9b-00ea-8cc7-18d0-a502995f20d0" executionId="64f5edf9-b764-4ca8-990d-16ee75c66163" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="de3487d6-144f-429c-94af-40614b857c91" testId="00d57f25-d21b-e712-e7ff-b98a3d6f01aa" testName="ANoteWithAnAllWhitespaceContentIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.1156483" startTime="2012-08-28T14:29:03.0191520+01:00" endTime="2012-08-28T14:29:03.8101972+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="de3487d6-144f-429c-94af-40614b857c91">
+    </UnitTestResult>
+    <UnitTestResult executionId="12886094-e5d1-4537-bc33-f5df1ec2f04b" testId="07851a54-f9f2-0370-ef52-acf62480dca3" testName="ANoteWithAnAllWhitespaceTittleIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0005758" startTime="2012-08-28T14:29:03.8161976+01:00" endTime="2012-08-28T14:29:03.8241980+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="12886094-e5d1-4537-bc33-f5df1ec2f04b">
+    </UnitTestResult>
+    <UnitTestResult executionId="67a1e74d-36d5-4e1e-b2c4-5f1e57f4b94f" testId="07ee8892-7054-180f-ddec-a98630f0764f" testName="UsersRepositoryLoadShareCallsLoadAndGetFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.6486397" startTime="2012-08-28T14:29:03.8271982+01:00" endTime="2012-08-28T14:29:04.7902533+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="67a1e74d-36d5-4e1e-b2c4-5f1e57f4b94f">
+    </UnitTestResult>
+    <UnitTestResult executionId="7bd2c36a-2b29-4bfc-acd3-f84450f68c8f" testId="087d9898-edea-6433-a4ef-23fb3738fd61" testName="UsersRepositoryLoadTaskListOwnerCallsLoadAndGetFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0029648" startTime="2012-08-28T14:29:04.7932534+01:00" endTime="2012-08-28T14:29:04.8012539+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7bd2c36a-2b29-4bfc-acd3-f84450f68c8f">
+    </UnitTestResult>
+    <UnitTestResult executionId="ec67099f-25ef-4f70-a5dd-6a53c42653c0" testId="0e9aff77-2b4b-fe40-b395-e45251f0a1ee" testName="AUserWithAnNameAllWhitespacesIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0050003" startTime="2012-08-28T14:29:04.8082543+01:00" endTime="2012-08-28T14:29:04.8182549+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ec67099f-25ef-4f70-a5dd-6a53c42653c0">
+    </UnitTestResult>
+    <UnitTestResult executionId="c1c3058e-1984-4fd1-b229-0e2c549814ca" testId="14c0b5c2-e01e-d3c7-468e-9874da6b0406" testName="ATaskListWithATittleLongerThan20CharactersIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0028727" startTime="2012-08-28T14:29:04.8212550+01:00" endTime="2012-08-28T14:29:04.8282554+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c1c3058e-1984-4fd1-b229-0e2c549814ca">
+    </UnitTestResult>
+    <UnitTestResult executionId="ade9a2a1-ecff-44c8-9d77-fc1ad0ca94b2" testId="157b3a3d-66d6-d440-327f-479b45016df4" testName="ANoteWithAnEmptyTittleIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0004892" startTime="2012-08-28T14:29:04.8302556+01:00" endTime="2012-08-28T14:29:04.8362559+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ade9a2a1-ecff-44c8-9d77-fc1ad0ca94b2">
+    </UnitTestResult>
+    <UnitTestResult executionId="37983a22-d11e-4ea1-a316-4afef27bd7f0" testId="17943233-8015-a282-b442-243916829980" testName="NotesRepositoryLoadCallsLoadFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0357841" startTime="2012-08-28T14:29:04.8392561+01:00" endTime="2012-08-28T14:29:04.8792584+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="37983a22-d11e-4ea1-a316-4afef27bd7f0">
+    </UnitTestResult>
+    <UnitTestResult executionId="55c72ecd-6805-40d9-92be-b96ccd703653" testId="1a6e3131-7b28-7bfb-ebe5-62afff858b9e" testName="UsersRepositoryDeleteCallsDeleteFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0038998" startTime="2012-08-28T14:29:04.8822585+01:00" endTime="2012-08-28T14:29:04.8902590+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="55c72ecd-6805-40d9-92be-b96ccd703653">
+    </UnitTestResult>
+    <UnitTestResult executionId="9a05d74a-cb44-4a7f-8cf5-b2614d7a8b98" testId="1c5a4485-18eb-1fb7-a783-fbf6aecbe579" testName="TaskListsRepositoryRemoveShareCallsDeleteFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0181591" startTime="2012-08-28T14:29:04.8932592+01:00" endTime="2012-08-28T14:29:04.9162605+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9a05d74a-cb44-4a7f-8cf5-b2614d7a8b98">
+    </UnitTestResult>
+    <UnitTestResult executionId="41165ed6-be40-4123-a3de-6b7ff3a26e73" testId="1d280656-e2df-5314-433f-b3591c27440d" testName="NotesRepositoryHasPermisionToEditCallsGetFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0076862" startTime="2012-08-28T14:29:04.9182606+01:00" endTime="2012-08-28T14:29:04.9312613+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="41165ed6-be40-4123-a3de-6b7ff3a26e73">
+    </UnitTestResult>
+    <UnitTestResult executionId="f488c8ed-2f61-4e93-a52b-59889fad51a9" testId="207fa172-124e-7710-3ae1-207f7e188ab7" testName="UsersRepositoryUserIsRegisteredCallsLoadFromTheUnitOfWorkForANewUser" computerName="BLACKBEAUTY" duration="00:00:00.0590716" startTime="2012-08-28T14:29:04.9332614+01:00" endTime="2012-08-28T14:29:04.9972651+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f488c8ed-2f61-4e93-a52b-59889fad51a9">
+    </UnitTestResult>
+    <UnitTestResult executionId="7a56d700-5ff3-40c5-9456-31f60eff6c35" testId="2096f5a0-1903-5db2-2c40-833b3a14e68d" testName="ANoteWithANullContainerListIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0004282" startTime="2012-08-28T14:29:04.9992652+01:00" endTime="2012-08-28T14:29:05.0072657+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7a56d700-5ff3-40c5-9456-31f60eff6c35">
+    </UnitTestResult>
+    <UnitTestResult executionId="cb40e061-c572-4593-bf78-917166da9eb2" testId="23d50d4e-c7ad-15c6-58f2-b5a0b49d6762" testName="TaskListsRepositoryLoadCallsLoadFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0077421" startTime="2012-08-28T14:29:05.0092658+01:00" endTime="2012-08-28T14:29:05.0222665+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cb40e061-c572-4593-bf78-917166da9eb2">
+    </UnitTestResult>
+    <UnitTestResult executionId="e438357b-d57f-4b47-8179-8022b8b5bcc3" testId="243a3723-c759-1bdb-8565-43030030c8e3" testName="TaskListsRepositoryUpdateCallsUpdateFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0036230" startTime="2012-08-28T14:29:05.0242667+01:00" endTime="2012-08-28T14:29:05.0392675+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e438357b-d57f-4b47-8179-8022b8b5bcc3">
+    </UnitTestResult>
+    <UnitTestResult executionId="8483191f-bce2-4eee-8adb-571824b357d9" testId="289b20e7-b260-bab8-9e9b-721680a9b151" testName="TaskListsRepositoryAddShareCallsCreateFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0035727" startTime="2012-08-28T14:29:05.0422677+01:00" endTime="2012-08-28T14:29:05.0512682+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8483191f-bce2-4eee-8adb-571824b357d9">
+    </UnitTestResult>
+    <UnitTestResult executionId="46527eeb-a611-42c9-a3b6-9ff9926f4a21" testId="2b244028-df83-e3b8-91b4-eb0f42ff37fe" testName="AUserWithAnEmptyNameIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0004192" startTime="2012-08-28T14:29:05.0542684+01:00" endTime="2012-08-28T14:29:05.0602687+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="46527eeb-a611-42c9-a3b6-9ff9926f4a21">
+    </UnitTestResult>
+    <UnitTestResult executionId="71611862-a115-42d7-b2da-0006788fbf37" testId="2d4e2a1a-222a-051d-2148-b1b6eab73111" testName="NotesRepositoryDeleteCallsDeletesFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.1184933" startTime="2012-08-28T14:29:05.0632689+01:00" endTime="2012-08-28T14:29:05.8273126+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="71611862-a115-42d7-b2da-0006788fbf37">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method CloudNotes.Tests.Repositories.RepositoriesTests.NotesRepositoryDeleteCallsDeletesFromTheUnitOfWork threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at CloudNotes.Repositories.Implementation.NotesRepository.Delete(Note entityToDelete) in D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Repositories\Implementation\NotesRepository.cs:line 104
+   at CloudNotes.Tests.Repositories.RepositoriesTests.NotesRepositoryDeleteCallsDeletesFromTheUnitOfWork() in D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\RepositoriesTests.cs:line 165
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+      <CollectorDataEntries>
+        <Collector agentName="BLACKBEAUTY" uri="datacollector://microsoft/TraceDebugger/1.0" collectorDisplayName="IntelliTrace">
+          <UriAttachments>
+            <UriAttachment>
+              <A href="BLACKBEAUTY\QTAgent32_120828_142905186_4944.iTrace">IntelliTrace file for 'QTAgent32.exe' (4944)</A>
+            </UriAttachment>
+          </UriAttachments>
+        </Collector>
+      </CollectorDataEntries>
+    </UnitTestResult>
+    <UnitTestResult executionId="641dbc8b-73dd-49cf-b866-8d237c89fa92" testId="2ebf2434-3f8b-3932-cf00-13d37349040e" testName="UsersRepositoryGetByIdentifiersCallsLoadFromTheUnitOfWorkForAnExistingUser" computerName="BLACKBEAUTY" duration="00:00:00.0067043" startTime="2012-08-28T14:29:05.8603145+01:00" endTime="2012-08-28T14:29:05.8733152+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="641dbc8b-73dd-49cf-b866-8d237c89fa92">
+    </UnitTestResult>
+    <UnitTestResult executionId="437cb926-b87d-45a0-82c9-423a85fa2291" testId="31c722d8-5747-84ab-dbe0-e3286ae27d8d" testName="UsersRepositoryLoadCallsLoadFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0058542" startTime="2012-08-28T14:29:05.8753153+01:00" endTime="2012-08-28T14:29:05.8883161+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="437cb926-b87d-45a0-82c9-423a85fa2291">
+    </UnitTestResult>
+    <UnitTestResult executionId="36e80e56-841a-4af0-9c80-fbaa0ef55e2a" testId="34307c16-295e-e803-42c0-fc1c9dc9e42e" testName="UsersRepositoryLoadTaskListAssociatedUsersCallsLoadAndGetFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0140502" startTime="2012-08-28T14:29:05.8913162+01:00" endTime="2012-08-28T14:29:05.9113174+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="36e80e56-841a-4af0-9c80-fbaa0ef55e2a">
+    </UnitTestResult>
+    <UnitTestResult executionId="d4888de1-52e0-48c8-8ebe-c1448ba59314" testId="4b614527-e28c-581c-d382-32a4d4aafc06" testName="NotesRepositoryNoteWithTitleExistsCallsGetFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0089437" startTime="2012-08-28T14:29:05.9143176+01:00" endTime="2012-08-28T14:29:05.9303185+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d4888de1-52e0-48c8-8ebe-c1448ba59314">
+    </UnitTestResult>
+    <UnitTestResult executionId="60d8e5b8-595a-4110-bf9f-edba78c90645" testId="53bf3163-df0e-9e62-fb0d-6671ad5acf2e" testName="NotesRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsAnExistingNote" computerName="BLACKBEAUTY" duration="00:00:00.0061438" startTime="2012-08-28T14:29:05.9323186+01:00" endTime="2012-08-28T14:29:05.9443193+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="60d8e5b8-595a-4110-bf9f-edba78c90645">
+    </UnitTestResult>
+    <UnitTestResult executionId="0846a453-7cfa-4faa-ae14-f74bd2d83c1e" testId="54e67131-47df-e2cb-c7bc-1b2b43b86483" testName="UsersRepositoryUserIsRegisteredCallsLoadFromTheUnitOfWorkForAnExistingUser" computerName="BLACKBEAUTY" duration="00:00:00.0032028" startTime="2012-08-28T14:29:05.9463194+01:00" endTime="2012-08-28T14:29:05.9643204+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0846a453-7cfa-4faa-ae14-f74bd2d83c1e">
+    </UnitTestResult>
+    <UnitTestResult executionId="9851727f-8720-4344-bde2-de94a09a7d80" testId="56cb2ba6-bd19-5c25-a99a-9bed17136d50" testName="UsersRepositoryParseIdentityProviderParsesYahooCorrectly" computerName="BLACKBEAUTY" duration="00:00:00.0002827" startTime="2012-08-28T14:29:05.9673206+01:00" endTime="2012-08-28T14:29:05.9723209+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9851727f-8720-4344-bde2-de94a09a7d80">
+    </UnitTestResult>
+    <UnitTestResult executionId="dfc20255-5fc1-43e7-8b0f-2297d5a12fc5" testId="5d59f492-e6d2-4a32-8cb5-8bac5548a5fd" testName="NotesRepositoryGetWihtFilterCallsGetFromTheUnitOfWorkAndReturnsAnExistingNote" computerName="BLACKBEAUTY" duration="00:00:00.0031440" startTime="2012-08-28T14:29:05.9753211+01:00" endTime="2012-08-28T14:29:05.9833215+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dfc20255-5fc1-43e7-8b0f-2297d5a12fc5">
+    </UnitTestResult>
+    <UnitTestResult executionId="4ca88878-f156-4ba4-ade3-23e125430d12" testId="68515e07-492a-8340-8ae8-e1f724f6552a" testName="TaskListsRepositoryCreateCallsCreatesFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0044611" startTime="2012-08-28T14:29:05.9863217+01:00" endTime="2012-08-28T14:29:05.9973223+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4ca88878-f156-4ba4-ade3-23e125430d12">
+    </UnitTestResult>
+    <UnitTestResult executionId="53f922ea-68f7-49d6-a7d3-f89c3bb4b75a" testId="68595d26-57a1-321d-c72e-7ab1ba9f7821" testName="AUserWithAnInvalidEmailIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0050429" startTime="2012-08-28T14:29:05.9993224+01:00" endTime="2012-08-28T14:29:06.0093230+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="53f922ea-68f7-49d6-a7d3-f89c3bb4b75a">
+    </UnitTestResult>
+    <UnitTestResult executionId="cd9292df-91b3-4134-b937-e7bc6728c2e7" testId="6eb006b0-f141-29b2-0ec3-c52e70221b01" testName="TaskListsRepositoryHasPermisionToEditCallsGetFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0066152" startTime="2012-08-28T14:29:06.0123232+01:00" endTime="2012-08-28T14:29:06.0243239+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cd9292df-91b3-4134-b937-e7bc6728c2e7">
+    </UnitTestResult>
+    <UnitTestResult executionId="433e37a0-f0f6-4217-adef-9479d3c6a5f1" testId="710056e6-b337-9739-6344-1fd443c7a2b3" testName="AUserWithAnNameThatHasTheCharacterHypenIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0003352" startTime="2012-08-28T14:29:06.0263240+01:00" endTime="2012-08-28T14:29:06.0313243+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="433e37a0-f0f6-4217-adef-9479d3c6a5f1">
+    </UnitTestResult>
+    <UnitTestResult executionId="8c147d7a-ba96-4701-a726-4289fe6a8681" testId="71f98d0e-df98-5602-5fd6-919d9101bb93" testName="ATaskListWithAllPropertiesValidIsValid" computerName="BLACKBEAUTY" duration="00:00:00.0004303" startTime="2012-08-28T14:29:06.0333244+01:00" endTime="2012-08-28T14:29:06.0383247+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8c147d7a-ba96-4701-a726-4289fe6a8681">
+    </UnitTestResult>
+    <UnitTestResult executionId="23f9f619-56db-4d57-8cef-e8409afc87a1" testId="7a009e26-62e5-1f69-5cdb-854dc672f6ae" testName="ANoteWithContentLongerThan50CharactersIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0006534" startTime="2012-08-28T14:29:06.0423249+01:00" endTime="2012-08-28T14:29:06.0493253+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="23f9f619-56db-4d57-8cef-e8409afc87a1">
+    </UnitTestResult>
+    <UnitTestResult executionId="ddc9f22e-2423-4c2b-bc04-ab97421b46ea" testId="7a76042e-b11e-169d-7b16-2fadf1332acd" testName="TaskListRepositoryLoadContainerCallsGetsFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0090900" startTime="2012-08-28T14:29:06.0523255+01:00" endTime="2012-08-28T14:29:06.0663263+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ddc9f22e-2423-4c2b-bc04-ab97421b46ea">
+    </UnitTestResult>
+    <UnitTestResult executionId="5072adb9-3789-4079-8cf4-80fbfe006543" testId="7d09f543-4324-80a8-54ae-156dcda31038" testName="AUserWithAValidEmailIsValid" computerName="BLACKBEAUTY" duration="00:00:00.0005387" startTime="2012-08-28T14:29:06.0693264+01:00" endTime="2012-08-28T14:29:06.0743267+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5072adb9-3789-4079-8cf4-80fbfe006543">
+    </UnitTestResult>
+    <UnitTestResult executionId="132987db-c2e7-494b-bf9b-5f94cd3f533e" testId="7d6998de-08bc-b5a5-f97c-68e4a87d69dc" testName="NotesRepositoryAddShareCallsCreateFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0021100" startTime="2012-08-28T14:29:06.0763268+01:00" endTime="2012-08-28T14:29:06.0833272+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="132987db-c2e7-494b-bf9b-5f94cd3f533e">
+    </UnitTestResult>
+    <UnitTestResult executionId="029d53c8-1d6b-419f-a611-da036894c06a" testId="83144cc2-eba3-40b7-3a94-8375dcee99f1" testName="UsersRepositoryParseIdentityProviderParsesWindowsLiveIDCorrectly" computerName="BLACKBEAUTY" duration="00:00:00.0002550" startTime="2012-08-28T14:29:06.0853273+01:00" endTime="2012-08-28T14:29:06.0903276+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="029d53c8-1d6b-419f-a611-da036894c06a">
+    </UnitTestResult>
+    <UnitTestResult executionId="e77544fe-c4da-420c-91a2-c4ce3f888c5b" testId="846215b7-3a17-549a-a8bb-e3c8573dbdf6" testName="TaskListsRepositoryDeleteCallsDeleteFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0100480" startTime="2012-08-28T14:29:06.0923277+01:00" endTime="2012-08-28T14:29:06.1073286+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e77544fe-c4da-420c-91a2-c4ce3f888c5b">
+    </UnitTestResult>
+    <UnitTestResult executionId="efeeb925-5a54-4caa-b989-ceeeaca0bc0f" testId="852657b0-510e-88d6-c043-399bc17187ed" testName="ANoteWithAnEmptyContentIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0004900" startTime="2012-08-28T14:29:06.1103288+01:00" endTime="2012-08-28T14:29:06.1153291+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="efeeb925-5a54-4caa-b989-ceeeaca0bc0f">
+    </UnitTestResult>
+    <UnitTestResult executionId="18a8456f-398e-454d-b358-61d5128daddb" testId="8d3bfe9f-40a5-6515-7c0c-d1c6b7990ea3" testName="TaskListsRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsNullForANonExistingTaskList" computerName="BLACKBEAUTY" duration="00:00:00.0017667" startTime="2012-08-28T14:29:06.1173292+01:00" endTime="2012-08-28T14:29:06.1233295+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="18a8456f-398e-454d-b358-61d5128daddb">
+    </UnitTestResult>
+    <UnitTestResult executionId="f60f36d7-15fc-4d30-872c-aae9b6ed220d" testId="8e102b5d-e958-b297-bb65-7f1f98f7fdce" testName="UsersRepositoryCreateCallsCreateFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0027737" startTime="2012-08-28T14:29:06.1263297+01:00" endTime="2012-08-28T14:29:06.1333301+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f60f36d7-15fc-4d30-872c-aae9b6ed220d">
+    </UnitTestResult>
+    <UnitTestResult executionId="6e089c8d-da38-4c1c-9cb8-b4a0183f9bb9" testId="8f90efd1-0a3e-6847-1469-eec0d3368773" testName="UsersRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsNullForANonExistingUser" computerName="BLACKBEAUTY" duration="00:00:00.0010893" startTime="2012-08-28T14:29:06.1353302+01:00" endTime="2012-08-28T14:29:06.1423306+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6e089c8d-da38-4c1c-9cb8-b4a0183f9bb9">
+    </UnitTestResult>
+    <UnitTestResult executionId="bafe4a5f-4356-4f0b-a211-8ac40787fc8e" testId="9863ea66-4389-d916-e2df-c69ea144bb25" testName="UsersRepositoryGetCallsWithFilterGetFromTheUnitOfWorkAndReturnsAExistingTaskList" computerName="BLACKBEAUTY" duration="00:00:00.0052417" startTime="2012-08-28T14:29:06.1443307+01:00" endTime="2012-08-28T14:29:06.1613317+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bafe4a5f-4356-4f0b-a211-8ac40787fc8e">
+    </UnitTestResult>
+    <UnitTestResult executionId="d577bbb0-d6a6-46eb-9d37-887a9c2a5099" testId="9ca52fa0-c559-7623-fd35-fc2380d7afd8" testName="TaskListsRepositoryGetSharedCallsLoadFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0088886" startTime="2012-08-28T14:29:06.1643319+01:00" endTime="2012-08-28T14:29:06.1783327+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d577bbb0-d6a6-46eb-9d37-887a9c2a5099">
+    </UnitTestResult>
+    <UnitTestResult executionId="b930623d-5d5f-4c00-ad9a-be0c6a20844b" testId="a49419de-351d-ddee-3740-c07af74b36d5" testName="NotesRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsNullForANonExistingNote" computerName="BLACKBEAUTY" duration="00:00:00.0016042" startTime="2012-08-28T14:29:06.1803328+01:00" endTime="2012-08-28T14:29:06.1913334+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b930623d-5d5f-4c00-ad9a-be0c6a20844b">
+    </UnitTestResult>
+    <UnitTestResult executionId="9a52e522-49a4-4c3c-9974-29c0aff9d6f2" testId="a6c1fa83-a867-97da-f19d-bbb05c37bcee" testName="UsersRepositoryGetByIdentifiersCallsLoadFromTheUnitOfWorkForNonExistingUser" computerName="BLACKBEAUTY" duration="00:00:00.0029879" startTime="2012-08-28T14:29:06.1943336+01:00" endTime="2012-08-28T14:29:06.2013340+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9a52e522-49a4-4c3c-9974-29c0aff9d6f2">
+    </UnitTestResult>
+    <UnitTestResult executionId="b59b61ff-207c-426e-bee4-b97b6cd36ef7" testId="a780d5d0-43e2-3171-7945-424274cf7cfb" testName="NotesRepositoryUpdateCallsUpdateFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0034268" startTime="2012-08-28T14:29:06.2043342+01:00" endTime="2012-08-28T14:29:06.2123346+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b59b61ff-207c-426e-bee4-b97b6cd36ef7">
+    </UnitTestResult>
+    <UnitTestResult executionId="cca0c008-645c-4df1-b691-5b917a4588de" testId="a92d683e-6db6-da08-1853-c0e53902a155" testName="ATaskListWithAnAllWhitespaceTittleIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0003988" startTime="2012-08-28T14:29:06.2143347+01:00" endTime="2012-08-28T14:29:06.2203351+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cca0c008-645c-4df1-b691-5b917a4588de">
+    </UnitTestResult>
+    <UnitTestResult executionId="9f54f502-e007-4f51-bb96-5b089c18a9fc" testId="ad8e41a5-ec19-61e8-ab78-b0066874f9a4" testName="TaskListsRepositoryGetCallsWithFilterGetFromTheUnitOfWorkAndReturnsAExistingTaskList" computerName="BLACKBEAUTY" duration="00:00:00.0053193" startTime="2012-08-28T14:29:06.2223352+01:00" endTime="2012-08-28T14:29:06.2323358+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9f54f502-e007-4f51-bb96-5b089c18a9fc">
+    </UnitTestResult>
+    <UnitTestResult executionId="9cc366e7-0c1a-46cd-9464-07c7d880f991" testId="b0f72c88-e8e6-d5ef-9b19-7fed7babeddb" testName="ATaskListWithAnEmptyTittleIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0003885" startTime="2012-08-28T14:29:06.2343359+01:00" endTime="2012-08-28T14:29:06.2393362+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9cc366e7-0c1a-46cd-9464-07c7d880f991">
+    </UnitTestResult>
+    <UnitTestResult executionId="56e4d52b-9669-440a-9099-fb869ba9a5c1" testId="b3e5450c-7394-e772-4c0f-83c0f0cc9085" testName="NotesRepositoryCreateCallsCreateFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0118616" startTime="2012-08-28T14:29:06.2413363+01:00" endTime="2012-08-28T14:29:06.2583372+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="56e4d52b-9669-440a-9099-fb869ba9a5c1">
+    </UnitTestResult>
+    <UnitTestResult executionId="b8a388f8-31a7-4d95-b97f-8b103256e4c3" testId="b8b966b4-c265-1627-ba5e-4d3e17d291be" testName="UsersRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsAExistingUser" computerName="BLACKBEAUTY" duration="00:00:00.0021096" startTime="2012-08-28T14:29:06.2613374+01:00" endTime="2012-08-28T14:29:06.2673378+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b8a388f8-31a7-4d95-b97f-8b103256e4c3">
+    </UnitTestResult>
+    <UnitTestResult executionId="0245524e-d6b8-47e9-ba70-65104e386c2d" testId="c14c078d-036a-ef14-90a0-c1d1a047c940" testName="ANoteWithAllValidPropertiesIsValid" computerName="BLACKBEAUTY" duration="00:00:00.0004828" startTime="2012-08-28T14:29:06.2703379+01:00" endTime="2012-08-28T14:29:06.2753382+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0245524e-d6b8-47e9-ba70-65104e386c2d">
+    </UnitTestResult>
+    <UnitTestResult executionId="d904acea-ad7c-4fca-a6fb-12fc597b3031" testId="c775d00d-9095-a8a9-2433-76c5a0405657" testName="NotesRepositoryRemoveShareCallsDeleteFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0024927" startTime="2012-08-28T14:29:06.2773383+01:00" endTime="2012-08-28T14:29:06.2843387+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d904acea-ad7c-4fca-a6fb-12fc597b3031">
+    </UnitTestResult>
+    <UnitTestResult executionId="150533da-174d-491f-87b8-4c3dd537717f" testId="d6129223-175a-65cf-54ae-8d91d8e336cb" testName="UsersRepositoryParseIdentityProviderParsesGoogleCorrectly" computerName="BLACKBEAUTY" duration="00:00:00.0002243" startTime="2012-08-28T14:29:06.2873389+01:00" endTime="2012-08-28T14:29:06.2913391+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="150533da-174d-491f-87b8-4c3dd537717f">
+    </UnitTestResult>
+    <UnitTestResult executionId="bf56a7ac-983b-4e4a-8626-9391e5950804" testId="da07899b-e0b9-f639-2145-62f05a55637a" testName="UsersRepositoryUpdateCallsUpdateFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0018162" startTime="2012-08-28T14:29:06.2943393+01:00" endTime="2012-08-28T14:29:06.3003396+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bf56a7ac-983b-4e4a-8626-9391e5950804">
+    </UnitTestResult>
+    <UnitTestResult executionId="0c25a5aa-3064-4f54-810d-f22e335d42f6" testId="e3d8badb-d961-d4d2-2fc7-38832d7198cd" testName="UsersRepositoryLoadNoteOwnerCallsLoadAndGetFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0022721" startTime="2012-08-28T14:29:06.3023398+01:00" endTime="2012-08-28T14:29:06.3093402+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0c25a5aa-3064-4f54-810d-f22e335d42f6">
+    </UnitTestResult>
+    <UnitTestResult executionId="8a3be035-db64-47f7-a0cb-ce2e06e81dcb" testId="e7bbd4b2-5c95-3563-fc1e-37f3d3d4a55d" testName="AUserWithAnNameThatHasTheCharacterPlusIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0003062" startTime="2012-08-28T14:29:06.3113403+01:00" endTime="2012-08-28T14:29:06.3163406+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8a3be035-db64-47f7-a0cb-ce2e06e81dcb">
+    </UnitTestResult>
+    <UnitTestResult executionId="203868b7-c784-4930-a478-63f6a5d7fdd9" testId="e814db0b-a976-414f-8c66-ad00681e848f" testName="ANoteWithANullOwnerIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0004794" startTime="2012-08-28T14:29:06.3183407+01:00" endTime="2012-08-28T14:29:06.3243410+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="203868b7-c784-4930-a478-63f6a5d7fdd9">
+    </UnitTestResult>
+    <UnitTestResult executionId="9de14c7b-a56a-42ba-bd9e-5e3ee302ff2f" testId="ec7711e0-6e36-94b0-fa70-9adecfa8a8f1" testName="NotesRepositoryLoadNotesCallsLoadAndGetsFromTheUnitOfWork" computerName="BLACKBEAUTY" duration="00:00:00.0176600" startTime="2012-08-28T14:29:06.3263411+01:00" endTime="2012-08-28T14:29:06.3483424+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9de14c7b-a56a-42ba-bd9e-5e3ee302ff2f">
+    </UnitTestResult>
+    <UnitTestResult executionId="597f4641-36ca-4b7d-9a91-6705c1d132b4" testId="fd2d9e08-8f5d-4406-828f-63af07dc5bf7" testName="ANoteWithATittleLongerThan10CharactersIsInvalid" computerName="BLACKBEAUTY" duration="00:00:00.0004849" startTime="2012-08-28T14:29:06.3503425+01:00" endTime="2012-08-28T14:29:06.3633432+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="597f4641-36ca-4b7d-9a91-6705c1d132b4">
+    </UnitTestResult>
+    <UnitTestResult executionId="64f5edf9-b764-4ca8-990d-16ee75c66163" testId="ffc79e9b-00ea-8cc7-18d0-a502995f20d0" testName="TaskListRepositoryGetCallsGetFromTheUnitOfWorkAndReturnsAnExistingTaskList" computerName="BLACKBEAUTY" duration="00:00:00.0026880" startTime="2012-08-28T14:29:06.3663434+01:00" endTime="2012-08-28T14:29:06.3733438+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="64f5edf9-b764-4ca8-990d-16ee75c66163">
+    </UnitTestResult>
+  </Results>
+</TestRun>

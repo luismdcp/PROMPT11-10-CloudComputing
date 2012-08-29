@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using CloudNotes.Domain.Entities;
 using CloudNotes.Repositories.Contracts;
 using CloudNotes.Repositories.Entities;
 using CloudNotes.Repositories.Entities.Relation;
 using CloudNotes.Repositories.Extensions;
+using CloudNotes.Repositories.Helpers;
 
 namespace CloudNotes.Tests.Domain.Services.Memory
 {
@@ -12,9 +15,23 @@ namespace CloudNotes.Tests.Domain.Services.Memory
     {
         #region Fields
 
-        private readonly List<TaskListTableEntry> _taskListsTableEntries;
-        private readonly List<TaskListOwnerTableEntry> _taskListOwnerTableEntries;
-        private readonly List<TaskListAssociatedUserTableEntry> _taskListAssociatedUsersTableEntries;
+        public readonly List<TaskListEntity> TaskLists;
+        public readonly List<TaskListShareEntity> TaskListShares;
+        public readonly List<TaskListNoteEntity> TaskListNotes;
+        public const string IdentityProvider = "windowsliveid";
+        public const string User1RowKey = "user1-WindowsLiveID";
+        public const string User2RowKey = "user2-WindowsLiveID";
+        public const string User3RowKey = "user3-WindowsLiveID";
+        public const string Note1PartitionKey = "user1-WindowsLiveID";
+        public const string Note2PartitionKey = "user2-WindowsLiveID";
+        public readonly string Note1RowKey = ShortGuid.NewGuid().ToString();
+        public readonly string Note2RowKey = ShortGuid.NewGuid().ToString();
+        public readonly string Note3RowKey = ShortGuid.NewGuid().ToString();
+        public const string TaskList1PartitionKey = "user1-WindowsLiveID";
+        public const string TaskList2PartitionKey = "user2-WindowsLiveID";
+        public readonly string TaskList1RowKey = ShortGuid.NewGuid().ToString();
+        public readonly string TaskList2RowKey = ShortGuid.NewGuid().ToString();
+        public readonly string TaskList3RowKey = ShortGuid.NewGuid().ToString();
 
         #endregion Fields
 
@@ -22,25 +39,25 @@ namespace CloudNotes.Tests.Domain.Services.Memory
 
         public TaskListsMemoryRepository()
         {
-            _taskListsTableEntries = new List<TaskListTableEntry>
+            TaskLists = new List<TaskListEntity>
                                      {
-                                         new TaskListTableEntry("user1", "taskList1") { Title = "Title 1"}, 
-                                         new TaskListTableEntry("user2", "taskList2") { Title = "Title 2"}
+                                         new TaskListEntity(User1RowKey, TaskList1RowKey) { Title = "Title 1"}, 
+                                         new TaskListEntity(User2RowKey, TaskList2RowKey) { Title = "Title 2"}
                                      };
 
-            _taskListOwnerTableEntries = new List<TaskListOwnerTableEntry>
-                                         {
-                                             new TaskListOwnerTableEntry("user1", "taskList1"),
-                                             new TaskListOwnerTableEntry("user2", "taskList2")
-                                         };
-
-            _taskListAssociatedUsersTableEntries = new List<TaskListAssociatedUserTableEntry>
+            TaskListShares = new List<TaskListShareEntity>
                                                    {
-                                                       new TaskListAssociatedUserTableEntry("taskList1", "user1"),
-                                                       new TaskListAssociatedUserTableEntry("taskList1", "user3"),
-                                                       new TaskListAssociatedUserTableEntry("taskList2", "user2"),
-                                                       new TaskListAssociatedUserTableEntry("taskList2", "user3")
+                                                       new TaskListShareEntity(string.Format("{0}+{1}", TaskList1PartitionKey, TaskList1RowKey), User1RowKey),
+                                                       new TaskListShareEntity(string.Format("{0}+{1}", TaskList1PartitionKey, TaskList1RowKey), User3RowKey),
+                                                       new TaskListShareEntity(string.Format("{0}+{1}", TaskList2PartitionKey, TaskList2RowKey), User2RowKey),
+                                                       new TaskListShareEntity(string.Format("{0}+{1}", TaskList2PartitionKey, TaskList2RowKey), User3RowKey)
                                                    };
+
+            TaskListNotes = new List<TaskListNoteEntity>
+                                 {
+                                     new TaskListNoteEntity(string.Format("{0}+{1}", TaskList1PartitionKey, TaskList1RowKey), string.Format("{0}+{1}", Note1PartitionKey, Note1RowKey)),
+                                     new TaskListNoteEntity(string.Format("{0}+{1}", TaskList1PartitionKey, TaskList1RowKey), string.Format("{0}+{1}", Note2PartitionKey, Note2RowKey))
+                                 };
         }
 
         #endregion Constructors
@@ -49,47 +66,57 @@ namespace CloudNotes.Tests.Domain.Services.Memory
 
         public IQueryable<TaskList> Load()
         {
-            return _taskListsTableEntries.Select(n => n.MapToTaskList()).AsQueryable();
+            return TaskLists.Select(n => n.MapToTaskList()).AsQueryable();
         }
 
         public TaskList Get(string partitionKey, string rowKey)
         {
-            var result = _taskListsTableEntries.FirstOrDefault(n => n.PartitionKey == partitionKey && n.RowKey == rowKey);
+            var result = TaskLists.FirstOrDefault(n => n.PartitionKey == partitionKey && n.RowKey == rowKey);
             return result != null ? result.MapToTaskList() : null;
+        }
+
+        public TaskList Get(Expression<Func<TaskList, bool>> filter)
+        {
+            var result = TaskLists.Select(n => n.MapToTaskList()).AsQueryable().FirstOrDefault(filter);
+            return result;
         }
 
         public void Create(TaskList entityToCreate)
         {
-            var taskListTableEntry = entityToCreate.MapToTaskListTableEntry();
-            var taskListOwnerTableEntry = new TaskListOwnerTableEntry(entityToCreate.Owner.RowKey, entityToCreate.RowKey);
-            var taskListAssociatedUserTableEntry = new TaskListAssociatedUserTableEntry(entityToCreate.RowKey, entityToCreate.Owner.RowKey);
+            var taskList = entityToCreate.MapToTaskListEntity();
+            var taskListShare = new TaskListShareEntity(entityToCreate.RowKey, entityToCreate.Owner.RowKey);
 
-            _taskListsTableEntries.Add(taskListTableEntry);
-            _taskListOwnerTableEntries.Add(taskListOwnerTableEntry);
-            _taskListAssociatedUsersTableEntries.Add(taskListAssociatedUserTableEntry);
+            TaskLists.Add(taskList);
+            TaskListShares.Add(taskListShare);
         }
 
         public void Update(TaskList entityToUpdate)
         {
-            var taskListTableEntryToUpdate = _taskListsTableEntries.First(n => n.PartitionKey == entityToUpdate.PartitionKey && n.RowKey == entityToUpdate.RowKey);
-            taskListTableEntryToUpdate.Title = entityToUpdate.Title;
+            var taskList = entityToUpdate.MapToTaskListEntity();
+            var taskListToRemove = TaskLists.First(n => n.PartitionKey == taskList.PartitionKey && n.RowKey == taskList.RowKey);
+
+            TaskLists.Remove(taskListToRemove);
+            TaskLists.Add(taskList);
         }
 
         public void Delete(TaskList entityToDelete)
         {
-            _taskListsTableEntries.RemoveAll(n => n.PartitionKey == entityToDelete.PartitionKey && n.RowKey == entityToDelete.RowKey);
-            _taskListOwnerTableEntries.RemoveAll(n => n.RowKey == entityToDelete.RowKey);
-            _taskListAssociatedUsersTableEntries.RemoveAll(n => n.PartitionKey == entityToDelete.RowKey);
+            TaskLists.RemoveAll(n => n.PartitionKey == entityToDelete.PartitionKey && n.RowKey == entityToDelete.RowKey);
+            TaskListShares.RemoveAll(n => n.PartitionKey == entityToDelete.RowKey);
         }
 
-        public IEnumerable<TaskList> GetTaskListsAssociatedByUser(User user)
+        public IEnumerable<TaskList> GetShared(User user)
         {
             var taskLists = new List<TaskList>();
-            var taskListsAssociatedToUserEntries = _taskListAssociatedUsersTableEntries.Where(t => t.RowKey == user.RowKey);
+            var taskListShares = TaskListShares.Where(t => t.RowKey == user.RowKey);
 
-            foreach (var taskListAssociatedUserTableEntry in taskListsAssociatedToUserEntries)
+            foreach (var taskListShare in taskListShares)
             {
-                var taskList = _taskListsTableEntries.FirstOrDefault(t => t.RowKey == taskListAssociatedUserTableEntry.PartitionKey);
+                var taskListKeys = taskListShare.PartitionKey.Split('+');
+                var taskListPartitionKey = taskListKeys[0];
+                var taskListRowKey = taskListKeys[1];
+
+                var taskList = TaskLists.FirstOrDefault(t => t.PartitionKey == taskListPartitionKey && t.RowKey == taskListRowKey);
 
                 if (taskList != null)
                 {
@@ -100,35 +127,40 @@ namespace CloudNotes.Tests.Domain.Services.Memory
             return taskLists.AsEnumerable();
         }
 
-        public void AddAssociatedUser(TaskList taskList, User associatedUser)
+        public void AddShare(TaskList taskList, string userId)
         {
-            _taskListAssociatedUsersTableEntries.Add(new TaskListAssociatedUserTableEntry(taskList.RowKey, associatedUser.RowKey));
+            TaskListShares.Add(new TaskListShareEntity(string.Format("{0}+{1}", taskList.PartitionKey, taskList.RowKey), userId));
         }
 
-        public void RemoveAssociatedUser(TaskList taskList, User associatedUser)
+        public void RemoveShare(TaskList taskList, string userId)
         {
-            _taskListAssociatedUsersTableEntries.RemoveAll(n => n.PartitionKey == taskList.RowKey && n.RowKey == associatedUser.RowKey);
+            TaskListShares.RemoveAll(n => n.PartitionKey == string.Format("{0}+{1}", taskList.PartitionKey, taskList.RowKey) && n.RowKey == userId);
         }
 
-        public void CopyNote(TaskList taskListSource, TaskList taskListDestination, Note note)
+        public void LoadContainer(Note note)
         {
-            var newNote = new Note(taskListDestination.RowKey, note.RowKey)
+            var taskListNote = TaskListNotes.FirstOrDefault(tn => tn.RowKey == string.Format("{0}+{1}", note.PartitionKey, note.RowKey));
+
+            if (taskListNote != null)
             {
-                IsClosed = note.IsClosed,
-                OrderingIndex = note.OrderingIndex,
-                Owner = note.Owner,
-                Title = note.Title,
-                ContainerList = taskListDestination
-            };
+                var taskListKeys = taskListNote.PartitionKey.Split('+');
+                var taskListPartitionKey = taskListKeys[0];
+                var taskListRowKey = taskListKeys[1];
+                var taskList = TaskLists.FirstOrDefault(t => t.PartitionKey == taskListPartitionKey && t.RowKey == taskListRowKey);
 
-            taskListDestination.Notes.Add(newNote);
+                if (taskList != null)
+                {
+                    note.Container = taskList.MapToTaskList();   
+                }
+            }
         }
 
-        public void MoveNote(TaskList taskListSource, TaskList taskListDestination, Note note)
+        public bool HasPermissionToEdit(User user, TaskList taskList)
         {
-            taskListSource.Notes.Remove(note);
-            note.ContainerList = taskListDestination;
-            taskListDestination.Notes.Add(note);
+            var taskListSharePartitionKey = string.Format("{0}+{1}", taskList.PartitionKey, taskList.RowKey);
+            var taskListShareRowkey = user.RowKey;
+
+            return TaskListShares.Any(ns => ns.PartitionKey == taskListSharePartitionKey && ns.RowKey == taskListShareRowkey);
         }
 
         #endregion Public methods

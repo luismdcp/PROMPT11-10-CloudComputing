@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using CloudNotes.Domain.Entities;
 using CloudNotes.Repositories.Contracts;
 using CloudNotes.Repositories.Entities;
 using CloudNotes.Repositories.Entities.Relation;
 using CloudNotes.Repositories.Extensions;
+using CloudNotes.Repositories.Helpers;
 
 namespace CloudNotes.Repositories.Implementation
 {
@@ -30,29 +32,32 @@ namespace CloudNotes.Repositories.Implementation
 
         public IQueryable<TaskList> Load()
         {
-            return _unitOfWork.Load<TaskListTableEntry>("TaskLists").ToList().Select(t => t.MapToTaskList()).AsQueryable();
+            return _unitOfWork.Load<TaskListEntity>("TaskLists").ToList().Select(t => t.MapToTaskList()).AsQueryable();
         }
 
         public TaskList Get(string partitionKey, string rowKey)
         {
-            var result = _unitOfWork.Get<TaskListTableEntry>("TaskLists", partitionKey, rowKey);
+            var result = _unitOfWork.Get<TaskListEntity>("TaskLists", t => t.PartitionKey == partitionKey && t.RowKey == rowKey);
             return result != null ? result.MapToTaskList() : null;
         }
 
-        public TaskList GetByTitleAndOwner(string title, User owner)
+        public TaskList Get(Expression<Func<TaskList, bool>> filter)
         {
-            var result = _unitOfWork.Load<TaskListTableEntry>("TaskLists").Where(t => t.PartitionKey == owner.RowKey && t.Title == title).FirstOrDefault();
-            return result != null ? result.MapToTaskList() : null;
+            return _unitOfWork.Get("TaskLists", filter);
         }
 
-        public IEnumerable<TaskList> GetTaskListsAssociatedByUser(User user)
+        public IEnumerable<TaskList> GetShared(User user)
         {
             var taskLists = new List<TaskList>();
-            var taskListsAssociatedToUserEntries = _unitOfWork.Load<TaskListAssociatedUserTableEntry>("TaskListAssociatedUsers").Where(t => t.RowKey == user.RowKey);
+            var taskListShares = _unitOfWork.Load<TaskListShareEntity>("TaskListShares", ts => ts.RowKey == user.RowKey);
 
-            foreach (var taskListAssociatedUserTableEntry in taskListsAssociatedToUserEntries)
+            foreach (var taskListShare in taskListShares)
             {
-                var taskList = _unitOfWork.Load<TaskListTableEntry>("TaskLists").Where(t => t.RowKey == taskListAssociatedUserTableEntry.PartitionKey).FirstOrDefault();
+                var keys = taskListShare.PartitionKey.Split('+');
+                var taskListPartitionKey = keys[0];
+                var taskListRowKey = keys[1];
+
+                var taskList = _unitOfWork.Get<TaskListEntity>("TaskLists", t => t.PartitionKey == taskListPartitionKey && t.RowKey == taskListRowKey);
 
                 if (taskList != null)
                 {
@@ -63,57 +68,78 @@ namespace CloudNotes.Repositories.Implementation
             return taskLists.AsEnumerable();
         }
 
-        public IEnumerable<TaskList> GetTaskListsOwnedByUser(User user)
+        public void LoadContainer(Note note)
         {
-            var taskLists = new List<TaskList>();
-            var taskListsOwnedByUserEntries = _unitOfWork.Load<TaskListTableEntry>("TaskLists").Where(t => t.PartitionKey == user.RowKey);
+            var taskListNoteRowKey = string.Format("{0}+{1}", note.PartitionKey, note.RowKey);
+            var taskListNote = _unitOfWork.Get<TaskListEntity>("TaskListNotes", tn => tn.RowKey == taskListNoteRowKey);
 
-            foreach (var taskListsOwnedByUserEntry in taskListsOwnedByUserEntries)
+            var containerKeys = taskListNote.PartitionKey.Split('+');
+            var containerPartitionKey = containerKeys[0];
+            var containerRowKey = containerKeys[1];
+            var container = Get(containerPartitionKey, containerRowKey);
+
+            if (container != null)
             {
-                taskLists.Add(taskListsOwnedByUserEntry.MapToTaskList());
+                note.Container = container;
             }
-
-            return taskLists.AsEnumerable();
         }
 
         public void Create(TaskList entityToCreate)
         {
             entityToCreate.PartitionKey = entityToCreate.Owner.RowKey;
-            entityToCreate.RowKey = Guid.NewGuid().ToString();
+            entityToCreate.RowKey = ShortGuid.NewGuid();
 
-            var taskListTableEntry = entityToCreate.MapToTaskListTableEntry();
-            _unitOfWork.Create(taskListTableEntry, "TaskLists");
+            var taskListEntity = entityToCreate.MapToTaskListEntity();
+            _unitOfWork.Create(taskListEntity, "TaskLists");
 
-            var taskListAssociatedUsersTableEntry = new TaskListAssociatedUserTableEntry(entityToCreate.RowKey, entityToCreate.Owner.RowKey);
-            _unitOfWork.Create(taskListAssociatedUsersTableEntry, "TaskListAssociatedUsers");
+            var sharePartitionKey = string.Format("{0}+{1}", entityToCreate.PartitionKey, entityToCreate.RowKey);
+            var taskListShare = new TaskListShareEntity(sharePartitionKey, entityToCreate.Owner.RowKey);
+            _unitOfWork.Create(taskListShare, "TaskListShares");
         }
 
         public void Update(TaskList entityToUpdate)
         {
-            _unitOfWork.Update("TaskLists", entityToUpdate.MapToTaskListTableEntry());
+            _unitOfWork.Update("TaskLists", entityToUpdate.MapToTaskListEntity());
         }
 
         public void Delete(TaskList entityToDelete)
         {
-            _unitOfWork.Delete<TaskListTableEntry>("TaskLists", entityToDelete.PartitionKey, entityToDelete.RowKey);
+            _unitOfWork.Delete<TaskListEntity>("TaskLists", entityToDelete.PartitionKey, entityToDelete.RowKey);
 
-            var associatedUsers = _unitOfWork.Load<TaskListAssociatedUserTableEntry>("TaskListAssociatedUsers").Where(tu => tu.PartitionKey == entityToDelete.RowKey);
+            var sharePartitionKey = string.Format("{0}+{1}", entityToDelete.PartitionKey, entityToDelete.RowKey);
+            var taskListShares = _unitOfWork.Load<TaskListShareEntity>("TaskListShares", ts => ts.PartitionKey == sharePartitionKey);
 
-            foreach (var taskListAssociatedUserTableEntry in associatedUsers)
+            foreach (var taskListShare in taskListShares)
             {
-                _unitOfWork.Delete<TaskListAssociatedUserTableEntry>("TaskListAssociatedUsers", taskListAssociatedUserTableEntry.PartitionKey, taskListAssociatedUserTableEntry.RowKey);
+                _unitOfWork.Delete<TaskListShareEntity>("TaskListShares", taskListShare.PartitionKey, taskListShare.RowKey);
+            }
+
+            var taskListNotePartitionKey = sharePartitionKey;
+            var taskListNotes = _unitOfWork.Load<TaskListNoteEntity>("TaskListNotes", ts => ts.PartitionKey == taskListNotePartitionKey);
+
+            foreach (var taskListNoteEntity in taskListNotes)
+            {
+                _unitOfWork.Delete<TaskListNoteEntity>("TaskListNotes", taskListNoteEntity.PartitionKey, taskListNoteEntity.RowKey);
             }
         }
 
-        public void AddAssociatedUser(TaskList taskList, User userToAdd)
+        public void AddShare(TaskList taskList, string userId)
         {
-            var taskListAssociatedUsersTableEntry = new TaskListAssociatedUserTableEntry(taskList.PartitionKey, userToAdd.RowKey);
-            _unitOfWork.Create(taskListAssociatedUsersTableEntry, "TaskListAssociatedUsers");
+            var sharePartitionKey = string.Format("{0}+{1}", taskList.PartitionKey, taskList.RowKey);
+            var share = new TaskListShareEntity(sharePartitionKey, userId);
+            _unitOfWork.Create(share, "TaskListShares");
         }
 
-        public void RemoveAssociatedUser(TaskList taskList, User userToRemove)
+        public void RemoveShare(TaskList taskList, string userId)
         {
-            _unitOfWork.Delete<TaskListAssociatedUserTableEntry>("TaskListAssociatedUsers", taskList.RowKey, userToRemove.RowKey);
+            var sharePartitionKey = string.Format("{0}+{1}", taskList.PartitionKey, taskList.RowKey);
+            _unitOfWork.Delete<TaskListShareEntity>("TaskListShares", sharePartitionKey, userId);
+        }
+
+        public bool HasPermissionToEdit(User user, TaskList taskList)
+        {
+            var taskListSharePartitionKey = string.Format("{0}+{1}", taskList.PartitionKey, taskList.RowKey);
+            return _unitOfWork.Get<TaskListShareEntity>("TaskListShares", ts => ts.PartitionKey == taskListSharePartitionKey && ts.RowKey == user.RowKey) != null;
         }
 
         #endregion Public methods

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using CloudNotes.Domain.Entities;
 using CloudNotes.Domain.Services.Contracts;
 using CloudNotes.Repositories.Contracts;
@@ -13,18 +15,16 @@ namespace CloudNotes.Domain.Services.Implementation
         private readonly IUnitOfWork _unitOfWork;
         private readonly ITaskListsRepository _taskListsRepository;
         private readonly INotesRepository _notesRepository;
-        private readonly IUsersService _usersService;
 
         #endregion Fields
 
         #region Constructors
 
-        public TaskListsService(IUnitOfWork unitOfWork, ITaskListsRepository taskListsRepository, INotesRepository notesRepository, IUsersService usersService)
+        public TaskListsService(IUnitOfWork unitOfWork, ITaskListsRepository taskListsRepository, INotesRepository notesRepository)
         {
             _unitOfWork = unitOfWork;
             _taskListsRepository = taskListsRepository;
             _notesRepository = notesRepository;
-            _usersService = usersService;
         }
 
         #endregion Constructors
@@ -41,18 +41,17 @@ namespace CloudNotes.Domain.Services.Implementation
             return _taskListsRepository.Get(partitionKey, rowKey);
         }
 
-        public TaskList GetByTitleAndOwner(string title, User owner)
+        public TaskList Get(Expression<Func<TaskList, bool>> filter)
         {
-            return _taskListsRepository.GetByTitleAndOwner(title, owner);
+            return _taskListsRepository.Get(filter);
         }
 
-        public TaskList GetTaskListEagerLoaded(string taskListTitle, User user)
+        public TaskList Get(string combinedKeys)
         {
-            var taskList = GetByTitleAndOwner(taskListTitle.Replace('-', ' '), user);
-            _usersService.LoadTaskListOwner(taskList);
-            _usersService.LoadTaskListAssociatedUsers(taskList);
-
-            return taskList;
+            var taskListKeys = combinedKeys.Split('+');
+            var taskListPartitionKey = taskListKeys[0];
+            var taskListRowKey = taskListKeys[1];
+            return Get(taskListPartitionKey, taskListRowKey);
         }
 
         public void Create(TaskList entityToCreate)
@@ -69,32 +68,43 @@ namespace CloudNotes.Domain.Services.Implementation
 
         public void Delete(TaskList entityToDelete)
         {
+            _notesRepository.LoadNotes(entityToDelete);
+
+            foreach (var note in entityToDelete.Notes)
+            {
+                _notesRepository.Delete(note);
+            }
+
             _taskListsRepository.Delete(entityToDelete);
+
             _unitOfWork.SubmitChanges();
         }
 
-        public IEnumerable<TaskList> GetTaskListsUserIsAssociated(User user)
+        public IEnumerable<TaskList> GetShared(User user)
         {
-            return _taskListsRepository.GetTaskListsAssociatedByUser(user);
+            return _taskListsRepository.GetShared(user);
         }
 
-        public IEnumerable<TaskList> GetTaskListsOwnedByUser(User user)
+        public void LoadContainer(Note note)
         {
-            return _taskListsRepository.GetTaskListsOwnedByUser(user);
+            _taskListsRepository.LoadContainer(note);
         }
 
-        public void AddAssociatedUser(TaskList taskList, User associatedUser)
+        public void AddShare(TaskList taskList, string userId)
         {
-            taskList.AssociatedUsers.Add(associatedUser);
-            _taskListsRepository.AddAssociatedUser(taskList, associatedUser);
+            _taskListsRepository.AddShare(taskList, userId);
             _unitOfWork.SubmitChanges();
         }
 
-        public void RemoveAssociatedUser(TaskList taskList, User associatedUser)
+        public void RemoveShare(TaskList taskList, string userId)
         {
-            taskList.AssociatedUsers.Remove(associatedUser);
-            _taskListsRepository.RemoveAssociatedUser(taskList, associatedUser);
+            _taskListsRepository.RemoveShare(taskList, userId);
             _unitOfWork.SubmitChanges();
+        }
+
+        public bool HasPermissionToEdit(User user, TaskList taskList)
+        {
+            return _taskListsRepository.HasPermissionToEdit(user, taskList);
         }
 
         #endregion Public methods

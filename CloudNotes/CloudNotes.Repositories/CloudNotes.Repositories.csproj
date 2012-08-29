@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,22 +42,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContainerBuilder.cs" />
+    <Compile Include="Contracts\IFilesRepository.cs" />
     <Compile Include="Contracts\INotesRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\ITaskListsRepository.cs" />
     <Compile Include="Contracts\IUsersRepository.cs" />
-    <Compile Include="Entities\Relation\NoteAssociatedUserTableEntry.cs" />
-    <Compile Include="Entities\Relation\NoteOwnerTableEntry.cs" />
-    <Compile Include="Entities\NoteTableEntry.cs" />
-    <Compile Include="Entities\Relation\TaskListAssociatedUserTableEntry.cs" />
-    <Compile Include="Entities\TaskListTableEntry.cs" />
-    <Compile Include="Entities\UserTableEntry.cs" />
+    <Compile Include="Entities\Relation\NoteShareEntity.cs" />
+    <Compile Include="Entities\NoteEntity.cs" />
+    <Compile Include="Entities\Relation\TaskListShareEntity.cs" />
+    <Compile Include="Entities\Relation\TaskListNoteEntity.cs" />
+    <Compile Include="Entities\TaskListEntity.cs" />
+    <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Extensions\Mapping.cs" />
+    <Compile Include="Helpers\Dynamic.cs" />
+    <Compile Include="Helpers\ShortGuid.cs" />
     <Compile Include="Implementation\AzureTablesUnitOfWork.cs" />
+    <Compile Include="Implementation\FilesRepository.cs" />
     <Compile Include="Implementation\NotesRepository.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="Implementation\TaskListsRepository.cs" />
     <Compile Include="Implementation\UsersRepository.cs" />
+    <Compile Include="Models\FileInfoItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TablesBuilder.cs" />
   </ItemGroup>

@@ -25,3 +25,201 @@ D:\CloudNotes\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.dll
 D:\CloudNotes\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.pdb
 D:\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\RegisterDLL.cmd
 D:\CloudNotes\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.csprojResolveAssemblyReference.cache
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\RegisterDLL.cmd
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\Windows6.0-KB974405-x64.msu
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.WebRole.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.WebRole.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.Services.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.DependencyInjection.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Repositories.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\EntityFramework.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\Microsoft.Web.Infrastructure.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.Diagnostics.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.StorageClient.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\PagedList.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\PagedList.Mvc.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.Helpers.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.Mvc.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.Providers.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.Razor.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Deployment.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Razor.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\StructureMap.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.Exceptions.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.Services.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.DependencyInjection.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Repositories.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\EntityFramework.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.Diagnostics.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.StorageClient.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\PagedList.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\PagedList.Mvc.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.Mvc.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.Razor.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.Helpers.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Deployment.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Razor.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\StructureMap.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\StructureMap.xml
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.Exceptions.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.csprojResolveAssemblyReference.cache
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.pdb
+D:\CloudNotes\CloudNotes.WebRole\bin\RegisterDLL.cmd
+D:\CloudNotes\CloudNotes.WebRole\bin\Windows6.0-KB974405-x64.msu
+D:\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.WebRole.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.WebRole.pdb
+D:\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.Services.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.DependencyInjection.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Repositories.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\EntityFramework.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\Microsoft.Web.Infrastructure.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.Diagnostics.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.StorageClient.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\PagedList.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\PagedList.Mvc.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\System.Web.Helpers.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\System.Web.Mvc.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\System.Web.Providers.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\System.Web.Razor.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Deployment.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Razor.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\StructureMap.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.Exceptions.dll
+D:\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.Services.pdb
+D:\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.pdb
+D:\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.DependencyInjection.pdb
+D:\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Repositories.pdb
+D:\CloudNotes\CloudNotes.WebRole\bin\EntityFramework.xml
+D:\CloudNotes\CloudNotes.WebRole\bin\Microsoft.Web.Infrastructure.xml
+D:\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.Diagnostics.xml
+D:\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.StorageClient.xml
+D:\CloudNotes\CloudNotes.WebRole\bin\PagedList.xml
+D:\CloudNotes\CloudNotes.WebRole\bin\PagedList.Mvc.xml
+D:\CloudNotes\CloudNotes.WebRole\bin\System.Web.Mvc.xml
+D:\CloudNotes\CloudNotes.WebRole\bin\System.Web.Razor.xml
+D:\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.xml
+D:\CloudNotes\CloudNotes.WebRole\bin\System.Web.Helpers.xml
+D:\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Deployment.xml
+D:\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Razor.xml
+D:\CloudNotes\CloudNotes.WebRole\bin\StructureMap.pdb
+D:\CloudNotes\CloudNotes.WebRole\bin\StructureMap.xml
+D:\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.Exceptions.pdb
+D:\CloudNotes\CloudNotes.WebRole\obj\Debug\ResolveAssemblyReference.cache
+D:\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.dll
+D:\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.WebRole.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.WebRole.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.Services.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.DependencyInjection.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Repositories.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\EntityFramework.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.IdentityModel.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.Web.Infrastructure.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.Diagnostics.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.ServiceRuntime.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.StorageClient.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\PagedList.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\PagedList.Mvc.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Helpers.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Mvc.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Providers.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Razor.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Deployment.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Razor.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\StructureMap.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.Exceptions.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.Services.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.DependencyInjection.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Repositories.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\EntityFramework.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.Web.Infrastructure.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.Diagnostics.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.ServiceRuntime.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.StorageClient.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\PagedList.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\PagedList.Mvc.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Mvc.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Razor.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Helpers.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Deployment.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Razor.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\StructureMap.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\StructureMap.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.Exceptions.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\pt\Microsoft.IdentityModel.resources.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\obj\Debug\ResolveAssemblyReference.cache
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.WebRole.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.WebRole.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.Services.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.DependencyInjection.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Repositories.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\EntityFramework.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.IdentityModel.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.Web.Infrastructure.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.Diagnostics.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.StorageClient.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Newtonsoft.Json.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\PagedList.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\PagedList.Mvc.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\SignalR.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\SignalR.Hosting.AspNet.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\SignalR.Hosting.Common.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Helpers.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Mvc.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Providers.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Razor.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Deployment.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Razor.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\StructureMap.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.Exceptions.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.Services.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.DependencyInjection.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Repositories.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\EntityFramework.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.Diagnostics.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Microsoft.WindowsAzure.StorageClient.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\Newtonsoft.Json.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\PagedList.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\PagedList.Mvc.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\SignalR.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\SignalR.Hosting.AspNet.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\SignalR.Hosting.Common.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Mvc.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Razor.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Helpers.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Deployment.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.WebPages.Razor.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\StructureMap.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\StructureMap.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Infrastructure.Exceptions.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\en\Microsoft.IdentityModel.resources.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.csprojResolveAssemblyReference.cache
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\obj\Debug\CloudNotes.WebRole.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Net.Http.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Net.Http.Formatting.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Net.Http.WebRequest.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Http.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Http.WebHost.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Net.Http.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Net.Http.Formatting.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Net.Http.WebRequest.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Http.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Web.Http.WebHost.xml

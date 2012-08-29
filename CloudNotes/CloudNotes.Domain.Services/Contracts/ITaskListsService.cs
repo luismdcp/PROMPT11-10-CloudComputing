@@ -5,11 +5,11 @@ namespace CloudNotes.Domain.Services.Contracts
 {
     public interface ITaskListsService : IService<TaskList>
     {
-        TaskList GetByTitleAndOwner(string title, User owner);
-        TaskList GetTaskListEagerLoaded(string taskListTitle, User user);
-        IEnumerable<TaskList> GetTaskListsUserIsAssociated(User user);
-        IEnumerable<TaskList> GetTaskListsOwnedByUser(User user);
-        void AddAssociatedUser(TaskList taskList, User associatedUser);
-        void RemoveAssociatedUser(TaskList taskList, User associatedUser);
+        IEnumerable<TaskList> GetShared(User user);
+        TaskList Get(string combinedKeys);
+        void LoadContainer(Note note);
+        void AddShare(TaskList taskList, string userId);
+        void RemoveShare(TaskList taskList, string userId);
+        bool HasPermissionToEdit(User user, TaskList taskList);
     }
 }

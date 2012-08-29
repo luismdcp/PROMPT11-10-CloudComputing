@@ -4,16 +4,47 @@
     ViewBag.Title = "Copy Note";
 }
 
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var taskListsHub = $.connection.tasklistsHub;
+
+            $("#submitButton").click(function () {
+                taskListsHub.moveOrCopyNote();
+            });
+
+            taskListsHub.broadcastNoteChanges = function () {
+                var url = '@Url.Action("Copy", "Notes", new { taskListOwnerId = ViewBag.ContainerOwnerId, taskListId = ViewBag.ContainerId })';
+
+                $.get(url, function (result) {
+                    $('#taskListsForm').animate({ 'opacity': 0 }, 300, function () {
+                        $('#main').html(result);
+                    }).animate({ 'opacity': 1 }, 300);
+                });
+            };
+
+            $.connection.hub.start();
+        });
+    </script>  
+}
+
+@if (ViewBag.ValidationErrors != null)
+{
+    @Html.DisplayForValidationErrors((IEnumerable<ValidationResult>) ViewBag.ValidationErrors)
+}
+
 @if (TempData["AlertMessage"] != null)
 {
     @Html.DisplayForAlertMessage((string) TempData["AlertMessage"])
 }
 
-@using (Html.BeginForm("CopyNote", "Notes", new { noteTitle = @ViewBag.NoteToCopy }, FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm("CopyNote", "Notes", new { ViewBag.NoteOwnerId, ViewBag.NoteId }, FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.Partial("_CopyOrMove", Model)
 
     <div class="form-actions">
-        @Html.Button("submit", "Copy", new { @class = "btn btn-primary" }) | @Html.ActionLink("Back to List", "Index")
+        @Html.Button("submit", "Copy", new { @class = "btn btn-primary", id = "submitButton" }) | 
+        @Html.ActionLink("Back to List", "Index", new { taskListOwnerId = ViewBag.ContainerOwnerId, taskListId = ViewBag.ContainerId })
     </div>
 }

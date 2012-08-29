@@ -14,3 +14,35 @@ D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Deb
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Infrastructure.Exceptions.pdb
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\obj\Debug\CloudNotes.Tests.Repositories.dll
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Repositories\obj\Debug\CloudNotes.Tests.Repositories.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\obj\Debug\ResolveAssemblyReference.cache
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Tests.Repositories.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Tests.Repositories.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Domain.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Repositories.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Microsoft.WindowsAzure.StorageClient.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Moq.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Infrastructure.Exceptions.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Domain.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Repositories.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Microsoft.WindowsAzure.StorageClient.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Moq.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Moq.xml
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Infrastructure.Exceptions.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\obj\Debug\CloudNotes.Tests.Repositories.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\obj\Debug\CloudNotes.Tests.Repositories.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Tests.Repositories.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Tests.Repositories.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Domain.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Repositories.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Microsoft.WindowsAzure.StorageClient.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Moq.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Infrastructure.Exceptions.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Domain.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Repositories.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Microsoft.WindowsAzure.StorageClient.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Moq.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\Moq.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\bin\Debug\CloudNotes.Infrastructure.Exceptions.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\obj\Debug\CloudNotes.Tests.Repositories.csprojResolveAssemblyReference.cache
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\obj\Debug\CloudNotes.Tests.Repositories.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Repositories\obj\Debug\CloudNotes.Tests.Repositories.pdb

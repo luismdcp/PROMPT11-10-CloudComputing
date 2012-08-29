@@ -1,0 +1,36 @@
+﻿@model IEnumerable<User>
+
+@{
+    ViewBag.Title = "Share";
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var taskListsHub = $.connection.tasklistsHub;
+
+            $("#submitButton").click(function () {
+                var taskListId = '@ViewContext.RouteData.Values["taskListId"]';
+                taskListsHub.shareTaskList(taskListId);
+            });
+
+            $.connection.hub.start();
+        });
+    </script>  
+}
+
+@if (TempData["AlertMessage"] != null)
+{
+    @Html.DisplayForAlertMessage((string) TempData["AlertMessage"])
+}
+
+@using (Html.BeginForm("Share", "TaskLists", FormMethod.Post, new { @class = "form-horizontal", id = "form" }))
+{
+    @Html.Partial("_UsersList", Model)
+
+    <div class="form-actions">
+        @Html.Button("submit", "Share", new { @class = "btn btn-primary", id = "submitButton" }) | 
+        @Html.RouteLink("Back to List", "Default", new RouteValueDictionary { { "controller", "TaskLists" }, { "action", "Index" } })
+    </div>
+}

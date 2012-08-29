@@ -4,12 +4,58 @@
     ViewBag.Title = "Details";
 }
 
-<form class="form-horizontal">
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var taskListsHub = $.connection.tasklistsHub;
+
+            taskListsHub.broadcastNoteDelete = function (noteId) {
+                var currentNoteId = '@Model.RowKey';
+
+                if (currentNoteId == noteId) {
+                    $('#form').before($('<div class="alert"><button type="button" class="close" data-dismiss="alert">×</button><strong>Warning!</strong> The note you are seeing was deleted by someone else.</div>').fadeIn('slow'));
+                }
+            };
+
+            taskListsHub.broadcastNoteShare = function (noteId) {
+                var currentNoteId = '@Model.RowKey';
+
+                if (currentNoteId == noteId) {
+                    var url = $('#form').attr("action");
+
+                    $.get(url, function (result) {
+                        $('#main').animate({ 'opacity': 0 }, 300, function () {
+                            $('#body').html(result);
+                        }).animate({ 'opacity': 1 }, 300);
+                    });
+                }
+            };
+
+            taskListsHub.broadcastNoteChanges = function (title, content, isClosed, noteId) {
+                var currentNoteId = '@Model.RowKey';
+
+                if (currentNoteId == noteId) {
+                    $('#noteForm').animate({ 'opacity': 0 }, 300, function () {
+                        $('#Title').val(title);
+                        $('#Content').val(content);
+//                        $('#IsClosed').val(isClosed);
+                        $('#IsClosed').attr('checked', isClosed);
+                    }).animate({ 'opacity': 1 }, 300);
+                }
+            };
+
+            $.connection.hub.start();
+        });
+    </script>  
+}
+
+<form class="form-horizontal" id="form">
     @Html.Partial("_DetailsOrDelete", Model)
+    
+    @Html.Partial("_Share", Model.Share)
 </form>
 
-@Html.Partial("_AssociatedUsers", Model.AssociatedUsers)
-
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", new { taskListOwnerId = ViewBag.ContainerOwnerId, taskListId = ViewBag.ContainerId })
 </div>

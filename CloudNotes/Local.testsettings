@@ -26,6 +26,8 @@
             <CodeCoverage xmlns="">
               <Regular>
                 <CodeCoverageItem binaryFile="CloudNotes.Domain\bin\Debug\CloudNotes.Domain.dll" pdbFile="CloudNotes.Domain\bin\Debug\CloudNotes.Domain.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="CloudNotes.Repositories\bin\Debug\CloudNotes.Repositories.dll" pdbFile="CloudNotes.Repositories\bin\Debug\CloudNotes.Repositories.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="CloudNotes.Domain.Services\bin\Debug\CloudNotes.Domain.Services.dll" pdbFile="CloudNotes.Domain.Services\bin\Debug\CloudNotes.Domain.Services.pdb" instrumentInPlace="true" />
               </Regular>
             </CodeCoverage>
           </Configuration>

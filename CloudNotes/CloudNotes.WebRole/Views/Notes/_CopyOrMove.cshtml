@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<TaskList>
 
-@using (@Html.BeginFieldset("TaskLists"))
+@using (@Html.BeginFieldset("TaskLists", new { id = "taskListsForm" }))
 {
     <table class="table table-striped table-bordered table-condensed">
         <thead>
@@ -13,9 +13,11 @@
 
         @foreach (var taskList in Model)
         {
+            var taskListId = string.Format("{0}+{1}", taskList.PartitionKey, taskList.RowKey);
+            
             <tr>
                 <td>
-                    <input type="radio" name="noteCheck" value="@taskList.RowKey" />
+                    <input type="radio" name="taskListCheck" value="@taskListId" />
                 </td>
                 <td>@taskList.Title</td>
                 <td>@taskList.Timestamp.ToShortDateString()</td>

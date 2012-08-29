@@ -1,6 +1,6 @@
 ﻿@model TaskList
 
-@using (@Html.BeginFieldset("TaskList"))
+@using (@Html.BeginFieldset("TaskList", new { id = "taskListForm" }))
 {
     <div class="control-group">
         @Html.Label("Title", "Title", new { @class = "control-label" })

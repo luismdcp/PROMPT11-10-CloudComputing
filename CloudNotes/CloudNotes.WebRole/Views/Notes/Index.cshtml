@@ -3,7 +3,10 @@
 @if (IsAjax)
 {
     Layout = null;
-    
+}
+
+@section scripts
+{
     <script src="@Url.Content("~/Scripts/jquery.tablednd.0.7.min.js")" type="text/javascript"></script>
         
     <script type="text/javascript">
@@ -12,32 +15,45 @@
                 onDragClass: "myDragClass"
             });
 
-            $("#notesTable tr").hover(function () {
-                $(this.cells[0]).addClass('showDragHandle');
-            }, function () {
-                $(this.cells[0]).removeClass('showDragHandle');
-            });
+            $("#notesTable tr").hover(function () { $(this.cells[0]).addClass('showDragHandle'); }, 
+                                      function () { $(this.cells[0]).removeClass('showDragHandle'); });
+
+            var taskListsHub = $.connection.tasklistsHub;
+
+            taskListsHub.broadcastNoteChanges = function () {
+                var url = '@Url.Action("Index", "Notes", new { taskListOwnerId = ViewBag.ContainerOwnerId, taskListId = ViewBag.ContainerId })';
+
+                $.get(url, function (result) {
+                    $('#main').animate({ 'opacity': 0 }, 300, function () {
+                        $('#main').html(result);
+                    }).animate({ 'opacity': 1 }, 300);
+                });
+            };
+
+            $.connection.hub.start();
         });
-    </script>
+    </script>  
 }
 
 @{
     ViewBag.Title = "Notes";
 }
 
-@Html.ActionLink("Create New", "Create", new { taskListTitle = ViewBag.TaskListTitle })
+@Html.ActionLink("Create New", "Create", new { taskListOwnerId = ViewBag.ContainerOwnerId, taskListId = ViewBag.ContainerId })
 
 <br/>
 <br/>
 
-@using (@Ajax.BeginForm("SaveNotesOrder", "Notes", new AjaxOptions { HttpMethod = "Post" }))
+@using (@Ajax.BeginForm("SaveNotesOrder", "Notes", new { taskListOwnerId = ViewBag.ContainerOwnerId, taskListId = ViewBag.ContainerId }, new AjaxOptions { HttpMethod = "Post" }))
 {
     <table class="table table-bordered table-condensed" id="notesTable">
         <thead>
             <tr>
                 <th>&nbsp;</th>
-                <th>@Ajax.ActionLink("Title", "Index", new { sortOrder = ViewBag.TitleSortParam }, new AjaxOptions { UpdateTargetId = "main" })</th>
-                <th>@Ajax.ActionLink("Created At", "Index", new { sortOrder = ViewBag.CreatedSortParam }, new AjaxOptions { UpdateTargetId = "main" })</th>
+                <th>@Ajax.ActionLink("Title", "Index", new { sortOrder = ViewBag.TitleSortParam }, 
+                                                       new AjaxOptions { UpdateTargetId = "main", Url = Url.Action("Index", new { sortOrder = ViewBag.TitleSortParam }) })</th>
+                <th>@Ajax.ActionLink("Created At", "Index", new { sortOrder = ViewBag.CreatedSortParam }, 
+                                                       new AjaxOptions { UpdateTargetId = "main", Url = Url.Action("Index", new { sortOrder = ViewBag.CreatedSortParam }) })</th>
                 <th>Closed?</th>
                 <th>&nbsp;</th>
             </tr>
@@ -50,23 +66,24 @@
                         <input type="hidden" name="orderingIndexes" value="@note.OrderingIndex" />
                         <input type="hidden" name="partitionKeys" value="@note.PartitionKey" />
                         <input type="hidden" name="rowKeys" value="@note.RowKey" />
-                        <input type="hidden" name="titles" value="@note.Title" />
                     </td>
                     <td>@note.Title</td>
                     <td>@note.Timestamp.ToShortDateString()</td>
                     <td>@note.IsClosed</td>
-                    <td>@Html.ActionLink("Details", "Details", new { taskListTitle = ViewBag.TaskListTitle, noteTitle = note.Title.Replace(' ', '-') }) |
-                        @Html.ActionLink("Edit", "Edit", new { taskListTitle = ViewBag.TaskListTitle, noteTitle = note.Title.Replace(' ', '-') }) |
-                        @Html.ActionLink("Delete", "Delete", new { taskListTitle = ViewBag.TaskListTitle, noteTitle = note.Title.Replace(' ', '-') }) |
-                        @Html.ActionLink("Copy", "Copy", new { noteTitle = note.Title.Replace(' ', '-') }) |
-                        @Html.ActionLink("Move", "Move", new { noteTitle = note.Title.Replace(' ', '-') }) |
-                        @Html.ActionLink("Users", "AssociateUsersToNote", "Users", new { taskListTitle = ViewBag.TaskListTitle, noteTitle = note.Title }, null)</td>
+                    <td>@Html.ActionLink("Details", "Details", new { noteOwnerId = note.PartitionKey, noteId = note.RowKey }) |
+                        @Html.ActionLink("Edit", "Edit", new { noteOwnerId = note.PartitionKey, noteId = note.RowKey }) |
+                        @Html.ActionLink("Delete", "Delete", new { noteOwnerId = note.PartitionKey, noteId = note.RowKey }) |
+                        @Html.ActionLink("Copy", "Copy", new { noteOwnerId = note.PartitionKey, noteId = note.RowKey }) |
+                        @Html.ActionLink("Move", "Move", new { noteOwnerId = note.PartitionKey, noteId = note.RowKey }) |
+                        @Html.ActionLink("Share", "Share", new { noteOwnerId = note.PartitionKey, noteId = note.RowKey }) |
+                        @Html.ActionLink("Files", "Index", "Files", new { noteOwnerId = note.PartitionKey, noteId = note.RowKey }, null)</td>
                 </tr>
             }
         </tbody>
     </table>
     
-    @Html.Button("submit", "Save order", new { @class = "btn btn-primary" })
+    <div class="form-actions">
+        @Html.Button("submit", "Save order", new { @class = "btn btn-primary", id = "submitButton" }) | 
+        @Html.RouteLink("Back to List", "Default", new RouteValueDictionary { { "controller", "TaskLists" }, { "action", "Index" } })
+    </div>
 }
-
-@Html.RouteLink("Back to List", "Default", new { controller = "TaskLists", action = "Index" })

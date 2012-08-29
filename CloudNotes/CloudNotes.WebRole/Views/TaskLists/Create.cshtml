@@ -4,6 +4,21 @@
     ViewBag.Title = "Create";
 }
 
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var taskListsHub = $.connection.tasklistsHub;
+
+            $("#submitButton").click(function () {
+                taskListsHub.createTaskList();
+            });
+
+            $.connection.hub.start();
+        });
+    </script>  
+}
+
 @if (ViewBag.ValidationErrors != null)
 {
     @Html.DisplayForValidationErrors((IEnumerable<ValidationResult>) ViewBag.ValidationErrors)
@@ -14,6 +29,7 @@
     @Html.Partial("_CreateOrEdit", Model)
 
     <div class="form-actions">
-        @Html.Button("submit", "Create", new { @class = "btn btn-primary" })  | @Html.ActionLink("Back to List", "Index")
+        @Html.Button("submit", "Create", new { @class = "btn btn-primary", id = "submitButton" })  | 
+        @Html.RouteLink("Back to List", "Default", new RouteValueDictionary { { "controller", "TaskLists" }, { "action", "Index" } })
     </div>
 }

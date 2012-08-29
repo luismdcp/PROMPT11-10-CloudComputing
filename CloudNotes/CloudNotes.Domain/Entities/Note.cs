@@ -12,9 +12,10 @@ namespace CloudNotes.Domain.Entities
         public string Content { get; set; }
         public bool IsClosed { get; set; }
         public int OrderingIndex { get; set; }
-        public TaskList ContainerList { get; set; }
+        public TaskList Container { get; set; }
+        public string ContainerKeys { get; set; }
         public User Owner { get; set; }
-        public ICollection<User> AssociatedUsers { get; set; }
+        public ICollection<User> Share { get; set; }
 
         #endregion Properties
 
@@ -22,10 +23,12 @@ namespace CloudNotes.Domain.Entities
 
         public Note()
         {
+            PartitionKey = string.Empty;
+            RowKey = string.Empty;
             Title = string.Empty;
             Content = string.Empty;
             OrderingIndex = -1;
-            AssociatedUsers = new Collection<User>();
+            Share = new Collection<User>();
         }
 
         public Note(string title, string content, User owner, TaskList containerList) : this()
@@ -33,7 +36,7 @@ namespace CloudNotes.Domain.Entities
             Title = title;
             Content = content;
             Owner = owner;
-            ContainerList = containerList;
+            Container = containerList;
         }
 
         #endregion Constructors
@@ -57,7 +60,7 @@ namespace CloudNotes.Domain.Entities
                 yield return new ValidationResult("A note must have an Owner.", new[] { "Owner" });
             }
 
-            if (ContainerList == null)
+            if (Container == null)
             {
                 yield return new ValidationResult("A note must be inside a list.", new[] { "ContainerList" });
             }

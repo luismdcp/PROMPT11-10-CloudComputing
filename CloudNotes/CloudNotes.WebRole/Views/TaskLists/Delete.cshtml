@@ -4,6 +4,21 @@
     ViewBag.Title = "Delete";
 }
 
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var taskListsHub = $.connection.tasklistsHub;
+
+            $("#submitButton").click(function () {
+                taskListsHub.deleteTaskList('@Model.RowKey');
+            });
+
+            $.connection.hub.start();
+        });
+    </script>  
+}
+
 @if (ViewBag.ValidationErrors != null)
 {
     @Html.DisplayForValidationErrors((IEnumerable<ValidationResult>)ViewBag.ValidationErrors)
@@ -16,6 +31,7 @@
     @Html.Partial("_DetailsOrDelete", Model)
     
     <div class="form-actions">
-        @Html.Button("submit", "Delete", new { @class = "btn btn-primary" }) | @Html.ActionLink("Back to List", "Index")
+        @Html.Button("submit", "Delete", new { @class = "btn btn-primary", id = "submitButton" }) | 
+        @Html.RouteLink("Back to List", "Default", new RouteValueDictionary { { "controller", "TaskLists" }, { "action", "Index" } })
     </div>
 }

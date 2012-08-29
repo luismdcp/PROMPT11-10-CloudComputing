@@ -12,7 +12,7 @@ namespace CloudNotes.Domain.Entities
         public String Title { get; set; }
         public User Owner { get; set; }
         public IList<Note> Notes { get; private set; }
-        public ICollection<User> AssociatedUsers { get; private set; }
+        public ICollection<User> Share { get; private set; }
 
         #endregion Properties
 
@@ -20,8 +20,10 @@ namespace CloudNotes.Domain.Entities
 
         public TaskList()
         {
+            PartitionKey = string.Empty;
+            RowKey = string.Empty;
             Notes = new Collection<Note>();
-            AssociatedUsers = new Collection<User>();
+            Share = new Collection<User>();
         }
 
         public TaskList(string title, User owner) : this()
@@ -48,5 +50,27 @@ namespace CloudNotes.Domain.Entities
         }
 
         #endregion Validation
+
+        #region Public methods
+
+        public override bool Equals(object o)
+        {
+            if (ReferenceEquals(null, o)) return false;
+            if (ReferenceEquals(this, o)) return true;
+            if (o.GetType() != typeof(User)) return false;
+            return Equals((User) o);
+        }
+
+        public bool Equals(User other)
+        {
+            return !ReferenceEquals(null, other);
+        }
+
+        public override int GetHashCode()
+        {
+            return PartitionKey.GetHashCode() ^ RowKey.GetHashCode();
+        }
+
+        #endregion Public methods
     }
 }

@@ -8,58 +8,70 @@ namespace CloudNotes.Repositories.Extensions
 {
     public static class Mapping
     {
-        public static Note MapToNote(this NoteTableEntry entry)
+        public static Note MapToNote(this NoteEntity entry)
         {
-            var note = new Note
-                           {
-                                PartitionKey = entry.PartitionKey,
-                                RowKey = entry.RowKey,
-                                Timestamp = entry.Timestamp,
-                                Title = entry.Title,
-                                Content = entry.Content,
-                                IsClosed = entry.IsClosed,
-                                OrderingIndex = entry.OrderingIndex
-                            };
+            Note note = null;
+
+            if (entry != null)
+            {
+                note = new Note
+                {
+                    PartitionKey = entry.PartitionKey,
+                    RowKey = entry.RowKey,
+                    Timestamp = entry.Timestamp,
+                    Title = entry.Title,
+                    Content = entry.Content,
+                    IsClosed = entry.IsClosed,
+                    OrderingIndex = entry.OrderingIndex,
+                    ContainerKeys = entry.ContainerKeys
+                };   
+            }
 
             return note;
         }
 
-        public static NoteTableEntry MapToNoteTableEntry(this Note note)
+        public static NoteEntity MapToNoteEntity(this Note note)
         {
-            var noteTableEntry = new NoteTableEntry(note.PartitionKey, note.RowKey)
+            NoteEntity noteEntity = null;
+
+            if (note != null)
             {
-                Title = note.Title,
-                Content = note.Content,
-                IsClosed = note.IsClosed,
-                OrderingIndex = note.OrderingIndex
-            };
+                noteEntity = new NoteEntity(note.PartitionKey, note.RowKey)
+                                                {
+                                                    Title = note.Title,
+                                                    Content = note.Content,
+                                                    IsClosed = note.IsClosed,
+                                                    OrderingIndex = note.OrderingIndex,
+                                                    ContainerKeys = note.ContainerKeys
+                                                };
+            }
 
-            return noteTableEntry;
+            return noteEntity;
         }
 
-        public static ICollection<NoteAssociatedUserTableEntry> MapToNoteAssociatedUserTableEntries(this ICollection<User> associatedUsers, Note note)
+        public static ICollection<NoteShareEntity> MapToNoteShares(this ICollection<User> share, Note note)
         {
-            return associatedUsers.Select(user => new NoteAssociatedUserTableEntry(note.RowKey, user.RowKey)).ToList();
+            return share.Select(user => new NoteShareEntity(note.RowKey, user.RowKey)).ToList();
         }
 
-        public static TaskList MapToTaskList(this TaskListTableEntry entry)
+        public static TaskList MapToTaskList(this TaskListEntity entry)
         {
-            return new TaskList { PartitionKey = entry.PartitionKey, RowKey = entry.RowKey, Timestamp = entry.Timestamp, Title = entry.Title };
+            return entry != null ? new TaskList { PartitionKey = entry.PartitionKey, RowKey = entry.RowKey, Timestamp = entry.Timestamp, Title = entry.Title } : null;
         }
 
-        public static TaskListTableEntry MapToTaskListTableEntry(this TaskList taskList)
+        public static TaskListEntity MapToTaskListEntity(this TaskList taskList)
         {
-            return new TaskListTableEntry(taskList.PartitionKey, taskList.RowKey) { Title = taskList.Title };
+            return taskList != null ? new TaskListEntity(taskList.PartitionKey, taskList.RowKey) { Title = taskList.Title } : null;
         }
 
-        public static User MapToUser(this UserTableEntry entry)
+        public static User MapToUser(this UserEntity entry)
         {
-            return new User(entry.RowKey, entry.Name, entry.Email) { PartitionKey = entry.PartitionKey, RowKey = entry.RowKey};
+            return entry != null ? new User(entry.RowKey, entry.Name, entry.Email) { PartitionKey = entry.PartitionKey, RowKey = entry.RowKey, UniqueIdentifier = entry.UniqueIdentifier } : null;
         }
 
-        public static UserTableEntry MapToUserTableEntry(this User user)
+        public static UserEntity MapToUserEntity(this User user)
         {
-            return new UserTableEntry(user.PartitionKey, user.RowKey) { Email = user.Email, Name = user.Name};
+            return user != null ? new UserEntity(user.PartitionKey, user.RowKey) { Email = user.Email, Name = user.Name, UniqueIdentifier = user.UniqueIdentifier } : null;
         }
     }
 }

@@ -20,8 +20,11 @@ namespace CloudNotes.Tests.Domain.Services
         {
             // Arrange
             var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
             var repository = new NotesMemoryRepository();
-            var service = new NotesService(unitOfWorkMock.Object, repository);
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
 
             // Act
             var result = service.Load();
@@ -36,12 +39,52 @@ namespace CloudNotes.Tests.Domain.Services
         {
             // Arrange
             var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
             var repository = new NotesMemoryRepository();
-            var service = new NotesService(unitOfWorkMock.Object, repository);
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
 
             // Act
-            var result = service.Get("taskList1", "note1");
+            var result = service.Get(NotesMemoryRepository.User1RowKey, repository.Note1RowKey);
 
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(Note));
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void NotesServiceMethodGetShouldReturnNullForANonExistingNote()
+        {
+            // Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
+            var repository = new NotesMemoryRepository();
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
+
+            // Act
+            var result = service.Get(NotesMemoryRepository.User3RowKey, repository.Note3RowKey);
+
+            // Assert
+            Assert.IsNull(result);
+        }
+
+        [TestMethod]
+        public void NotesServiceMethodGetByFilterShouldReturnANote()
+        {
+            // Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
+            var repository = new NotesMemoryRepository();
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
+
+            // Act
+            var result = service.Get(n => n.PartitionKey == NotesMemoryRepository.User1RowKey & n.RowKey == repository.Note1RowKey);
+            
             // Assert
             Assert.IsInstanceOfType(result, typeof(Note));
             Assert.IsNotNull(result);
@@ -51,14 +94,18 @@ namespace CloudNotes.Tests.Domain.Services
         public void NotesServiceMethodCreateShouldCreateANote()
         {
             // Arrange
-            var note = new Note("taskList1", "note3") { Owner = new User("users", "user1") };
+            var user = new User { PartitionKey = NotesMemoryRepository.IdentityProvider, RowKey = NotesMemoryRepository.User1RowKey };
             var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
             var repository = new NotesMemoryRepository();
-            var service = new NotesService(unitOfWorkMock.Object, repository);
+            var note = new Note { PartitionKey = NotesMemoryRepository.User1RowKey, RowKey = repository.Note1RowKey, Owner = user };
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
 
             // Act
             service.Create(note);
-            var result = service.Get("taskList1", "note3");
+            var result = service.Get(note.PartitionKey, note.RowKey);
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(Note));
@@ -66,21 +113,62 @@ namespace CloudNotes.Tests.Domain.Services
         }
 
         [TestMethod]
+        public void NotesServiceMethodNoteWithTitleExistsShouldReturnTrueForAnExistingTitle()
+        {
+            // Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
+            var repository = new NotesMemoryRepository();
+            var taskList = new TaskList { PartitionKey = NotesMemoryRepository.User1RowKey, RowKey = repository.TaskList1RowKey };
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
+
+            // Act
+            var result = service.NoteWithTitleExists("Test title", taskList);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void NotesServiceMethodNoteWithTitleExistsShouldReturnFalseForNonExistingTitle()
+        {
+            // Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
+            var repository = new NotesMemoryRepository();
+            var taskList = new TaskList { PartitionKey = NotesMemoryRepository.User1RowKey, RowKey = repository.TaskList1RowKey };
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
+
+            // Act
+            var result = service.NoteWithTitleExists("Title", taskList);
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
         public void NotesServiceMethodUpdateShouldUpdateANote()
         {
             // Arrange
             var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
             var repository = new NotesMemoryRepository();
-            var service = new NotesService(unitOfWorkMock.Object, repository);
-            var result = service.Get("taskList1", "note1");
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
+            var result = service.Get(NotesMemoryRepository.User1RowKey, repository.Note1RowKey);
 
             // Act
-            result.Content = "test content";
+            result.Content = "Test content";
             service.Update(result);
-            var updatedResult = service.Get("taskList1", "note1");
+            var updatedResult = service.Get(NotesMemoryRepository.User1RowKey, repository.Note1RowKey);
 
             // Assert
-            Assert.IsTrue(updatedResult.Content == "test content");
+            Assert.IsTrue(updatedResult.Content == "Test content");
         }
 
         [TestMethod]
@@ -88,50 +176,141 @@ namespace CloudNotes.Tests.Domain.Services
         {
             // Arrange
             var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
             var repository = new NotesMemoryRepository();
-            var service = new NotesService(unitOfWorkMock.Object, repository);
-            var result = service.Get("taskList1", "note1");
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
+            var result = service.Get(NotesMemoryRepository.User1RowKey, repository.Note1RowKey);
 
             // Act
             service.Delete(result);
-            result = service.Get("taskList1", "note1");
+            result = service.Get(NotesMemoryRepository.User1RowKey, repository.Note1RowKey);
 
             // Assert
             Assert.IsNull(result);
         }
 
         [TestMethod]
-        public void NotesServiceMethodAddAssociatedUserShouldAssociateAUserToANote()
+        public void NotesServiceMethodAddShareShouldAddAUserToTheNoteShares()
         {
             // Arrange
             var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
             var repository = new NotesMemoryRepository();
-            var service = new NotesService(unitOfWorkMock.Object, repository);
-            var note = new Note("taskList1", "note1") { Owner = new User("users", "user1"), AssociatedUsers = { new User("users", "user1") } };
-            var userToAssociate = new User("users", "user2");
+            var note = new Note { PartitionKey = NotesMemoryRepository.User1RowKey, RowKey = repository.Note1RowKey };
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
+            var noteSharesCount = repository._noteShares.Count;
 
             // Act
-            service.AddAssociatedUser(note, userToAssociate);
+            service.AddShare(note, NotesMemoryRepository.User2RowKey);
 
             // Assert
-            Assert.IsTrue(note.AssociatedUsers.Count == 2);
+            Assert.IsTrue(repository._noteShares.Count == noteSharesCount + 1);
         }
 
         [TestMethod]
-        public void NotesServiceMethodRemoveAssociatedUserShouldRemoveAnAssociatedUserToANote()
+        public void NotesServiceMethodRemoveShareShouldRemoveAShareFromTheNoteShares()
         {
             // Arrange
             var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
             var repository = new NotesMemoryRepository();
-            var service = new NotesService(unitOfWorkMock.Object, repository);
-            var note = new Note("taskList1", "note1") { Owner = new User("users", "user1"), AssociatedUsers = { new User("users", "user1") } };
-            var userToRemove = new User("users", "user1");
+            var note = new Note { PartitionKey = NotesMemoryRepository.User1RowKey, RowKey = repository.Note1RowKey };
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
+            var noteSharesCount = repository._noteShares.Count;
 
             // Act
-            service.RemoveAssociatedUser(note, userToRemove);
+            service.RemoveShare(note, NotesMemoryRepository.User1RowKey);
 
             // Assert
-            Assert.IsTrue(note.AssociatedUsers.Count == 0);
+            Assert.IsTrue(repository._noteShares.Count == noteSharesCount - 1);
+        }
+
+        [TestMethod]
+        public void NotesServiceMethodLoadNotesShouldLoadAllNotes()
+        {
+            // Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
+            var repository = new NotesMemoryRepository();
+            var taskList = new TaskList { PartitionKey = NotesMemoryRepository.User1RowKey, RowKey = repository.TaskList1RowKey };
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
+
+            // Act
+            service.LoadNotes(taskList);
+
+            // Assert
+            Assert.IsTrue(taskList.Notes.Count == 2);
+        }
+
+        [TestMethod]
+        public void NotesServiceMethodHasPermissionToEditShouldReturnTrueForAUserInTheShare()
+        {
+            // Arrange
+            var user = new User { PartitionKey = NotesMemoryRepository.IdentityProvider, RowKey = NotesMemoryRepository.User1RowKey };
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
+            var repository = new NotesMemoryRepository();
+            var note = new Note { PartitionKey = NotesMemoryRepository.User1RowKey, RowKey = repository.Note1RowKey, Owner = user };
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
+
+            // Act
+            var result = service.HasPermissionToEdit(user, note);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void NotesServiceMethodHasPermissionToEditShouldReturnFalseForAUserNotInTheShare()
+        {
+            // Arrange
+            var user = new User { PartitionKey = NotesMemoryRepository.IdentityProvider, RowKey = NotesMemoryRepository.User3RowKey };
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
+            var repository = new NotesMemoryRepository();
+            var note = new Note { PartitionKey = NotesMemoryRepository.User1RowKey, RowKey = repository.Note1RowKey };
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
+
+            // Act
+            var result = service.HasPermissionToEdit(user, note);
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void NotesServiceMethodCopyNoteShouldCopyANote()
+        {
+            // Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var taskListsRepositoryMock = new Mock<ITaskListsRepository>();
+            var notesRepositoryMock = new Mock<INotesRepository>();
+            var taskListsService = new TaskListsService(unitOfWorkMock.Object, taskListsRepositoryMock.Object, notesRepositoryMock.Object);
+            var repository = new NotesMemoryRepository();
+            var user = new User { PartitionKey = NotesMemoryRepository.IdentityProvider, RowKey = NotesMemoryRepository.User1RowKey };
+            var note = new Note { PartitionKey = NotesMemoryRepository.User1RowKey, RowKey = repository.Note1RowKey, Owner = user };
+            var taskList = new TaskList { PartitionKey = NotesMemoryRepository.TaskList2PartitionKey, RowKey = repository.TaskList2RowKey };
+            var service = new NotesService(unitOfWorkMock.Object, repository, taskListsService);
+
+            // Act
+            service.CopyNote(note, taskList);
+            service.LoadNotes(taskList);
+
+            // Assert
+            //Assert.IsInstanceOfType(result, typeof(IQueryable<Note>));
+            //Assert.IsTrue(result.Count() == 2);
         }
 
         #endregion NotesService tests
@@ -143,9 +322,9 @@ namespace CloudNotes.Tests.Domain.Services
         {
             // Arrange
             var unitOfWorkMock = new Mock<IUnitOfWork>();
-            var taskListsRepository = new TaskListsMemoryRepository();
+            var repository = new TaskListsMemoryRepository();
             var notesRepository = new NotesMemoryRepository();
-            var service = new TaskListsService(unitOfWorkMock.Object, taskListsRepository, notesRepository);
+            var service = new TaskListsService(unitOfWorkMock.Object, repository, notesRepository);
 
             // Act
             var result = service.Load();
@@ -160,12 +339,62 @@ namespace CloudNotes.Tests.Domain.Services
         {
             // Arrange
             var unitOfWorkMock = new Mock<IUnitOfWork>();
-            var taskListsRepository = new TaskListsMemoryRepository();
+            var repository = new TaskListsMemoryRepository();
             var notesRepository = new NotesMemoryRepository();
-            var service = new TaskListsService(unitOfWorkMock.Object, taskListsRepository, notesRepository);
+            var service = new TaskListsService(unitOfWorkMock.Object, repository, notesRepository);
 
             // Act
-            var result = service.Get("user1", "taskList1");
+            var result = service.Get(TaskListsMemoryRepository.User1RowKey, repository.TaskList1RowKey);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(TaskList));
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TaskListsServiceMethodGetByCombinedKeysShouldReturnATaskList()
+        {
+            // Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var repository = new TaskListsMemoryRepository();
+            var notesRepository = new NotesMemoryRepository();
+            var service = new TaskListsService(unitOfWorkMock.Object, repository, notesRepository);
+
+            // Act
+            var result = service.Get(string.Format("{0}+{1}", TaskListsMemoryRepository.User1RowKey, repository.TaskList1RowKey));
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(TaskList));
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TaskListsServiceMethodGetShouldReturnNullForANonExistingTaskList()
+        {
+            // Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var repository = new TaskListsMemoryRepository();
+            var notesRepository = new NotesMemoryRepository();
+            var service = new TaskListsService(unitOfWorkMock.Object, repository, notesRepository);
+
+            // Act
+            var result = service.Get(TaskListsMemoryRepository.User1RowKey, repository.TaskList3RowKey);
+
+            // Assert
+            Assert.IsNull(result);
+        }
+
+        [TestMethod]
+        public void TaskListsServiceMethodGetByFilterShouldReturnATaskList()
+        {
+            // Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var repository = new TaskListsMemoryRepository();
+            var notesRepository = new NotesMemoryRepository();
+            var service = new TaskListsService(unitOfWorkMock.Object, repository, notesRepository);
+
+            // Act
+            var result = service.Get(t => t.PartitionKey == TaskListsMemoryRepository.User1RowKey && t.RowKey == repository.TaskList1RowKey);
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(TaskList));
@@ -176,15 +405,17 @@ namespace CloudNotes.Tests.Domain.Services
         public void TaskListsServiceMethodCreateShouldCreateATaskList()
         {
             // Arrange
-            var taskList = new TaskList("user1", "taskList3") { Owner = new User("users", "user1") };
+
+            var user = new User { PartitionKey = TaskListsMemoryRepository.IdentityProvider, RowKey = TaskListsMemoryRepository.User1RowKey };
             var unitOfWorkMock = new Mock<IUnitOfWork>();
-            var taskListsRepository = new TaskListsMemoryRepository();
+            var repository = new TaskListsMemoryRepository();
             var notesRepository = new NotesMemoryRepository();
-            var service = new TaskListsService(unitOfWorkMock.Object, taskListsRepository, notesRepository);
+            var taskList = new TaskList { PartitionKey = TaskListsMemoryRepository.User1RowKey, RowKey = repository.TaskList3RowKey, Owner = user };
+            var service = new TaskListsService(unitOfWorkMock.Object, repository, notesRepository);
 
             // Act
             service.Create(taskList);
-            var result = service.Get("user1", "taskList3");
+            var result = service.Get(NotesMemoryRepository.User1RowKey, repository.TaskList3RowKey);
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(TaskList));
@@ -196,15 +427,15 @@ namespace CloudNotes.Tests.Domain.Services
         {
             // Arrange
             var unitOfWorkMock = new Mock<IUnitOfWork>();
-            var taskListsRepository = new TaskListsMemoryRepository();
+            var repository = new TaskListsMemoryRepository();
             var notesRepository = new NotesMemoryRepository();
-            var service = new TaskListsService(unitOfWorkMock.Object, taskListsRepository, notesRepository);
-            var result = service.Get("user1", "taskList1");
+            var service = new TaskListsService(unitOfWorkMock.Object, repository, notesRepository);
+            var result = service.Get(TaskListsMemoryRepository.User1RowKey, repository.TaskList1RowKey);
 
             // Act
             result.Title = "Test title";
             service.Update(result);
-            var updatedResult = service.Get("user1", "taskList1");
+            var updatedResult = service.Get(TaskListsMemoryRepository.User1RowKey, repository.TaskList1RowKey);
 
             // Assert
             Assert.IsTrue(updatedResult.Title == "Test title");
@@ -215,108 +446,106 @@ namespace CloudNotes.Tests.Domain.Services
         {
             // Arrange
             var unitOfWorkMock = new Mock<IUnitOfWork>();
-            var taskListsRepository = new TaskListsMemoryRepository();
+            var repository = new TaskListsMemoryRepository();
             var notesRepository = new NotesMemoryRepository();
-            var service = new TaskListsService(unitOfWorkMock.Object, taskListsRepository, notesRepository);
-            var result = service.Get("user1", "taskList1");
+            var service = new TaskListsService(unitOfWorkMock.Object, repository, notesRepository);
+            var result = service.Get(TaskListsMemoryRepository.User1RowKey, repository.TaskList1RowKey);
+            var user = new User { PartitionKey = TaskListsMemoryRepository.IdentityProvider, RowKey = TaskListsMemoryRepository.User1RowKey };
+            var note = new Note { PartitionKey = TaskListsMemoryRepository.User1RowKey, RowKey = repository.Note1RowKey, Owner = user };
+            result.Notes.Add(note);
 
             // Act
             service.Delete(result);
-            result = service.Get("user1", "taskList1");
+            result = service.Get(TaskListsMemoryRepository.User1RowKey, repository.TaskList1RowKey);
 
             // Assert
             Assert.IsNull(result);
         }
 
         [TestMethod]
-        public void TaskListsServiceMethodAddAssociatedUserShouldAssociateAUserToATaskList()
+        public void TaskListsServiceMethodAddShareShouldAddAUserToATaskListShares()
         {
             // Arrange
             var unitOfWorkMock = new Mock<IUnitOfWork>();
-            var taskListsRepository = new TaskListsMemoryRepository();
+            var repository = new TaskListsMemoryRepository();
             var notesRepository = new NotesMemoryRepository();
-            var service = new TaskListsService(unitOfWorkMock.Object, taskListsRepository, notesRepository);
-            var taskList = new TaskList("user1", "taskList3") { Owner = new User("users", "user1"), AssociatedUsers = { new User("users", "user1") } };
-            var userToAssociate = new User("users", "user2");
+            var taskList = new TaskList { PartitionKey = TaskListsMemoryRepository.User1RowKey, RowKey = repository.TaskList1RowKey };
+            var service = new TaskListsService(unitOfWorkMock.Object, repository, notesRepository);
+            var taskListSharesCount = repository.TaskListShares.Count;
 
             // Act
-            service.AddAssociatedUser(taskList, userToAssociate);
+            service.AddShare(taskList, TaskListsMemoryRepository.User2RowKey);
 
             // Assert
-            Assert.IsTrue(taskList.AssociatedUsers.Count == 2);
+            Assert.IsTrue(repository.TaskListShares.Count == taskListSharesCount + 1);
         }
 
         [TestMethod]
-        public void TaskListsServiceMethodRemoveAssociatedUserShouldRemoveAnAssociatedUserToATaskList()
+        public void TaskListsServiceMethodRemoveShareShouldARemoveAUserFromTheTaskListShares()
         {
             // Arrange
             var unitOfWorkMock = new Mock<IUnitOfWork>();
-            var taskListsRepository = new TaskListsMemoryRepository();
+            var repository = new TaskListsMemoryRepository();
             var notesRepository = new NotesMemoryRepository();
-            var service = new TaskListsService(unitOfWorkMock.Object, taskListsRepository, notesRepository);
-            var taskList = new TaskList("user1", "taskList3") { Owner = new User("users", "user1"), AssociatedUsers = { new User("users", "user1") } };
-            var userToRemove = new User("users", "user1");
+            var taskList = new TaskList { PartitionKey = TaskListsMemoryRepository.User1RowKey, RowKey = repository.TaskList1RowKey };
+            var service = new TaskListsService(unitOfWorkMock.Object, repository, notesRepository);
+            var taskListSharesCount = repository.TaskListShares.Count;
 
             // Act
-            service.RemoveAssociatedUser(taskList, userToRemove);
+            service.RemoveShare(taskList, TaskListsMemoryRepository.User3RowKey);
 
             // Assert
-            Assert.IsTrue(taskList.AssociatedUsers.Count == 0);
+            Assert.IsTrue(repository.TaskListShares.Count == taskListSharesCount - 1);
         }
 
         [TestMethod]
-        public void TaskListsServiceMethodCopyNoteShouldCopyANoteToAnotherTaskList()
+        public void TaskListsServiceMethodHasPermissionToEditShouldReturnTrueForAUserInTheShare()
         {
             // Arrange
+            var user = new User { PartitionKey = TaskListsMemoryRepository.IdentityProvider, RowKey = TaskListsMemoryRepository.User1RowKey };
             var unitOfWorkMock = new Mock<IUnitOfWork>();
-            var taskListsRepository = new TaskListsMemoryRepository();
+            var repository = new TaskListsMemoryRepository();
             var notesRepository = new NotesMemoryRepository();
-            var service = new TaskListsService(unitOfWorkMock.Object, taskListsRepository, notesRepository);
-            var note = new Note("taskList1", "note1") { Owner = new User("users", "user1") };
-            var taskListSource = taskListsRepository.Get("user1", "taskList1");
-            var taskListDestination = taskListsRepository.Get("user2", "taskList2");
+            var taskList = new TaskList { PartitionKey = TaskListsMemoryRepository.User1RowKey, RowKey = repository.TaskList1RowKey, Owner = user};
+            var service = new TaskListsService(unitOfWorkMock.Object, repository, notesRepository);
 
             // Act
-            service.CopyNote(taskListSource, taskListDestination, note);
-            var copiedNote = notesRepository.Get("taskList2", "note1");
+            var result = service.HasPermissionToEdit(user, taskList);
 
             // Assert
-            Assert.IsInstanceOfType(copiedNote, typeof(Note));
-            Assert.IsNotNull(copiedNote);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
-        public void TaskListsServiceMethodMoveNoteShouldMoveANoteToAnotherTaskList()
+        public void TaskListsServiceMethodHasPermissionToEditShouldReturnFalseForAUserNotInTheShare()
         {
             // Arrange
+            var user = new User { PartitionKey = TaskListsMemoryRepository.IdentityProvider, RowKey = TaskListsMemoryRepository.User2RowKey };
             var unitOfWorkMock = new Mock<IUnitOfWork>();
-            var taskListsRepository = new TaskListsMemoryRepository();
+            var repository = new TaskListsMemoryRepository();
             var notesRepository = new NotesMemoryRepository();
-            var service = new TaskListsService(unitOfWorkMock.Object, taskListsRepository, notesRepository);
-            var note = new Note("taskList1", "note1") { Owner = new User("users", "user1") };
-            var taskListSource = taskListsRepository.Get("user1", "taskList1");
-            var taskListDestination = taskListsRepository.Get("user2", "taskList2");
+            var taskList = new TaskList { PartitionKey = TaskListsMemoryRepository.User1RowKey, RowKey = repository.TaskList1RowKey, Owner = user };
+            var service = new TaskListsService(unitOfWorkMock.Object, repository, notesRepository);
 
             // Act
-            service.MoveNote(taskListSource, taskListDestination, note);
-            var copiedNote = notesRepository.Get("taskList1", "note1");
+            var result = service.HasPermissionToEdit(user, taskList);
 
             // Assert
-            Assert.IsNull(copiedNote);
+            Assert.IsFalse(result);
         }
 
         [TestMethod]
-        public void TaskListsServiceMethodGetTaskListsAssociatedByUserShouldAllTaskListsThatTheUserIsAssociated()
+        public void TaskListsServiceMethodGetSharedShouldReturnAllTaskListsThatTheUserIsInTheShare()
         {
             // Arrange
-            var user = new User("users", "user3");
+            var user = new User { PartitionKey = TaskListsMemoryRepository.IdentityProvider, RowKey = TaskListsMemoryRepository.User3RowKey };
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var taskListsRepository = new TaskListsMemoryRepository();
             var notesRepository = new NotesMemoryRepository();
             var service = new TaskListsService(unitOfWorkMock.Object, taskListsRepository, notesRepository);
 
             // Act
-            var result = service.GetTaskListsAssociatedByUser(user);
+            var result = service.GetShared(user);
 
             // Assert
             Assert.IsNotNull(result);
@@ -345,7 +574,7 @@ namespace CloudNotes.Tests.Domain.Services
         }
 
         [TestMethod]
-        public void UsersServiceMethodGetShouldReturnAUser()
+        public void UsersServiceMethodGetShouldReturnAnExistingUser()
         {
             // Arrange
             var unitOfWorkMock = new Mock<IUnitOfWork>();
@@ -353,7 +582,7 @@ namespace CloudNotes.Tests.Domain.Services
             var service = new UsersService(unitOfWorkMock.Object, repository);
 
             // Act
-            var result = service.Get("users", "user1");
+            var result = service.Get(UsersMemoryRepository.IdentityProvider, UsersMemoryRepository.User1RowKey);
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(User));
@@ -361,17 +590,64 @@ namespace CloudNotes.Tests.Domain.Services
         }
 
         [TestMethod]
+        public void UsersServiceMethodGetByRowkeyShouldReturnAnExistingUser()
+        {
+            // Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var repository = new UsersMemoryRepository();
+            var service = new UsersService(unitOfWorkMock.Object, repository);
+
+            // Act
+            var result = service.Get(UsersMemoryRepository.User1RowKey);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(User));
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void UsersServiceMethodGetByFilterShouldReturnAUser()
+        {
+            // Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var repository = new UsersMemoryRepository();
+            var service = new UsersService(unitOfWorkMock.Object, repository);
+
+            // Act
+            var result = service.Get(u => u.PartitionKey == UsersMemoryRepository.IdentityProvider && u.RowKey == UsersMemoryRepository.User1RowKey);
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(User));
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void UsersServiceMethodGetShouldReturnNullForANonExistingUser()
+        {
+            // Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var repository = new UsersMemoryRepository();
+            var service = new UsersService(unitOfWorkMock.Object, repository);
+
+            // Act
+            var result = service.Get(UsersMemoryRepository.IdentityProvider, UsersMemoryRepository.User4RowKey);
+
+            // Assert
+            Assert.IsNull(result);
+        }
+
+        [TestMethod]
         public void UsersServiceMethodCreateShouldCreateAUser()
         {
             // Arrange
-            var user = new User("users", "user3");
+            var user = new User { PartitionKey = UsersMemoryRepository.IdentityProvider, RowKey = UsersMemoryRepository.User4RowKey };
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var repository = new UsersMemoryRepository();
             var service = new UsersService(unitOfWorkMock.Object, repository);
 
             // Act
             service.Create(user);
-            var result = service.Get("users", "user3");
+            var result = service.Get(UsersMemoryRepository.IdentityProvider, UsersMemoryRepository.User4RowKey);
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(User));
@@ -385,12 +661,12 @@ namespace CloudNotes.Tests.Domain.Services
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var repository = new UsersMemoryRepository();
             var service = new UsersService(unitOfWorkMock.Object, repository);
-            var result = service.Get("users", "user1");
+            var result = service.Get(UsersMemoryRepository.IdentityProvider, UsersMemoryRepository.User1RowKey);
 
             // Act
             result.Email = "test@test.com";
             service.Update(result);
-            var updatedResult = service.Get("users", "user1");
+            var updatedResult = service.Get(UsersMemoryRepository.IdentityProvider, UsersMemoryRepository.User1RowKey);
 
             // Assert
             Assert.IsTrue(updatedResult.Email == "test@test.com");
@@ -403,26 +679,26 @@ namespace CloudNotes.Tests.Domain.Services
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var repository = new UsersMemoryRepository();
             var service = new UsersService(unitOfWorkMock.Object, repository);
-            var result = service.Get("users", "user1");
+            var result = service.Get(UsersMemoryRepository.IdentityProvider, UsersMemoryRepository.User1RowKey);
 
             // Act
             service.Delete(result);
-            result = service.Get("users", "user1");
+            result = service.Get(UsersMemoryRepository.IdentityProvider, UsersMemoryRepository.User1RowKey);
 
             // Assert
             Assert.IsNull(result);
         }
 
         [TestMethod]
-        public void UsersServiceMethodGetOrAddCurrentUserShouldAddAndReturnANonExistentUser()
+        public void UsersServiceMethodIsRegisteredReturnsTrueForAnExistingUser()
         {
             // Arrange
             var claims = new[]
-                                 {
-                                     new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider", "testIdentityProvider") ,
-                                     new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", "user3"),
-                                     new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress", "test@test.com")
-                                 };
+                                     {
+                                         new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider", "WindowsLiveID") ,
+                                         new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", "user1"),
+                                         new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress", "test@test.com")
+                                     };
 
             IClaimsIdentity identity = new ClaimsIdentity(claims);
             IClaimsPrincipal principal = new ClaimsPrincipal(new[] { identity });
@@ -431,25 +707,22 @@ namespace CloudNotes.Tests.Domain.Services
             var service = new UsersService(unitOfWorkMock.Object, repository);
 
             // Act
-            var result = service.GetOrAddCurrentUser(principal);
-            var allUsers = service.Load();
+            var result = service.UserIsRegistered(principal);
 
             // Assert
-            Assert.IsTrue(allUsers.Count() == 4);
-            Assert.IsInstanceOfType(result, typeof(User));
-            Assert.IsNotNull(result);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
-        public void UsersServiceMethodGetOrAddCurrentUserShouldAddAndReturnAExistentUser()
+        public void UsersServiceMethodIsRegisteredReturnsFalseForANonExistingUser()
         {
             // Arrange
             var claims = new[]
-                                 {
-                                     new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider", "testIdentityProvider") ,
-                                     new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", "user2"),
-                                     new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress", "test@test.com")
-                                 };
+                                     {
+                                         new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider", "WindowsLiveID") ,
+                                         new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", "user4"),
+                                         new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress", "test@test.com")
+                                     };
 
             IClaimsIdentity identity = new ClaimsIdentity(claims);
             IClaimsPrincipal principal = new ClaimsPrincipal(new[] { identity });
@@ -458,12 +731,24 @@ namespace CloudNotes.Tests.Domain.Services
             var service = new UsersService(unitOfWorkMock.Object, repository);
 
             // Act
-            var result = service.GetOrAddCurrentUser(principal);
-            var allUsers = service.Load();
+            var result = service.UserIsRegistered(principal);
 
             // Assert
-            Assert.IsTrue(allUsers.Count() == 3);
-            Assert.IsInstanceOfType(result, typeof(User));
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void UsersServiceMethodGetByIdentifiersShouldReturnAUser()
+        {
+            // Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var repository = new UsersMemoryRepository();
+            var service = new UsersService(unitOfWorkMock.Object, repository);
+
+            // Act
+            var result = service.GetByIdentifiers("user1", UsersMemoryRepository.IdentityProvider);
+
+            // Assert
             Assert.IsNotNull(result);
         }
 
@@ -471,13 +756,13 @@ namespace CloudNotes.Tests.Domain.Services
         public void UsersServiceMethodLoadNoteOwnerShouldLoadOwner()
         {
             // Arrange
-            var note = new Note("taskList1", "note1");
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var repository = new UsersMemoryRepository();
+            var note = new Note { PartitionKey = UsersMemoryRepository.Note1PartitionKey, RowKey = repository.Note1RowKey };
             var service = new UsersService(unitOfWorkMock.Object, repository);
 
             // Act
-            service.LoadNoteOwner(note);
+            service.LoadOwner(note);
 
             // Assert
             Assert.IsNotNull(note.Owner);
@@ -487,48 +772,143 @@ namespace CloudNotes.Tests.Domain.Services
         public void UsersServiceMethodLoadTaskListOwnerShouldLoadOwner()
         {
             // Arrange
-            var taskList = new TaskList("user1", "taskList1");
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var repository = new UsersMemoryRepository();
+            var taskList = new TaskList { PartitionKey = UsersMemoryRepository.TaskList1PartitionKey, RowKey = repository.Note1RowKey };
             var service = new UsersService(unitOfWorkMock.Object, repository);
 
             // Act
-            service.LoadTaskListOwner(taskList);
+            service.LoadOwner(taskList);
 
             // Assert
             Assert.IsNotNull(taskList.Owner);
         }
 
         [TestMethod]
-        public void UsersServiceMethodLoadNoteAssociatedUsersShouldLoadAssociatedUsers()
+        public void UsersServiceMethodLoadShareShouldLoadTheNoteShares()
         {
             // Arrange
-            var note = new Note("taskList1", "note1");
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var repository = new UsersMemoryRepository();
+            var note = new Note { PartitionKey = UsersMemoryRepository.Note1PartitionKey, RowKey = repository.Note1RowKey };
             var service = new UsersService(unitOfWorkMock.Object, repository);
 
             // Act
-            service.LoadNoteAssociatedUsers(note);
+            service.LoadShare(note);
 
             // Assert
-            Assert.IsTrue(note.AssociatedUsers.Count == 2);
+            Assert.IsTrue(note.Share.Count == 2);
         }
 
         [TestMethod]
-        public void UsersServiceMethodLoadTaskListAssociatedUsersShouldLoadAssociatedUsers()
+        public void UsersServiceMethodLoadShareShouldLoadTheTaskListShares()
         {
             // Arrange
-            var taskList = new TaskList("user1", "taskList1");
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var repository = new UsersMemoryRepository();
+            var taskList = new TaskList { PartitionKey = UsersMemoryRepository.TaskList1PartitionKey, RowKey = repository.TaskList1RowKey };
+            var service = new UsersService(unitOfWorkMock.Object, repository);
+
+            // Act
+            service.LoadShare(taskList);
+
+            // Assert
+            Assert.IsTrue(taskList.Share.Count == 2);
+        }
+
+        [TestMethod]
+        public void UsersServiceMethodGetUserAuthenticationInfoShouldReturnTheAuthenticationInfoWithNameAndEmail()
+        {
+            // Arrange
+            var claims = new[]
+                                     {
+                                         new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider", "WindowsLiveID") ,
+                                         new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", "user1"),
+                                         new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress", "test@test.com"),
+                                         new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name", "User1"), 
+                                     };
+
+            IClaimsIdentity identity = new ClaimsIdentity(claims);
+            IClaimsPrincipal principal = new ClaimsPrincipal(new[] { identity });
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var repository = new UsersMemoryRepository();
             var service = new UsersService(unitOfWorkMock.Object, repository);
 
             // Act
-            service.LoadTaskListAssociatedUsers(taskList);
+            var result = service.GetUserAuthenticationInfo(principal);
 
             // Assert
-            Assert.IsTrue(taskList.AssociatedUsers.Count == 2);
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void UsersServiceMethodGetUserAuthenticationInfoShouldReturnTheAuthenticationInfoWithoutNameAndEmail()
+        {
+            // Arrange
+            var claims = new[]
+                                     {
+                                         new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider", "WindowsLiveID") ,
+                                         new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", "user1")
+                                     };
+
+            IClaimsIdentity identity = new ClaimsIdentity(claims);
+            IClaimsPrincipal principal = new ClaimsPrincipal(new[] { identity });
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var repository = new UsersMemoryRepository();
+            var service = new UsersService(unitOfWorkMock.Object, repository);
+
+            // Act
+            var result = service.GetUserAuthenticationInfo(principal);
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void UsersServiceMethodGFillUserAuthenticationInfoShouldFillTheAuthenticationInfo()
+        {
+            // Arrange
+            var claims = new[]
+                                     {
+                                         new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider", "WindowsLiveID") ,
+                                         new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", "user1"),
+                                         new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress", "test@test.com"),
+                                         new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name", "user1"), 
+                                     };
+
+            IClaimsIdentity identity = new ClaimsIdentity(claims);
+            IClaimsPrincipal principal = new ClaimsPrincipal(new[] { identity });
+            var user = new User { Name = "user1" };
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var repository = new UsersMemoryRepository();
+            var service = new UsersService(unitOfWorkMock.Object, repository);
+
+            // Act
+            service.FillAuthenticationInfo(user, principal);
+
+            // Assert
+            Assert.IsTrue(user.PartitionKey == "windowsliveid");
+            Assert.IsTrue(user.RowKey == "user1-windowsliveid");
+            Assert.IsTrue(user.UniqueIdentifier == "user1");
+        }
+
+        [TestMethod]
+        public void UserServiceMethodParseIdentityProviderShouldParseIdentityProviders()
+        {
+            // Arrange
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var repository = new UsersMemoryRepository();
+            var service = new UsersService(unitOfWorkMock.Object, repository);
+
+            // Act
+            var windowsLiveIdProvider = service.ParseIdentityProvider("WindowsLiveID");
+            var googleProvider = service.ParseIdentityProvider("Google");
+            var yahooProvider = service.ParseIdentityProvider("Yahoo");
+
+            // Assert
+            Assert.IsTrue(windowsLiveIdProvider == "windowsliveid");
+            Assert.IsTrue(googleProvider == "google");
+            Assert.IsTrue(yahooProvider == "yahoo");
         }
 
         #endregion UsersService tests

@@ -1,0 +1,18 @@
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Infrastructure.Exceptions\bin\Debug\CloudNotes.Infrastructure.Exceptions.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Infrastructure.Exceptions\bin\Debug\CloudNotes.Infrastructure.Exceptions.pdb
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Infrastructure.Exceptions\obj\Debug\CloudNotes.Infrastructure.Exceptions.dll
+D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Infrastructure.Exceptions\obj\Debug\CloudNotes.Infrastructure.Exceptions.pdb
+D:\CloudNotes\CloudNotes.Infrastructure.Exceptions\bin\Debug\CloudNotes.Infrastructure.Exceptions.dll
+D:\CloudNotes\CloudNotes.Infrastructure.Exceptions\bin\Debug\CloudNotes.Infrastructure.Exceptions.pdb
+D:\CloudNotes\CloudNotes.Infrastructure.Exceptions\obj\Debug\ResolveAssemblyReference.cache
+D:\CloudNotes\CloudNotes.Infrastructure.Exceptions\obj\Debug\CloudNotes.Infrastructure.Exceptions.dll
+D:\CloudNotes\CloudNotes.Infrastructure.Exceptions\obj\Debug\CloudNotes.Infrastructure.Exceptions.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Infrastructure.Exceptions\bin\Debug\CloudNotes.Infrastructure.Exceptions.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Infrastructure.Exceptions\bin\Debug\CloudNotes.Infrastructure.Exceptions.pdb
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Infrastructure.Exceptions\obj\Debug\ResolveAssemblyReference.cache
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Infrastructure.Exceptions\obj\Debug\CloudNotes.Infrastructure.Exceptions.dll
+C:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Infrastructure.Exceptions\obj\Debug\CloudNotes.Infrastructure.Exceptions.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Infrastructure.Exceptions\bin\Debug\CloudNotes.Infrastructure.Exceptions.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Infrastructure.Exceptions\bin\Debug\CloudNotes.Infrastructure.Exceptions.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Infrastructure.Exceptions\obj\Debug\CloudNotes.Infrastructure.Exceptions.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Infrastructure.Exceptions\obj\Debug\CloudNotes.Infrastructure.Exceptions.pdb

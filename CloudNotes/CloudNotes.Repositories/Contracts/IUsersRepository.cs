@@ -5,11 +5,11 @@ namespace CloudNotes.Repositories.Contracts
 {
     public interface IUsersRepository : IRepository<User>
     {
-        bool UserExists(IPrincipal principal);
-        User GetByUniqueIdentifier(string uniqueIdentifier);
-        void LoadNoteOwner(Note note);
-        void LoadNoteAssociatedUsers(Note note);
-        void LoadTaskListOwner(TaskList taskList);
-        void LoadTaskListAssociatedUsers(TaskList taskList);
+        bool UserIsRegistered(IPrincipal principal);
+        User GetByIdentifiers(string uniqueIdentifier, string identityProviderIdentifier);
+        void LoadOwner(Note note);
+        void LoadShare(Note note);
+        void LoadOwner(TaskList taskList);
+        void LoadShare(TaskList taskList);
     }
 }

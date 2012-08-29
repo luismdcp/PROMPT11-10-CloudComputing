@@ -4,18 +4,34 @@
     ViewBag.Title = "Delete";
 }
 
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var taskListsHub = $.connection.tasklistsHub;
+
+            $("#submitButton").click(function () {
+                taskListsHub.deleteNote('@Model.RowKey');
+            });
+
+            $.connection.hub.start();
+        });
+    </script>  
+}
+
 @if (ViewBag.ValidationErrors != null)
 {
-    @Html.DisplayForValidationErrors((IEnumerable<ValidationResult>)ViewBag.ValidationErrors)
+    @Html.DisplayForValidationErrors((IEnumerable<ValidationResult>) ViewBag.ValidationErrors)
 }
 
 <h3>Are you sure you want to delete this?</h3>
 
-@using (Html.BeginForm("Delete", "Notes", new { ViewBag.TaskListTitle }, FormMethod.Post, new { @class = "form-horizontal" }))
+@using (Html.BeginForm("Delete", "Notes", new { noteOwnerId = Model.PartitionKey, noteId = Model.RowKey }, FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.Partial("_DetailsOrDelete", Model)
     
     <div class="form-actions">
-        @Html.Button("submit", "Delete", new { @class = "btn btn-primary" }) | @Html.ActionLink("Back to List", "Index", new { ViewBag.TaskListTitle })
+        @Html.Button("submit", "Delete", new { @class = "btn btn-primary", id = "submitButton" }) | 
+        @Html.ActionLink("Back to List", "Index", new { taskListOwnerId = ViewBag.ContainerOwnerId, taskListId = ViewBag.ContainerId })
     </div>
 }

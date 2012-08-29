@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Security.Principal;
 using CloudNotes.Domain.Entities;
 using CloudNotes.Repositories.Contracts;
 using CloudNotes.Repositories.Entities;
 using CloudNotes.Repositories.Entities.Relation;
 using CloudNotes.Repositories.Extensions;
+using CloudNotes.Repositories.Helpers;
 using Microsoft.IdentityModel.Claims;
 
 namespace CloudNotes.Tests.Domain.Services.Memory
@@ -14,11 +17,24 @@ namespace CloudNotes.Tests.Domain.Services.Memory
     {
         #region Fields
 
-        private readonly List<UserTableEntry> _usersTableEntries;
-        private readonly List<NoteOwnerTableEntry> _noteOwnerTableEntries;
-        private readonly List<NoteAssociatedUserTableEntry> _noteAssociatedUsersTableEntries;
-        private readonly List<TaskListOwnerTableEntry> _taskListOwnerTableEntries;
-        private readonly List<TaskListAssociatedUserTableEntry> _taskListAssociatedUsersTableEntries;
+        public readonly List<UserEntity> Users;
+        public readonly List<NoteShareEntity> NoteShares;
+        public readonly List<TaskListShareEntity> TaskListShares;
+        public const string IdentityProvider = "windowsliveid";
+        public const string User1RowKey = "user1-windowsliveid";
+        public const string User2RowKey = "user2-windowsliveid";
+        public const string User3RowKey = "user3-windowsliveid";
+        public const string User4RowKey = "user4-windowsliveid";
+        public const string Note1PartitionKey = "user1-windowsliveid";
+        public const string Note2PartitionKey = "user2-windowsliveid";
+        public readonly string Note1RowKey = ShortGuid.NewGuid().ToString();
+        public readonly string Note2RowKey = ShortGuid.NewGuid().ToString();
+        public readonly string Note3RowKey = ShortGuid.NewGuid().ToString();
+        public const string TaskList1PartitionKey = "user1-windowsliveid";
+        public const string TaskList2PartitionKey = "user2-windowsliveid";
+        public readonly string TaskList1RowKey = ShortGuid.NewGuid().ToString();
+        public readonly string TaskList2RowKey = ShortGuid.NewGuid().ToString();
+        public readonly string TaskList3RowKey = ShortGuid.NewGuid().ToString();
 
         #endregion Fields
 
@@ -26,38 +42,27 @@ namespace CloudNotes.Tests.Domain.Services.Memory
 
         public UsersMemoryRepository()
         {
-            _usersTableEntries = new List<UserTableEntry>
-                                 {
-                                     new UserTableEntry("users", "user1"), 
-                                     new UserTableEntry("users", "user2_testIdentityProvider"),
-                                     new UserTableEntry("users", "user3")
-                                 };
+            Users = new List<UserEntity>
+                        {
+                            new UserEntity(IdentityProvider, User1RowKey) { UniqueIdentifier = "user1" }, 
+                            new UserEntity(IdentityProvider, User2RowKey),
+                            new UserEntity(IdentityProvider, User3RowKey)
+                        };
 
-            _noteOwnerTableEntries = new List<NoteOwnerTableEntry>
-                                         {
-                                             new NoteOwnerTableEntry("user1", "note1"),
-                                             new NoteOwnerTableEntry("user2", "note2")
-                                         };
 
-            _taskListOwnerTableEntries = new List<TaskListOwnerTableEntry>
-                                         {
-                                             new TaskListOwnerTableEntry("user1", "taskList1"),
-                                             new TaskListOwnerTableEntry("user2", "taskList2")
-                                         };
+            NoteShares = new List<NoteShareEntity>
+                            {
+                                new NoteShareEntity(string.Format("{0}+{1}", Note1PartitionKey, Note1RowKey), User1RowKey),
+                                new NoteShareEntity(string.Format("{0}+{1}", Note1PartitionKey, Note1RowKey), User2RowKey)
+                            };
 
-            _noteAssociatedUsersTableEntries = new List<NoteAssociatedUserTableEntry>
-                                                   {
-                                                       new NoteAssociatedUserTableEntry("note1", "user1"),
-                                                       new NoteAssociatedUserTableEntry("note1", "user3"),
-                                                       new NoteAssociatedUserTableEntry("note2", "user2")
-                                                   };
-
-            _taskListAssociatedUsersTableEntries = new List<TaskListAssociatedUserTableEntry>
-                                                   {
-                                                       new TaskListAssociatedUserTableEntry("taskList1", "user1"),
-                                                       new TaskListAssociatedUserTableEntry("taskList1", "user3"),
-                                                       new TaskListAssociatedUserTableEntry("taskList2", "user2")
-                                                   };
+            TaskListShares = new List<TaskListShareEntity>
+                                {
+                                    new TaskListShareEntity(string.Format("{0}+{1}", TaskList1PartitionKey, TaskList1RowKey), User1RowKey),
+                                    new TaskListShareEntity(string.Format("{0}+{1}", TaskList1PartitionKey, TaskList1RowKey), User3RowKey),
+                                    new TaskListShareEntity(string.Format("{0}+{1}", TaskList2PartitionKey, TaskList2RowKey), User2RowKey),
+                                    new TaskListShareEntity(string.Format("{0}+{1}", TaskList2PartitionKey, TaskList2RowKey), User3RowKey)
+                                };
         }
 
         #endregion Constructors
@@ -66,126 +71,132 @@ namespace CloudNotes.Tests.Domain.Services.Memory
 
         public IQueryable<User> Load()
         {
-            return _usersTableEntries.Select(n => n.MapToUser()).AsQueryable();
+            return Users.Select(n => n.MapToUser()).AsQueryable();
         }
 
         public User Get(string partitionKey, string rowKey)
         {
-            var result = _usersTableEntries.FirstOrDefault(n => n.PartitionKey == partitionKey && n.RowKey == rowKey);
+            var result = Users.FirstOrDefault(n => n.PartitionKey == partitionKey && n.RowKey == rowKey);
             return result != null ? result.MapToUser() : null;
+        }
+
+        public User Get(Expression<Func<User, bool>> filter)
+        {
+            var result = Users.Select(n => n.MapToUser()).AsQueryable().Where(filter).FirstOrDefault();
+            return result;
         }
 
         public void Create(User entityToCreate)
         {
-            var userTableEntry = entityToCreate.MapToUserTableEntry();
-            _usersTableEntries.Add(userTableEntry);
+            var user = entityToCreate.MapToUserEntity();
+            Users.Add(user);
         }
 
         public void Update(User entityToUpdate)
         {
-            var userTableEntry = entityToUpdate.MapToUserTableEntry();
-            var userTableEntryToRemove = _usersTableEntries.First(n => n.PartitionKey == userTableEntry.PartitionKey && n.RowKey == userTableEntry.RowKey);
+            var user = entityToUpdate.MapToUserEntity();
+            var userToRemove = Users.First(n => n.PartitionKey == user.PartitionKey && n.RowKey == user.RowKey);
 
-            _usersTableEntries.Remove(userTableEntryToRemove);
-            _usersTableEntries.Add(userTableEntry);
+            Users.Remove(userToRemove);
+            Users.Add(user);
         }
 
         public void Delete(User entityToDelete)
         {
-            _usersTableEntries.RemoveAll(n => n.PartitionKey == entityToDelete.PartitionKey && n.RowKey == entityToDelete.RowKey);
+            Users.RemoveAll(n => n.PartitionKey == entityToDelete.PartitionKey && n.RowKey == entityToDelete.RowKey);
         }
 
-        public User GetOrAddCurrentUser(IPrincipal principal)
+        public bool UserIsRegistered(IPrincipal principal)
         {
-            string userUniqueIdentifier = string.Empty;
-            string userEmailAddress = string.Empty;
+            var uniqueIdentifier = string.Empty;
+            var identityProvider = string.Empty;
             var claimsPrincipal = principal as IClaimsPrincipal;
 
             if (claimsPrincipal != null)
             {
                 var claimsIdentity = claimsPrincipal.Identities[0];
-                var nameIdentifierClaim = claimsIdentity.Claims.FirstOrDefault(claim => claim.ClaimType == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");
-                var emailAddressClaim = claimsIdentity.Claims.FirstOrDefault(claim => claim.ClaimType == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
-                var identityProviderClaim = claimsIdentity.Claims.FirstOrDefault(claim => claim.ClaimType == "http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider");
+                var nameIdentifierClaim = claimsIdentity.Claims.FirstOrDefault(c => c.ClaimType == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");
+                var identityProviderClaim = claimsIdentity.Claims.FirstOrDefault(c => c.ClaimType == "http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider");
 
-                userUniqueIdentifier = string.Format("{0}_{1}", nameIdentifierClaim.Value, identityProviderClaim.Value);
-                userEmailAddress = emailAddressClaim == null ? string.Empty : emailAddressClaim.Value;
+                identityProvider = ParseIdentityProvider(identityProviderClaim.Value);
+                uniqueIdentifier = nameIdentifierClaim.Value;
+            }
+
+            return Users.FirstOrDefault(u => u.PartitionKey == identityProvider && u.UniqueIdentifier == uniqueIdentifier) != null;
+        }
+
+        public User GetByIdentifiers(string uniqueIdentifier, string identityProviderIdentifier)
+        {
+            var result = Users.FirstOrDefault(u => u.PartitionKey == identityProviderIdentifier && u.UniqueIdentifier == uniqueIdentifier);
+            return result != null ? result.MapToUser() : null;
+        }
+
+        public void LoadOwner(Note note)
+        {
+            var owner = Users.FirstOrDefault(u => u.RowKey == note.PartitionKey);
+            note.Owner = owner.MapToUser();
+        }
+
+        public void LoadShare(Note note)
+        {
+            var noteShares = NoteShares.Where(n => n.PartitionKey == string.Format("{0}+{1}", note.PartitionKey, note.RowKey));
+
+            foreach (var noteShare in noteShares)
+            {
+                var user = Users.FirstOrDefault(u => u.RowKey == noteShare.RowKey);
+
+                if (user != null)
+                {
+                    note.Share.Add(user.MapToUser());
+                }
+            }
+        }
+
+        public void LoadOwner(TaskList taskList)
+        {
+            var owner = Users.FirstOrDefault(u => u.RowKey == taskList.PartitionKey);
+            taskList.Owner = owner.MapToUser();
+        }
+
+        public void LoadShare(TaskList taskList)
+        {
+            var taskListShares = TaskListShares.Where(n => n.PartitionKey == string.Format("{0}+{1}", taskList.PartitionKey, taskList.RowKey));
+
+            foreach (var taskLisShare in taskListShares)
+            {
+                var user = Users.FirstOrDefault(u => u.RowKey == taskLisShare.RowKey);
+
+                if (user != null)
+                {
+                    taskList.Share.Add(user.MapToUser());
+                }
+            }
+        }
+
+        public static string ParseIdentityProvider(string identityProviderClaim)
+        {
+            string identityProvider = string.Empty;
+
+            if (identityProviderClaim.Contains("WindowsLiveID"))
+            {
+                identityProvider = "windowsliveid";
             }
             else
             {
-                userUniqueIdentifier = principal.Identity.Name;
-            }
-
-            var newOrExistingUserEntry = _usersTableEntries.FirstOrDefault(u => u.RowKey == userUniqueIdentifier);
-
-            if (newOrExistingUserEntry == null)
-            {
-                var user = new User("users", userUniqueIdentifier, userUniqueIdentifier, userEmailAddress);
-                Create(user);
-                return user;
-            }
-
-            return newOrExistingUserEntry.MapToUser();
-        }
-
-        public void LoadNoteOwner(Note note)
-        {
-            var noteOwnerEntry = _noteOwnerTableEntries.FirstOrDefault(n => n.RowKey == note.RowKey);
-
-            if (noteOwnerEntry != null)
-            {
-                var noteOwner = _usersTableEntries.FirstOrDefault(u => u.RowKey == noteOwnerEntry.PartitionKey);
-
-                if (noteOwner != null)
+                if (identityProviderClaim.Contains("Google"))
                 {
-                    note.Owner = noteOwner.MapToUser();
+                    identityProvider = "google";
+                }
+                else
+                {
+                    if (identityProviderClaim.Contains("Yahoo"))
+                    {
+                        identityProvider = "yahoo";
+                    }
                 }
             }
-        }
 
-        public void LoadNoteAssociatedUsers(Note note)
-        {
-            var noteAssociatedUsers = _noteAssociatedUsersTableEntries.Where(n => n.PartitionKey == note.RowKey);
-
-            foreach (var noteAssociatedUserTableEntry in noteAssociatedUsers)
-            {
-                var noteAssociatedUser = _usersTableEntries.FirstOrDefault(u => u.RowKey == noteAssociatedUserTableEntry.RowKey);
-
-                if (noteAssociatedUser != null)
-                {
-                    note.AssociatedUsers.Add(noteAssociatedUser.MapToUser());
-                }
-            }
-        }
-
-        public void LoadTaskListOwner(TaskList taskList)
-        {
-            var taskListOwnerEntry = _taskListOwnerTableEntries.FirstOrDefault(n => n.RowKey == taskList.RowKey);
-
-            if (taskListOwnerEntry != null)
-            {
-                var taskListOwner = _usersTableEntries.FirstOrDefault(u => u.RowKey == taskListOwnerEntry.PartitionKey);
-
-                if (taskListOwner != null)
-                {
-                    taskList.Owner = taskListOwner.MapToUser();
-                }
-            }
-        }
-
-        public void LoadTaskListAssociatedUsers(TaskList taskList)
-        {
-            var taskListAssociatedUsers = _taskListAssociatedUsersTableEntries.Where(n => n.PartitionKey == taskList.RowKey);
-
-            foreach (var taskListAssociatedUserTableEntry in taskListAssociatedUsers)
-            {
-                var taskListAssociatedUser = _usersTableEntries.FirstOrDefault(u => u.RowKey == taskListAssociatedUserTableEntry.RowKey);
-
-                if (taskListAssociatedUser != null)
-                {
-                    taskList.AssociatedUsers.Add(taskListAssociatedUser.MapToUser());
-                }
-            }
+            return identityProvider;
         }
 
         #endregion Public methods

@@ -1,6 +1,6 @@
 ﻿@model Note
 
-@using (@Html.BeginFieldset("Note"))
+@using (@Html.BeginFieldset("Note", new { id = "noteForm" }))
 {
     <div class="control-group">
         @Html.Label("Title", "Title", new { @class = "control-label" })

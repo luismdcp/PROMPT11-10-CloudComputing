@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Security.Principal;
 using System.Web.Mvc;
 using CloudNotes.Domain.Entities;
@@ -14,18 +13,14 @@ namespace CloudNotes.WebRole.Controllers
         #region Fields
 
         private readonly IUsersService _usersService;
-        private readonly ITaskListsService _taskListsService;
-        private readonly INotesService _notesService;
 
         #endregion Fields
 
         #region Constructors
 
-        public UsersController(IUsersService usersService, ITaskListsService taskListsService, INotesService notesService)
+        public UsersController(IUsersService usersService)
         {
             _usersService = usersService;
-            _taskListsService = taskListsService;
-            _notesService = notesService;
         }
 
         #endregion Constructors
@@ -35,22 +30,18 @@ namespace CloudNotes.WebRole.Controllers
         // GET: /Users/Home
         public ActionResult Home(IPrincipal principal)
         {
-            string name;
-            string email;
-            string uniqueIdentifier;
-            var userExists = _usersService.UserExists(principal);
+            var userIsRegistered = _usersService.UserIsRegistered(principal);
+            var authenticationInfo = _usersService.GetUserAuthenticationInfo(principal);
 
-            _usersService.GetUserAuthenticationInfo(principal, out name, out email, out uniqueIdentifier);
-
-            if (!userExists)
+            if (!userIsRegistered)
             {
-                ViewBag.UserName = name;
-                ViewBag.UserEmail = email;
+                ViewBag.UserName = authenticationInfo.Name;
+                ViewBag.UserEmail = authenticationInfo.Email;
                 return View();
             }
             else
             {
-                var user = _usersService.GetByUniqueIdentifier(uniqueIdentifier);
+                var user = _usersService.GetByIdentifiers(authenticationInfo.UniqueIdentifier, authenticationInfo.IdentityProviderIdentifier);
                 Session["CurrentUser"] = user;
                 return RedirectToAction("Index", "TaskLists");
             }
@@ -66,9 +57,16 @@ namespace CloudNotes.WebRole.Controllers
             {
                 TryUpdateModel(user);
 
+                // User name cannot have the character '-' because it is used to concatenate the user name and indentity provider in the Users table.
+                if (user.Name.Contains("-"))
+                {
+                    ViewBag.ValidationErrors = new List<ValidationResult> { new ValidationResult("User name cannot have the character '-'") };
+                    return View(user);
+                }
+
                 if (user.IsValid())
                 {
-                    _usersService.FillUniqueIdentifier(user, principal);
+                    _usersService.FillAuthenticationInfo(user, principal);
                     _usersService.Create(user);
                     Session["CurrentUser"] = user;
                     return RedirectToAction("Index", "TaskLists");
@@ -84,78 +82,6 @@ namespace CloudNotes.WebRole.Controllers
             }
 
             return View(user);
-        }
-
-        // GET: /Users/Associate/TaskList/TaskList-Title
-        public ActionResult AssociateUsersToTaskList(string taskListTitle)
-        {
-            var allUsers = _usersService.Load();
-            var currentUser = (User) Session["CurrentUser"];
-            var taskList = _taskListsService.GetByTitleAndOwner(taskListTitle.Replace('-', ' '), currentUser);
-
-            _usersService.LoadTaskListAssociatedUsers(taskList);
-            ViewBag.TaskListToAssociate = taskList;
-
-            return View(allUsers.Except(taskList.AssociatedUsers));
-        }
-
-        // GET: /Users/Associate/Note/Note-Title
-        public ActionResult AssociateUsersToNote(string noteTitle, string taskListTitle)
-        {
-            var allUsers = _usersService.Load();
-            var currentUser = (User) Session["CurrentUser"];
-            var taskList = _taskListsService.GetByTitleAndOwner(taskListTitle.Replace('-', ' '), currentUser);
-            var note = _notesService.GetByTitle(noteTitle, taskList);
-
-            _usersService.LoadNoteAssociatedUsers(note);
-            ViewBag.NoteToAssociate = note;
-
-            return View(allUsers.Except(note.AssociatedUsers));
-        }
-
-        [HttpPost]
-        public ActionResult AssociateUsersToTaskListPost(string taskListTitle, string partitionKey, string rowKey, string[] userCheck)
-        {
-            if (userCheck != null)
-            {
-                var taskList = _taskListsService.Get(partitionKey, rowKey);
-
-                foreach (var userRowKey in userCheck)
-                {
-                    var user = _usersService.Get("Users", userRowKey);
-                    _taskListsService.AddAssociatedUser(taskList, user);
-                }
-
-                return RedirectToAction("Index", "TaskLists");
-            }
-            else
-            {
-                TempData["AlertMessage"] = "Please select at least one User to associate.";
-                return RedirectToAction("AssociateUsersToTaskList", new { taskListTitle });
-            }
-        }
-
-        [HttpPost]
-        public ActionResult AssociateUsersToNotePost(string taskListTitle, string noteTitle, string partitionKey, string rowKey, string[] userCheck)
-        {
-            if (userCheck != null)
-            {
-                var note = _notesService.Get(partitionKey, rowKey);
-
-
-                foreach (var userRowKey in userCheck)
-                {
-                    var user = _usersService.Get("Users", userRowKey);
-                    _notesService.AddAssociatedUser(note, user);
-                }
-
-                return RedirectToAction("Index", "Notes", new { taskListTitle });
-            }
-            else
-            {
-                TempData["AlertMessage"] = "Please select at least one User to associate.";
-                return RedirectToAction("AssociateUsersToNote", new { taskListTitle });
-            }
         }
 
         #endregion Actions

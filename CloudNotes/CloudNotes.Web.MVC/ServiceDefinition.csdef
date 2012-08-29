@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="CloudNotes.Web.MVC" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
   <WebRole name="CloudNotes.WebRole" vmsize="Small">
-    <Startup>
-      <Task commandLine="RegisterDLL.cmd" executionContext="elevated" taskType="simple" />
-    </Startup>
     <Sites>
       <Site name="Web">
         <Bindings>

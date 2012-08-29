@@ -2,10 +2,11 @@
 using System.Configuration;
 using System.Data.Services.Client;
 using System.Linq;
-using System.Reflection;
+using System.Linq.Expressions;
 using System.Xml;
 using CloudNotes.Infrastructure.Exceptions;
 using CloudNotes.Repositories.Contracts;
+using CloudNotes.Repositories.Helpers;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.StorageClient;
 
@@ -24,49 +25,61 @@ namespace CloudNotes.Repositories.Implementation
         public AzureTablesUnitOfWork()
         {
             var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
-            _context = new TableServiceContext(storageAccount.TableEndpoint.AbsoluteUri, storageAccount.Credentials) { IgnoreResourceNotFoundException = true };
+            _context = new TableServiceContext(storageAccount.TableEndpoint.AbsoluteUri, storageAccount.Credentials) { IgnoreResourceNotFoundException = true, IgnoreMissingProperties = true };
         }
 
         #endregion Constructors
 
         #region Public methods
 
-        public IQueryable<T> Load<T>(string entitySetName) where T : TableServiceEntity
+        public IQueryable<T> Load<T>(string entitySetName)
         {
-            return _context.CreateQuery<T>(entitySetName);
+            return _context.CreateQuery<T>(entitySetName).AsTableServiceQuery();
         }
 
-        public T Get<T>(string entitySetName, string partitionKey, string rowKey) where T : TableServiceEntity
+        public IQueryable<T> Load<T>(string entitySetName, Expression<Func<T, bool>> filter)
         {
-            var entities = _context.CreateQuery<T>(entitySetName).Where(e => e.PartitionKey == partitionKey && e.RowKey == rowKey);
-            return entities.FirstOrDefault();
+            return _context.CreateQuery<T>(entitySetName).Where(filter).AsTableServiceQuery();
         }
 
-        public void Create<T>(T entityToCreate, string entitySetName) where T : TableServiceEntity
+        public T Get<T>(string entitySetName, string partitionKey, string rowKey)
+        {
+            var query = string.Format("PartitionKey == \"{0}\" And RowKey == \"{1}\"", partitionKey, rowKey);
+            return _context.CreateQuery<T>(entitySetName).Where(query).FirstOrDefault();
+        }
+
+        public T Get<T>(string entitySetName, Expression<Func<T, bool>> filter)
+        {
+            return _context.CreateQuery<T>(entitySetName).Where(filter).FirstOrDefault();
+        }
+
+        public void Create<T>(T entityToCreate, string entitySetName)
         {
             _context.AddObject(entitySetName, entityToCreate);
         }
 
-        public void Update<T>(string entitySetName, T entityToUpdate) where T : TableServiceEntity
+        public void Update<T>(string entitySetName, T entityToUpdate)
         {
-            var entities = _context.CreateQuery<T>(entitySetName).Where(e => e.PartitionKey == entityToUpdate.PartitionKey && e.RowKey == entityToUpdate.RowKey);
-            var entity = entities.FirstOrDefault();
+            var t = entityToUpdate.GetType();
+            var properties = t.GetProperties();
 
+            var partitionKey = (string) properties.Single(pi => pi.Name == "PartitionKey").GetValue(entityToUpdate, null);
+            var rowKey = (string) properties.Single(pi => pi.Name == "RowKey").GetValue(entityToUpdate, null); ;
+
+            var entity = Get<T>(entitySetName, partitionKey, rowKey);
+            
             if (entity != null)
             {
-                Type t = entityToUpdate.GetType();
-                PropertyInfo[] pi = t.GetProperties();
-
-                foreach (PropertyInfo p in pi)
+                foreach (var p in properties)
                 {
                     p.SetValue(entity, p.GetValue(entityToUpdate, null), null);
                 }
 
-                _context.UpdateObject(entity); 
+                _context.UpdateObject(entity);
             }
         }
 
-        public void Delete<T>(string entitySetName, string partitionKey, string rowKey) where T : TableServiceEntity
+        public void Delete<T>(string entitySetName, string partitionKey, string rowKey)
         {
             var entityToDelete = Get<T>(entitySetName, partitionKey, rowKey);
 

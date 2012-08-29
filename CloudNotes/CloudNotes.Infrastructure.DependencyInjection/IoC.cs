@@ -22,9 +22,11 @@ namespace CloudNotes.Infrastructure.DependencyInjection
                 x.For<INotesRepository>().HttpContextScoped().Use<NotesRepository>();
                 x.For<ITaskListsRepository>().HttpContextScoped().Use<TaskListsRepository>();
                 x.For<IUsersRepository>().HttpContextScoped().Use<UsersRepository>();
+                x.For<IFilesRepository>().HttpContextScoped().Use<FilesRepository>();
                 x.For<INotesService>().HttpContextScoped().Use<NotesService>();
                 x.For<ITaskListsService>().HttpContextScoped().Use<TaskListsService>();
                 x.For<IUsersService>().HttpContextScoped().Use<UsersService>();
+                x.For<IFilesService>().HttpContextScoped().Use<FilesService>();
             });
 
             return ObjectFactory.Container;

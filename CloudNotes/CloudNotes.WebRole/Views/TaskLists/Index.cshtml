@@ -5,9 +5,29 @@
     Layout = null;
 }
 
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var taskListsHub = $.connection.tasklistsHub;
+
+            taskListsHub.broadcastTaskListChanges = function () {
+                var url = '@Url.Action("Index", "TaskLists")';
+
+                $.get(url, function (result) {
+                    $('#main').animate({ 'opacity': 0 }, 300, function () {
+                        $('#main').html(result);
+                    }).animate({ 'opacity': 1 }, 300);
+                });
+            };
+
+            $.connection.hub.start();
+        });
+    </script>   
+}
+
 @{
     ViewBag.Title = "TaskLists";
-    var pageSize = AppConfiguration.PageSize;
 }
 
 @Html.ActionLink("Create New", "Create")
@@ -19,9 +39,9 @@
     <thead>
         <tr>
             <th>@Ajax.ActionLink("Title", "Index", new { sortOrder = ViewBag.TitleSortParam }, 
-                                                   new AjaxOptions { UpdateTargetId = "main", Url = Url.Action("Index", new { sortOrder = ViewBag.TitleSortParam }) })</th>
+                       new AjaxOptions { UpdateTargetId = "main", Url = Url.Action("Index", new { sortOrder = ViewBag.TitleSortParam }) })</th>
             <th>@Ajax.ActionLink("Created At", "Index", new { sortOrder = ViewBag.CreatedSortParam }, 
-                                                        new AjaxOptions { UpdateTargetId = "main", Url = Url.Action("Index", new { sortOrder = ViewBag.CreatedSortParam }) })</th>
+                       new AjaxOptions { UpdateTargetId = "main", Url = Url.Action("Index", new { sortOrder = ViewBag.CreatedSortParam }) })</th>
             <th>&nbsp;</th>
         </tr>
     </thead>
@@ -31,17 +51,14 @@
             <tr>
                 <td>@taskList.Title</td>
                 <td>@taskList.Timestamp.ToShortDateString()</td>
-                <td>@Html.ActionLink("Details", "Details", new { taskListTitle = taskList.Title.Replace(' ', '-') }) |
-                    @Html.ActionLink("Edit", "Edit", new { taskListTitle = taskList.Title.Replace(' ', '-') }) |
-                    @Html.ActionLink("Delete", "Delete", new { taskListTitle = taskList.Title.Replace(' ', '-') }) |
-                    @Html.ActionLink("Notes", "Index", "Notes", new { taskListTitle = taskList.Title.Replace(' ', '-') }, null) |
-                    @Html.ActionLink("Users", "AssociateUsersToTaskList", "Users", new { taskListTitle = taskList.Title.Replace(' ', '-') }, null)</td>
+                <td>@Html.ActionLink("Details", "Details", new { taskListOwnerId = taskList.PartitionKey, taskListId = taskList.RowKey }) |
+                    @Html.ActionLink("Edit", "Edit", new { taskListOwnerId = taskList.PartitionKey, taskListId = taskList.RowKey }) |
+                    @Html.ActionLink("Delete", "Delete", new { taskListOwnerId = taskList.PartitionKey, taskListId = taskList.RowKey }) |
+                    @Html.ActionLink("Notes", "Index", "Notes", new { taskListOwnerId = taskList.PartitionKey, taskListId = taskList.RowKey }, null) |
+                    @Html.ActionLink("Share", "Share", new { taskListOwnerId = taskList.PartitionKey, taskListId = taskList.RowKey })</td>
             </tr>
         }
     </tbody>
 </table>
 
-@if (Model.Count > 0 && Model.Count > pageSize)
-{
-    @Html.Partial("_Paging") 
-}
+@Html.Partial("_Paging")

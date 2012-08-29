@@ -13,9 +13,10 @@ namespace CloudNotes.Repositories
             tableClient.CreateTableIfNotExist("Users");
             tableClient.CreateTableIfNotExist("Notes");
             tableClient.CreateTableIfNotExist("TaskLists");
-            tableClient.CreateTableIfNotExist("NoteOwner");
-            tableClient.CreateTableIfNotExist("NoteAssociatedUsers");
-            tableClient.CreateTableIfNotExist("TaskListAssociatedUsers");
+            tableClient.CreateTableIfNotExist("TaskListShares");
+
+            tableClient.CreateTableIfNotExist("NoteShares");
+            tableClient.CreateTableIfNotExist("TaskListNotes");
         }
     }
 }

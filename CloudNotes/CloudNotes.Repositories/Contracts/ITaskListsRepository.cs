@@ -5,10 +5,10 @@ namespace CloudNotes.Repositories.Contracts
 {
     public interface ITaskListsRepository : IRepository<TaskList>
     {
-        TaskList GetByTitleAndOwner(string title, User owner);
-        IEnumerable<TaskList> GetTaskListsAssociatedByUser(User user);
-        IEnumerable<TaskList> GetTaskListsOwnedByUser(User user);
-        void AddAssociatedUser(TaskList taskList, User userToAdd);
-        void RemoveAssociatedUser(TaskList taskList, User userToRemove);
+        IEnumerable<TaskList> GetShared(User user);
+        void AddShare(TaskList taskList, string userId);
+        void RemoveShare(TaskList taskList, string userId);
+        void LoadContainer(Note note);
+        bool HasPermissionToEdit(User user, TaskList taskList);
     }
 }

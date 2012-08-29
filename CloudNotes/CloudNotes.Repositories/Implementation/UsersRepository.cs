@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Security.Principal;
 using CloudNotes.Domain.Entities;
 using CloudNotes.Repositories.Contracts;
@@ -30,12 +32,12 @@ namespace CloudNotes.Repositories.Implementation
 
         public IQueryable<User> Load()
         {
-            return _unitOfWork.Load<UserTableEntry>("Users").ToList().Select(userTableEntry => userTableEntry.MapToUser()).AsQueryable();
+            return _unitOfWork.Load<UserEntity>("Users").ToList().Select(userTableEntry => userTableEntry.MapToUser()).AsQueryable();
         }
 
         public User Get(string partitionKey, string rowKey)
         {
-            var result = _unitOfWork.Get<UserTableEntry>("Users", partitionKey, rowKey);
+            var result = _unitOfWork.Get<UserEntity>("Users", partitionKey, rowKey);
 
             if (result != null)
             {
@@ -45,28 +47,31 @@ namespace CloudNotes.Repositories.Implementation
             return null;
         }
 
+        public User Get(Expression<Func<User, bool>> filter)
+        {
+            return _unitOfWork.Get("Users", filter);
+        }
+
         public void Create(User entityToCreate)
         {
-            entityToCreate.PartitionKey = "Users";
-            entityToCreate.RowKey = entityToCreate.UserUniqueIdentifier;
-
-            var userTableEntry = entityToCreate.MapToUserTableEntry();
+            var userTableEntry = entityToCreate.MapToUserEntity();
             _unitOfWork.Create(userTableEntry, "Users");
         }
 
         public void Update(User entityToUpdate)
         {
-            _unitOfWork.Update("Users", entityToUpdate.MapToUserTableEntry());
+            _unitOfWork.Update("Users", entityToUpdate.MapToUserEntity());
         }
 
         public void Delete(User entityToDelete)
         {
-            _unitOfWork.Delete<UserTableEntry>("Users", entityToDelete.PartitionKey, entityToDelete.RowKey);
+            _unitOfWork.Delete<UserEntity>("Users", entityToDelete.PartitionKey, entityToDelete.RowKey);
         }
 
-        public bool UserExists(IPrincipal principal)
+        public bool UserIsRegistered(IPrincipal principal)
         {
-            string userUniqueIdentifier = string.Empty;
+            var uniqueIdentifier = string.Empty;
+            var identityProvider = string.Empty;
             var claimsPrincipal = principal as IClaimsPrincipal;
 
             if (claimsPrincipal != null)
@@ -75,66 +80,108 @@ namespace CloudNotes.Repositories.Implementation
                 var nameIdentifierClaim = claimsIdentity.Claims.FirstOrDefault(c => c.ClaimType == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier");
                 var identityProviderClaim = claimsIdentity.Claims.FirstOrDefault(c => c.ClaimType == "http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider");
 
-                userUniqueIdentifier = string.Format("{0}_{1}", nameIdentifierClaim.Value, identityProviderClaim.Value);
+                identityProvider = ParseIdentityProvider(identityProviderClaim.Value);
+                uniqueIdentifier = nameIdentifierClaim.Value;
             }
 
-            var existingUserEntry = _unitOfWork.Get<UserTableEntry>("Users", "Users", userUniqueIdentifier);
+            var existingUserEntry = _unitOfWork.Load<UserEntity>("Users", u => u.PartitionKey == identityProvider && u.UniqueIdentifier == uniqueIdentifier).FirstOrDefault();
             return existingUserEntry != null;
         }
 
-        public User GetByUniqueIdentifier(string uniqueIdentifier)
+        public User GetByIdentifiers(string uniqueIdentifier, string identityProviderIdentifier)
         {
-            var userEntry = _unitOfWork.Get<UserTableEntry>("Users", "Users", uniqueIdentifier);
-            return userEntry.MapToUser();
+            var userEntry = _unitOfWork.Load<UserEntity>("Users", u => u.PartitionKey == identityProviderIdentifier && u.UniqueIdentifier == uniqueIdentifier).FirstOrDefault();
+            return userEntry != null ? userEntry.MapToUser() : null;
         }
 
-        public void LoadNoteOwner(Note note)
+        public void LoadOwner(Note note)
         {
-            var noteOwnerEntry = _unitOfWork.Load<NoteOwnerTableEntry>("NoteOwner").Where(o => o.RowKey == note.RowKey).FirstOrDefault();
+            var ownerKeys = note.PartitionKey.Split('-');
+            var ownerPartitionKey = ownerKeys[1];
+            var owner = Get(ownerPartitionKey, note.PartitionKey);
 
-            if (noteOwnerEntry != null)
+            if (owner != null)
             {
-                var owner = Get("Users", noteOwnerEntry.PartitionKey);
                 note.Owner = owner;
             }
         }
 
-        public void LoadNoteAssociatedUsers(Note note)
+        public void LoadShare(Note note)
         {
-            var noteAssociatedUsersEntries = _unitOfWork.Load<NoteAssociatedUserTableEntry>("NoteAssociatedUsers").Where(n => n.PartitionKey == note.RowKey);
+            var noteSharePartitionKey = string.Format("{0}+{1}", note.PartitionKey, note.RowKey);
+            var noteShares = _unitOfWork.Load<NoteShareEntity>("NoteShares", n => n.PartitionKey == noteSharePartitionKey);
 
-            foreach (var noteAssociatedUserTableEntry in noteAssociatedUsersEntries)
+            foreach (var noteShare in noteShares)
             {
-                var associatedUser = Get("Users", noteAssociatedUserTableEntry.RowKey);
+                var userKeys = noteShare.RowKey.Split('-');
+                var identityProvider = userKeys[1];
 
-                if (associatedUser != null)
+                var share = Get(identityProvider, noteShare.RowKey);
+
+                if (share != null)
                 {
-                    note.AssociatedUsers.Add(associatedUser);
+                    note.Share.Add(share);
                 }
             }
         }
 
-        public void LoadTaskListOwner(TaskList taskList)
+        public void LoadOwner(TaskList taskList)
         {
-            var owner = Get("Users", taskList.PartitionKey);
+            var userKeys = taskList.PartitionKey.Split('-');
+            var identityProvider = userKeys[1];
+            var owner = Get(identityProvider, taskList.PartitionKey);
             taskList.Owner = owner;
         }
 
-        public void LoadTaskListAssociatedUsers(TaskList taskList)
+        public void LoadShare(TaskList taskList)
         {
-            var taskListAssociatedUsersEntries = _unitOfWork.Load<TaskListAssociatedUserTableEntry>("TaskListAssociatedUsers").Where(n => n.PartitionKey == taskList.RowKey);
+            var taskListSharePartitionKey = string.Format("{0}+{1}", taskList.PartitionKey, taskList.RowKey);
+            var taskListShares = _unitOfWork.Load<TaskListShareEntity>("TaskListShares", n => n.PartitionKey == taskListSharePartitionKey);
 
-            foreach (var taskListAssociatedUserTableEntry in taskListAssociatedUsersEntries)
+            foreach (var taskListShare in taskListShares)
             {
-                var associatedUser = Get("Users", taskListAssociatedUserTableEntry.RowKey);
+                var userKeys = taskListShare.RowKey.Split('-');
+                var identityProvider = userKeys[1];
 
-                if (associatedUser != null)
+                var share = Get(identityProvider, taskListShare.RowKey);
+
+                if (share != null)
                 {
-                    taskList.AssociatedUsers.Add(associatedUser);
+                    taskList.Share.Add(share);
                 }
             }
         }
 
         #endregion Public methods
+
+        #region Static methods
+
+        public static string ParseIdentityProvider(string identityProviderClaim)
+        {
+            string identityProvider = string.Empty;
+
+            if (identityProviderClaim.Contains("WindowsLiveID"))
+            {
+                identityProvider = "windowsliveid";
+            }
+            else
+            {
+                if (identityProviderClaim.Contains("Google"))
+                {
+                    identityProvider = "google";
+                }
+                else
+                {
+                    if (identityProviderClaim.Contains("Yahoo"))
+                    {
+                        identityProvider = "yahoo";   
+                    }
+                }
+            }
+
+            return identityProvider;
+        }
+
+        #endregion Static methods
     }
 }

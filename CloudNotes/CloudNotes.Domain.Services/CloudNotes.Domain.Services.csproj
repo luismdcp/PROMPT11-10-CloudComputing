@@ -35,16 +35,20 @@
     <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IFilesService.cs" />
     <Compile Include="Contracts\INotesService.cs" />
     <Compile Include="Contracts\IService.cs" />
     <Compile Include="Contracts\ITaskListsService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
+    <Compile Include="Implementation\FilesService.cs" />
     <Compile Include="Implementation\NotesService.cs" />
     <Compile Include="Implementation\TaskListsService.cs" />
     <Compile Include="Implementation\UsersService.cs" />
+    <Compile Include="Models\AuthenticationInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
