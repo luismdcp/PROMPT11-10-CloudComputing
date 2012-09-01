@@ -1,0 +1,7 @@
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain\bin\Release\CloudNotes.Tests.Domain.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain\bin\Release\CloudNotes.Tests.Domain.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain\bin\Release\CloudNotes.Domain.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain\bin\Release\CloudNotes.Domain.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain\obj\Release\CloudNotes.Tests.Domain.csprojResolveAssemblyReference.cache
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain\obj\Release\CloudNotes.Tests.Domain.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain\obj\Release\CloudNotes.Tests.Domain.pdb

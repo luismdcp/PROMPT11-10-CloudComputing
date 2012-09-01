@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace CloudNotes.Domain.Services.Contracts
 {
-    public interface IService<TEntity> where TEntity : BaseEntity
+    public interface IService<TEntity>
     {
         IQueryable<TEntity> Load();
         TEntity Get(string partitionKey, string rowKey);

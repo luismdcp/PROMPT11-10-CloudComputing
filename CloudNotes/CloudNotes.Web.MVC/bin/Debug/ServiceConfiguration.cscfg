@@ -12,8 +12,8 @@
   <Role name="CloudNotes.WebRole">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
-      <Setting name="CloudNotesSetting" value="UseDevelopmentStorage=true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=http;AccountName=luisprompt;AccountKey=EGzUtKSo0RvBnMX4gqde8TQx0LErE9PQ5KFbo++WeURl8zPidAtt3tzQnzCSp7IH1rW8Ecct3OmNdB3gLwhA1Q==" />
+      <Setting name="CloudNotesSetting" value="DefaultEndpointsProtocol=http;AccountName=luisprompt;AccountKey=EGzUtKSo0RvBnMX4gqde8TQx0LErE9PQ5KFbo++WeURl8zPidAtt3tzQnzCSp7IH1rW8Ecct3OmNdB3gLwhA1Q==" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>

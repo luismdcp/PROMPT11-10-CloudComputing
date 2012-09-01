@@ -7,7 +7,9 @@ using CloudNotes.Domain.Entities;
 using CloudNotes.Domain.Services.Contracts;
 using CloudNotes.WebRole.Config;
 using CloudNotes.WebRole.Helpers;
+using CloudNotes.WebRole.SignalR;
 using PagedList;
+using SignalR;
 
 namespace CloudNotes.WebRole.Controllers
 {
@@ -57,6 +59,12 @@ namespace CloudNotes.WebRole.Controllers
             return View(sharedTaskLists.ToPagedList(page, pageSize));
         }
 
+        public void SendMessage()
+        {
+            var contextFromHub = GlobalHost.ConnectionManager.GetHubContext<TaskListsHub>();
+            contextFromHub.Clients.Test();
+        }
+
         // GET: /TaskLists/Create
         public ActionResult Create()
         {
@@ -86,7 +94,6 @@ namespace CloudNotes.WebRole.Controllers
                 if (taskList.IsValid())
                 {
                     _taskListsService.Create(taskList);
-                    
                     return RedirectToAction("Index");
                 }
                 else
@@ -203,6 +210,7 @@ namespace CloudNotes.WebRole.Controllers
                 var currentUser = (User) Session["CurrentUser"];
                 var taskList = _taskListsService.Get(t => t.PartitionKey == taskListOwnerId && t.RowKey == taskListId);
                 _usersService.LoadShare(taskList);
+                ViewBag.TaskListTitle = taskList.Title;
 
                 // Only a user in the taskList share list can share it.
                 if (!_taskListsService.HasPermissionToEdit(currentUser, taskList))

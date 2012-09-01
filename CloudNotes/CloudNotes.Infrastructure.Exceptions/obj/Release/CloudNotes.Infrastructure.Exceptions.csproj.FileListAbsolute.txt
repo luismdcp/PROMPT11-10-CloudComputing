@@ -1,0 +1,4 @@
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Infrastructure.Exceptions\bin\Release\CloudNotes.Infrastructure.Exceptions.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Infrastructure.Exceptions\bin\Release\CloudNotes.Infrastructure.Exceptions.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Infrastructure.Exceptions\obj\Release\CloudNotes.Infrastructure.Exceptions.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Infrastructure.Exceptions\obj\Release\CloudNotes.Infrastructure.Exceptions.pdb

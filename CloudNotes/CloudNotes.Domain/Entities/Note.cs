@@ -4,18 +4,21 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CloudNotes.Domain.Entities
 {
+    /// <summary>
+    /// Class equivalent to a Trello Card.
+    /// </summary>
     public class Note : BaseEntity, IValidatableObject
     {
         #region Properties
 
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public bool IsClosed { get; set; }
-        public int OrderingIndex { get; set; }
-        public TaskList Container { get; set; }
-        public string ContainerKeys { get; set; }
-        public User Owner { get; set; }
-        public ICollection<User> Share { get; set; }
+        public string Title { get; set; }   // The title or description.
+        public string Content { get; set; } // The content.
+        public bool IsClosed { get; set; }  // If the Note is closed or not.
+        public int OrderingIndex { get; set; } // Order index related to the Note's position in the TaskList Notes list.
+        public TaskList Container { get; set; } // The TaskList where the Note is contained.
+        public string ContainerKeys { get; set; }   // Combination of the PartitionKey and RowKey of the TaskList where the Note is contained.
+        public User Owner { get; set; } // The User that created the Note.
+        public ICollection<User> Share { get; set; }    // List of Users that the Note was shared. The Note's creator is added to this list on creation.
 
         #endregion Properties
 
@@ -29,6 +32,15 @@ namespace CloudNotes.Domain.Entities
             Content = string.Empty;
             OrderingIndex = -1;
             Share = new Collection<User>();
+        }
+
+        public Note(string partitionKey, string rowKey, string title, string content, bool isCLosed) : this()
+        {
+            PartitionKey = partitionKey;
+            RowKey = rowKey;
+            Title = title;
+            Content = content;
+            IsClosed = isCLosed;
         }
 
         public Note(string title, string content, User owner, TaskList containerList) : this()

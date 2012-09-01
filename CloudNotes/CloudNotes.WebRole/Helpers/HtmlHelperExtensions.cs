@@ -7,6 +7,13 @@ namespace CloudNotes.WebRole.Helpers
 {
     public static class HtmlHelperExtensions
     {
+        /// <summary>
+        /// Helper to build a div to show validation errors or some other type of error with the style provided by the Bootstrapper.
+        /// </summary>
+        /// <param name="htmlHelper">HtmlHelper to extend</param>
+        /// <param name="validationErrors">List of validation errors to show in the div</param>
+        /// <param name="htmlAttributes">Html attributes to apply to the div</param>
+        /// <returns></returns>
         public static MvcHtmlString DisplayForValidationErrors(this HtmlHelper htmlHelper, IEnumerable<ValidationResult> validationErrors, object htmlAttributes = null)
         {
             var container = new TagBuilder("div");
@@ -30,6 +37,13 @@ namespace CloudNotes.WebRole.Helpers
             return MvcHtmlString.Create(container.ToString());
         }
 
+        /// <summary>
+        /// Builds a div to show alerts wiht the style provided by Bootstrapper.
+        /// </summary>
+        /// <param name="htmlHelper">HtmlHelper to extend</param>
+        /// <param name="alertMessage">Alert message to show in the div</param>
+        /// <param name="htmlAttributes">Html attributes to apply to the div</param>
+        /// <returns></returns>
         public static MvcHtmlString DisplayForAlertMessage(this HtmlHelper htmlHelper, string alertMessage, object htmlAttributes = null)
         {
             var container = new TagBuilder("div");
@@ -44,6 +58,13 @@ namespace CloudNotes.WebRole.Helpers
             return MvcHtmlString.Create(container.ToString());
         }
 
+        /// <summary>
+        /// Builds a fieldset html element.
+        /// </summary>
+        /// <param name="htmlHelper">HtmlHelper to extend</param>
+        /// <param name="legend">Field set legend</param>
+        /// <param name="htmlAttributes">Html attributes to apply to the fieldset</param>
+        /// <returns></returns>
         public static Fieldset BeginFieldset(this HtmlHelper htmlHelper, string legend = null, object htmlAttributes = null)
         {
             var fieldsetTag = new TagBuilder("fieldset");
@@ -65,6 +86,14 @@ namespace CloudNotes.WebRole.Helpers
             return new Fieldset(htmlHelper.ViewContext);
         }
 
+        /// <summary>
+        /// Builds a html label.
+        /// </summary>
+        /// <param name="htmlHelper">HtmlHelper to extend</param>
+        /// <param name="label">Label text</param>
+        /// <param name="for">The html element that the label is related</param>
+        /// <param name="htmlAttributes">Html attributes to apply to the label</param>
+        /// <returns></returns>
         public static MvcHtmlString Label(this HtmlHelper htmlHelper, string label, string @for, object htmlAttributes = null)
         {
             var labelTag = new TagBuilder("label");
@@ -79,6 +108,14 @@ namespace CloudNotes.WebRole.Helpers
             return MvcHtmlString.Create(labelTag.ToString());
         }
 
+        /// <summary>
+        /// Builds a html button.
+        /// </summary>
+        /// <param name="htmlHelper">HtmlHelper to extend</param>
+        /// <param name="type">button type</param>
+        /// <param name="text">button text</param>
+        /// <param name="htmlAttributes">Html attributes to apply to the button</param>
+        /// <returns></returns>
         public static MvcHtmlString Button(this HtmlHelper htmlHelper, string type, string text, object htmlAttributes)
         {
             var buttonTag = new TagBuilder("button");
@@ -93,6 +130,13 @@ namespace CloudNotes.WebRole.Helpers
             return MvcHtmlString.Create(buttonTag.ToString());
         }
 
+        /// <summary>
+        /// Builds a hidden input html element
+        /// </summary>
+        /// <param name="htmlHelper">HtmlHelper to extend</param>
+        /// <param name="id">the hidden input id</param>
+        /// <param name="value">the hidden input value</param>
+        /// <returns></returns>
         public static MvcHtmlString Hidden(this HtmlHelper htmlHelper, string id, string value)
         {
             var hiddenInputTag = new TagBuilder("input");

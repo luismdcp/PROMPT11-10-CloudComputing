@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
 using StructureMap;
+using IDependencyResolver = System.Web.Mvc.IDependencyResolver;
 
 namespace CloudNotes.Infrastructure.DependencyInjection
 {

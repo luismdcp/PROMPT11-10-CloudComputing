@@ -1,3 +1,5 @@
+using System;
+using System.Net;
 using Microsoft.WindowsAzure.ServiceRuntime;
 
 namespace CloudNotes.WebRole

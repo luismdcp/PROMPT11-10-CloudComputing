@@ -2,6 +2,9 @@
 
 namespace CloudNotes.Repositories.Entities
 {
+    /// <summary>
+    /// Entity related to the TaskLists Azure Table.
+    /// </summary>
     public class TaskListEntity : TableServiceEntity
     {
         #region Properties

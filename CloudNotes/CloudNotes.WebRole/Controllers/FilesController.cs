@@ -38,7 +38,7 @@ namespace CloudNotes.WebRole.Controllers
             ViewBag.ContainerOwnerId = note.Container.PartitionKey;
             ViewBag.ContainerId = note.Container.RowKey;
 
-            // Only a user in the note share can list the files attached to it.
+            // Only a user in the note share list can list the files attached to it.
             if (!_notesService.HasPermissionToEdit(currentUser, note))
             {
                 return View("Info", "_Layout", string.Format("The user '{0}' doesn't have permission to download a file attached to the note '{1}'.", currentUser.Name, note.Title));
@@ -56,7 +56,7 @@ namespace CloudNotes.WebRole.Controllers
             var currentUser = (User) Session["CurrentUser"];
             var note = _notesService.Get(t => t.PartitionKey == noteOwnerId && t.RowKey == noteId);
 
-            // Only a user in the note share can download a file attached to it.
+            // Only a user in the note share list can download a file attached to it.
             if (!_notesService.HasPermissionToEdit(currentUser, note))
             {
                 return View("Info", "_Layout", string.Format("The user '{0}' doesn't have permission to download a file attached to the note '{1}'.", currentUser.Name, note.Title));
@@ -80,7 +80,7 @@ namespace CloudNotes.WebRole.Controllers
             var currentUser = (User) Session["CurrentUser"];
             var note = _notesService.Get(t => t.PartitionKey == noteOwnerId && t.RowKey == noteId);
 
-            // Only a user in the note share can attach a file to it.
+            // Only a user in the note share list can attach a file to it.
             if (!_notesService.HasPermissionToEdit(currentUser, note))
             {
                 return View("Info", "_Layout", string.Format("The user '{0}' doesn't have permission to download a file attached to the note '{1}'.", currentUser.Name, note.Title));
@@ -110,7 +110,7 @@ namespace CloudNotes.WebRole.Controllers
             var currentUser = (User) Session["CurrentUser"];
             var note = _notesService.Get(t => t.PartitionKey == noteOwnerId && t.RowKey == noteId);
 
-            // Only a user in the note share can delete an attached file to it.
+            // Only a user in the note share list can delete an attached file to it.
             if (!_notesService.HasPermissionToEdit(currentUser, note))
             {
                 return View("Info", "_Layout", string.Format("The user '{0}' doesn't have permission to download a file attached to the note '{1}'.", currentUser.Name, note.Title));

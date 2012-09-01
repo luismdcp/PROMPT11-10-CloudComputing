@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MvcRouteUnitTester</name>
+    </assembly>
+    <members>
+        <member name="T:MvcRouteUnitTester.RouteTester`1">
+            <summary>
+            An object used to test routes.
+            </summary>
+            <typeparam name="T">A type that inherits from either <see cref="T:System.Web.HttpApplication"/> or <see cref="T:System.Web.Mvc.AreaRegistration"/>.</typeparam>
+        </member>
+        <member name="T:MvcRouteUnitTester.RouteTester">
+            <summary>
+            An object used to test routes.
+            </summary>
+        </member>
+        <member name="M:MvcRouteUnitTester.RouteTester.#ctor(System.Web.Routing.RouteCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcRouteUnitTester.RouteTester`1"/> class.
+            </summary>
+            <param name="routes">A <see cref="T:System.Web.Routing.RouteCollection"/> containing the routes under test.</param>
+            <exception cref="T:System.ArgumentException">Thrown when <paramref name="routes"/> is empty.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="routes"/> is null.</exception>
+        </member>
+        <member name="M:MvcRouteUnitTester.RouteTester.WithRouteInfo(System.String,System.String,System.String,System.Object)">
+            <summary>
+            Used to supply the routing information used for an outgoing area route test.
+            </summary>
+            <param name="area">The name of the area.</param>
+            <param name="controller">The name of the controller.</param>
+            <param name="action">The name of the action.</param>
+            <param name="routeValues">An anonymous object containing route values as key/value pairs.</param>
+            /// <exception cref="T:System.ArgumentException">Thrown when either the <paramref name="area"/>, <paramref name="controller"/>, or <paramref name="action"/> argument is null, empty, or contains only whitespace. </exception>
+            <returns>A <see cref="T:MvcRouteUnitTester.RouteInfo"/> object.</returns>
+        </member>
+        <member name="M:MvcRouteUnitTester.RouteTester.WithRouteInfo(System.String,System.String,System.Object)">
+            <summary>
+            Used to supply the routing information used for an outgoing route test.
+            </summary>
+            <param name="controller">The name of the controller.</param>
+            <param name="action">The name of the action.</param>
+            <param name="routeValues">An anonymous object containing route values.</param>
+            <exception cref="T:System.ArgumentException">Thrown when either the <paramref name="controller"/>, or <paramref name="action"/> argument is null, empty, or contains only whitespace. </exception>
+            <returns>A <see cref="T:MvcRouteUnitTester.RouteInfo"/> object.</returns>
+        </member>
+        <member name="M:MvcRouteUnitTester.RouteTester.WithIncomingRequest(System.String,System.String)">
+            <summary>
+            Used to supply the request information used for an incoming route test.
+            </summary>
+            <param name="url">The request URL.</param>
+            <param name="httpMethod">The HTTP method of the request (default is "GET").</param>
+            <exception cref="T:System.ArgumentException">Thrown when the <paramref name="url"/> argument is null, empty, or contains only whitespace.</exception>
+            <returns>A <see cref="T:MvcRouteUnitTester.RequestInfo"/> object.</returns>
+        </member>
+        <member name="M:MvcRouteUnitTester.RouteTester`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvcRouteUnitTester.RouteTester`1"/> class.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown when <typeparamref name="T"/> inherits from <see cref="T:System.Web.HttpApplication"/>, but contains no RegisterRoutes method.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown when there are no routes defined.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when <typeparamref name="T"/> does not inherit from either <see cref="T:System.Web.HttpApplication"/> or <see cref="T:System.Web.Mvc.AreaRegistration"/>.</exception>
+        </member>
+        <member name="T:MvcRouteUnitTester.RequestInfo">
+            <summary>
+            An object which encapsulates request information.
+            </summary>
+        </member>
+        <member name="M:MvcRouteUnitTester.RequestInfo.ShouldMatchRoute(System.String,System.String,System.String,System.Object)">
+            <summary>
+            Asserts that the area routing information supplied to the method would be matched by the given request.
+            </summary>
+            <param name="expectedArea">The name of the area that is expected to be matched.</param>
+            <param name="expectedController">The name of the controller that is expected to be matched.</param>
+            <param name="expectedAction">The name of the action that is expected to be matched.</param>
+            <param name="expectedRouteValues">An anonymous object containing URL parameter values and default route values that are expected to be matched.</param>
+            <exception cref="T:System.ArgumentException">Thrown when either the <paramref name="expectedArea"/>, <paramref name="expectedController"/>, or <paramref name="expectedAction"/> argument is null, empty, or contains only whitespace.</exception>
+            <exception cref="T:MvcRouteUnitTester.AssertionException">Thrown when any mismatch is found between the supplied information and the given request.</exception>
+        </member>
+        <member name="M:MvcRouteUnitTester.RequestInfo.ShouldMatchRoute(System.String,System.String,System.Object)">
+            <summary>
+            Asserts that the routing information supplied to the method would be matched by the given request.
+            </summary>
+            <param name="expectedController">The name of the controller that is expected to be matched</param>
+            <param name="expectedAction">The name of the action that is expected to be matched.</param>
+            <param name="expectedRouteValues">An anonymous object containing URL parameter values and default route values that are expected to be matched.</param>
+            <exception cref="T:System.ArgumentException">Thrown when either the <paramref name="expectedController"/>, or <paramref name="expectedAction"/> argument is null, empty, or contains only whitespace.</exception>
+            <exception cref="T:MvcRouteUnitTester.AssertionException">Thrown when any mismatch is found between the supplied information and the given request.</exception>
+        </member>
+        <member name="M:MvcRouteUnitTester.RequestInfo.MatchesRoute(System.String,System.String,System.String,System.Object)">
+            <summary>
+            Indicates whether the area routing information supplied to the method would be matched by the given request.
+            </summary>
+            <param name="expectedArea">The name of the area that is expected to be matched.</param>
+            <param name="expectedController">The name of the controller that is expected to be matched.</param>
+            <param name="expectedAction">The name of the action that is expected to be matched.</param>
+            <param name="expectedRouteValues">An anonymous object containing URL parameter values and default route values that are expected to be matched.</param>
+            <exception cref="T:System.ArgumentException">Thrown when either the <paramref name="expectedArea"/>, <paramref name="expectedController"/>, or <paramref name="expectedAction"/> argument is null, empty, or contains only whitespace.</exception>
+            <returns>True if the area routing information supplied to the method would be matched by the given request; otherwise false.</returns>
+        </member>
+        <member name="M:MvcRouteUnitTester.RequestInfo.MatchesRoute(System.String,System.String,System.Object)">
+             <summary>
+             Indicates whether the routing information supplied to the method would be matched by the given request.
+             </summary>
+             <param name="expectedController">The name of the controller that is expected to be matched.</param>
+             <param name="expectedAction">The name of the action that is expected to be matched.</param>
+             <param name="expectedRouteValues">An anonymous object containing URL parameter values and default route values that are expected to be matched.</param>
+            <exception cref="T:System.ArgumentException">Thrown when either the <paramref name="expectedController"/>, or <paramref name="expectedAction"/> argument is null, empty, or contains only whitespace. </exception>
+             <returns>True if the routing information supplied to the method would be matched by the given request; otherwise false.</returns>
+        </member>
+        <member name="M:MvcRouteUnitTester.RequestInfo.ShouldMatchNoRoute">
+            <summary>
+            Asserts that no routes would be matched by the given request.
+            </summary>
+            <exception cref="T:MvcRouteUnitTester.AssertionException">Thrown if any route matches the given request.</exception>
+        </member>
+        <member name="M:MvcRouteUnitTester.RequestInfo.MatchesNoRoute">
+            <summary>
+            Indicates whether any routes would be matched by the given request.
+            </summary>
+            <returns>True if no routes are matched by the given request; otherwise false.</returns>
+        </member>
+        <member name="M:MvcRouteUnitTester.RequestInfo.ShouldBeIgnored">
+            <summary>
+            Asserts that the given request is ignored by the routing system.
+            </summary>
+            <exception cref="T:MvcRouteUnitTester.AssertionException">Thrown if given request is not ignored by the routing system.</exception>
+        </member>
+        <member name="M:MvcRouteUnitTester.RequestInfo.IsIgnored">
+            <summary>
+            Indicates whether the given request is ignored by the routing system.
+            </summary>
+            <returns>True if the given request is ignored by the routing system; otherwise false.</returns>
+        </member>
+        <member name="P:MvcRouteUnitTester.RequestInfo.HttpContext">
+            <summary>
+            The mocked HTTP context for the test to be performed.
+            </summary>
+        </member>
+        <member name="T:MvcRouteUnitTester.RouteInfo">
+            <summary>
+            An object which encapsulates routing information.
+            </summary>
+        </member>
+        <member name="M:MvcRouteUnitTester.RouteInfo.ShouldGenerateUrl(System.String)">
+            <summary>
+            Asserts that the URL supplied to the method is the URL that is generated with the given routing information.
+            </summary>
+            <param name="expectedUrl">The URL that is expected to be generated.</param>
+            <exception cref="T:System.ArgumentException">Thrown when the <paramref name="expectedUrl"/> argument is null, empty, or contains only whitespace.</exception>
+            <exception cref="T:MvcRouteUnitTester.AssertionException">Thrown when the expected URL is not the URL that is generated with the given routing information.</exception>
+        </member>
+        <member name="M:MvcRouteUnitTester.RouteInfo.GeneratesUrl(System.String)">
+            <summary>
+            Indicates whether the URL supplied to the method is the URL that is generated with the given routing information.
+            </summary>
+            <param name="expectedUrl">The URL that is expected to be generated.</param>
+            <exception cref="T:System.ArgumentException">Thrown when the <paramref name="expectedUrl"/> argument is null, empty, or contains only whitespace.</exception>
+            <returns>True if the expected URL is the URL that is generated with the given routing information; otherwise false.</returns>
+        </member>
+        <member name="P:MvcRouteUnitTester.RouteInfo.HttpContext">
+            <summary>
+            The mocked HTTP context for the test to be performed.
+            </summary>
+        </member>
+        <member name="T:MvcRouteUnitTester.AssertionException">
+            <summary>
+            A custom exception used to make it possible to catch only assertion-related exceptions without being tied to any unit testing framework's version of an AssertionException (e.g., NUnit.Framework.AssertionException).
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -16,7 +16,6 @@ D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Domain.Services\bin\
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Domain.Services\bin\Debug\CloudNotes.Infrastructure.Exceptions.pdb
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Domain.Services\obj\Debug\CloudNotes.Tests.Domain.Services.dll
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Tests.Domain.Services\obj\Debug\CloudNotes.Tests.Domain.Services.pdb
-D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain.Services\obj\Debug\CloudNotes.Tests.Domain.Services.csprojResolveAssemblyReference.cache
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain.Services\bin\Debug\CloudNotes.Tests.Domain.Services.dll
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain.Services\bin\Debug\CloudNotes.Tests.Domain.Services.pdb
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain.Services\bin\Debug\CloudNotes.Domain.dll
@@ -32,5 +31,6 @@ D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain.Services\bin\De
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain.Services\bin\Debug\Moq.pdb
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain.Services\bin\Debug\Moq.xml
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain.Services\bin\Debug\CloudNotes.Infrastructure.Exceptions.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain.Services\obj\Debug\CloudNotes.Tests.Domain.Services.csprojResolveAssemblyReference.cache
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain.Services\obj\Debug\CloudNotes.Tests.Domain.Services.dll
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Domain.Services\obj\Debug\CloudNotes.Tests.Domain.Services.pdb

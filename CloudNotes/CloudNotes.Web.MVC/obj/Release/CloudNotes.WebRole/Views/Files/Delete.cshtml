@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+}
+
+@if (ViewBag.ValidationErrors != null)
+{
+    @Html.DisplayForValidationErrors((IEnumerable<ValidationResult>) ViewBag.ValidationErrors)
+}
+
+<h3>Are you sure you want to delete this?</h3>
+
+@using (Html.BeginForm("Delete", "Files", FormMethod.Post, new { @class = "form-horizontal" })) 
+{
+    <div class="control-group">
+        @Html.Label("FileName", "Content", new { @class = "control-label" })
+        <div class="controls">
+            <input name="fileName" type="text" value="@ViewBag.FileName" disabled="disabled" class="input-xlarge" />
+        </div>
+    </div>
+
+    <div class="form-actions">
+        @Html.Button("submit", "Delete", new { @class = "btn btn-primary" }) | @Html.ActionLink("Back to List", "Index")
+    </div>
+}

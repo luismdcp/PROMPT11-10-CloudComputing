@@ -1,21 +1,19 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
 namespace CloudNotes.Domain.Entities
 {
+    /// <summary>
+    /// Class that represents a User registered in the application.
+    /// </summary>
     public class User : BaseEntity, IValidatableObject
     {
         #region Properties
 
-        public string UniqueIdentifier { get; set; }
-        public string Email { get; set; }
-        public string Name { get; set; }
-        public ICollection<TaskList> OwnedTaskLists { get; private set; }
-        public ICollection<Note> OwnedNotes { get; private set; }
-        public ICollection<TaskList> SharedTaskLists { get; private set; }
-        public ICollection<Note> SharedNotes { get; private set; }
+        public string UniqueIdentifier { get; set; }    // Unique identifier provided by the Identity Provider.
+        public string Email { get; set; }   // Email address.
+        public string Name { get; set; }    // Name.
 
         #endregion Properties
 
@@ -25,10 +23,6 @@ namespace CloudNotes.Domain.Entities
         {
             PartitionKey = string.Empty;
             RowKey = string.Empty;
-            OwnedTaskLists = new Collection<TaskList>();
-            OwnedNotes = new Collection<Note>();
-            SharedTaskLists = new Collection<TaskList>();
-            SharedNotes = new Collection<Note>();
         }
 
         public User(string userUniqueIdentifier, string name, string email) : this()

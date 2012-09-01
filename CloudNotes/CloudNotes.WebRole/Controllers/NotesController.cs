@@ -48,7 +48,7 @@ namespace CloudNotes.WebRole.Controllers
             var container = _taskListsService.Get(t => t.PartitionKey == taskListOwnerId && t.RowKey == taskListId);
             _notesService.LoadNotes(container);
 
-            // Only a user in the note's containing tasklist share list can list all the notes.
+            // Only a user in the note's containing tasklist share list can list all the notes in that TaskList.
             if (!_taskListsService.HasPermissionToEdit(currentUser, container))
             {
                 return View("Info", "_Layout", string.Format("The user '{0}' doesn't have permission to list the notes in the tasklist '{1}'.", currentUser.Name, container.Title));
@@ -76,7 +76,7 @@ namespace CloudNotes.WebRole.Controllers
                 {
                     var parsedIndex = int.Parse(orderingIndexes[i]);
 
-                    // If a note has a diferent position in the table then its ordering index it was moved.
+                    // If a note has a diferent position in the table then its ordering index then it was moved.
                     if (parsedIndex != i)
                     {
                         var noteToUpdate = _notesService.Get(partitionKeys[i], rowKeys[i]);
@@ -84,6 +84,8 @@ namespace CloudNotes.WebRole.Controllers
                         _notesService.Update(noteToUpdate);
                     }
                 }
+
+                ViewBag.SaveOrderSuccessful = true;
             }
 
             return RedirectToAction("Index", new { taskListOwnerId, taskListId });
@@ -250,6 +252,7 @@ namespace CloudNotes.WebRole.Controllers
             {
                 var currentUser = (User) Session["CurrentUser"];
                 var note = _notesService.Get(t => t.PartitionKey == noteOwnerId && t.RowKey == noteId);
+                ViewBag.NoteTitle = note.Title;
 
                 // Only a user in the note share list can share it.
                 if (!_notesService.HasPermissionToEdit(currentUser, note))
@@ -297,6 +300,7 @@ namespace CloudNotes.WebRole.Controllers
                 _usersService.LoadOwner(note);
                 _usersService.LoadShare(note);
                 _taskListsService.LoadContainer(note);
+                ViewBag.NoteTitle = note.Title;
 
                 // Only a user in the note share can copy it.
                 if (!_notesService.HasPermissionToEdit(currentUser, note))
@@ -305,6 +309,7 @@ namespace CloudNotes.WebRole.Controllers
                 }
 
                 var destinationTaskList = _taskListsService.Get(taskListCheck[0]);
+                ViewBag.DestinationTaskListTitle = destinationTaskList.Title;
 
                 // Check if a note with the same title already exists at the destination tasklist.
                 var noteWithSameTitleExists = _notesService.NoteWithTitleExists(note.Title, destinationTaskList);
@@ -350,6 +355,7 @@ namespace CloudNotes.WebRole.Controllers
                 var note = _notesService.Get(t => t.PartitionKey == noteOwnerId && t.RowKey == noteId);
                 _usersService.LoadOwner(note);
                 _usersService.LoadShare(note);
+                ViewBag.NoteTitle = note.Title;
 
                 // Only the user that created the note can move it.
                 if (currentUser.RowKey != note.Owner.RowKey)
@@ -358,6 +364,7 @@ namespace CloudNotes.WebRole.Controllers
                 }
 
                 var destinationTaskList = _taskListsService.Get(taskListCheck[0]);
+                ViewBag.DestinationTaskListTitle = destinationTaskList.Title;
                 _notesService.MoveNote(note, destinationTaskList);
 
                 return RedirectToAction("Index", new { taskListOwnerId = note.Container.PartitionKey, taskListId = note.Container.RowKey });

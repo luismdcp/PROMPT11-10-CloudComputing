@@ -1,10 +1,11 @@
 ﻿using System.Security.Principal;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using CloudNotes.Infrastructure.DependencyInjection;
 using CloudNotes.Repositories;
+using CloudNotes.WebRole.Handlers;
 using CloudNotes.WebRole.Helpers;
-using System.Web.Http;
 
 namespace CloudNotes.WebRole
 {
@@ -19,7 +20,8 @@ namespace CloudNotes.WebRole
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapHttpRoute("Default API Route", "api/{controller}/{id}", new { controller = "Lists", id = UrlParameter.Optional });
+            routes.MapHttpRoute("WebAPI", "api/{controller}/{action}/{userId}/{resourceId}", new { controller = "Lists", action = "All", userId = RouteParameter.Optional, resourceId = RouteParameter.Optional }, null, new OAuthAuthenticationHandler());
+            routes.MapHttpRoute("OAuthWebAPI", "api/Oauth/{action}/{id}", new { controller = "OAuthWebApi", id = RouteParameter.Optional });
 
             routes.MapRoute(
                 "Files", // Route name

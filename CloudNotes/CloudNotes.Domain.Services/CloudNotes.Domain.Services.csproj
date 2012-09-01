@@ -35,23 +35,32 @@
     <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IFilesService.cs" />
+    <Compile Include="Contracts\IListsRestService.cs" />
     <Compile Include="Contracts\INotesService.cs" />
+    <Compile Include="Contracts\IOAuthService.cs" />
+    <Compile Include="Contracts\IRestService.cs" />
     <Compile Include="Contracts\IService.cs" />
     <Compile Include="Contracts\ITaskListsService.cs" />
+    <Compile Include="Contracts\ITasksRestService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Implementation\FilesService.cs" />
+    <Compile Include="Implementation\ListsRestService.cs" />
     <Compile Include="Implementation\NotesService.cs" />
+    <Compile Include="Implementation\OAuthService.cs" />
     <Compile Include="Implementation\TaskListsService.cs" />
+    <Compile Include="Implementation\TasksRestService.cs" />
     <Compile Include="Implementation\UsersService.cs" />
     <Compile Include="Models\AuthenticationInfo.cs" />
+    <Compile Include="Models\WebAPI\Extensions\Mapping.cs" />
+    <Compile Include="Models\WebAPI\Link.cs" />
+    <Compile Include="Models\WebAPI\List.cs" />
+    <Compile Include="Models\WebAPI\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CloudNotes.Domain\CloudNotes.Domain.csproj">
       <Project>{B045D6E8-373D-4F70-A29A-4452C181CB45}</Project>

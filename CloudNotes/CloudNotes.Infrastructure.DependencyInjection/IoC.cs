@@ -27,6 +27,10 @@ namespace CloudNotes.Infrastructure.DependencyInjection
                 x.For<ITaskListsService>().HttpContextScoped().Use<TaskListsService>();
                 x.For<IUsersService>().HttpContextScoped().Use<UsersService>();
                 x.For<IFilesService>().HttpContextScoped().Use<FilesService>();
+                x.For<IListsRestService>().HttpContextScoped().Use<ListsRestService>();
+                x.For<ITasksRestService>().HttpContextScoped().Use<TasksRestService>();
+                x.For<IOAuthService>().HttpContextScoped().Use<OAuthService>();
+                x.For<IOAuthRepository>().HttpContextScoped().Use<OAuthRepository>();
             });
 
             return ObjectFactory.Container;

@@ -2,3 +2,7 @@ D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain\bin\Release\CloudNo
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain\bin\Release\CloudNotes.Domain.pdb
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain\obj\Release\CloudNotes.Domain.dll
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.Domain\obj\Release\CloudNotes.Domain.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Domain\bin\Release\CloudNotes.Domain.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Domain\bin\Release\CloudNotes.Domain.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Domain\obj\Release\CloudNotes.Domain.dll
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Domain\obj\Release\CloudNotes.Domain.pdb

@@ -12,6 +12,9 @@ using Microsoft.WindowsAzure.StorageClient;
 
 namespace CloudNotes.Repositories.Implementation
 {
+    /// <summary>
+    /// Implementation of the UnitOfWork Pattern for operations with Azure Tables.
+    /// </summary>
     public class AzureTablesUnitOfWork : IUnitOfWork
     {
         #region Fields
@@ -28,43 +31,89 @@ namespace CloudNotes.Repositories.Implementation
             _context = new TableServiceContext(storageAccount.TableEndpoint.AbsoluteUri, storageAccount.Credentials) { IgnoreResourceNotFoundException = true, IgnoreMissingProperties = true };
         }
 
+        public AzureTablesUnitOfWork(string storageConnectionString)
+        {
+            var storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+            _context = new TableServiceContext(storageAccount.TableEndpoint.AbsoluteUri, storageAccount.Credentials) { IgnoreResourceNotFoundException = true, IgnoreMissingProperties = true };
+        }
+
         #endregion Constructors
 
         #region Public methods
 
+        /// <summary>
+        /// Loads all the entities from a Azure Table.
+        /// </summary>
+        /// <typeparam name="T">Type of objects related to the Azure Tables</typeparam>
+        /// <param name="entitySetName">Azure Table name</param>
+        /// <returns>IQueryable of objects related to the Azure Tables</returns>
         public IQueryable<T> Load<T>(string entitySetName)
         {
             return _context.CreateQuery<T>(entitySetName).AsTableServiceQuery();
         }
 
+        /// <summary>
+        /// Filter the entities from a Azure Table.
+        /// </summary>
+        /// <typeparam name="T">Type of objects related to the Azure Tables</typeparam>
+        /// <param name="entitySetName">Azure Table name</param>
+        /// <param name="filter">Lambda to filter the result</param>
+        /// <returns>Filtered IQueryable of objects related to the Azure Tables</returns>
         public IQueryable<T> Load<T>(string entitySetName, Expression<Func<T, bool>> filter)
         {
             return _context.CreateQuery<T>(entitySetName).Where(filter).AsTableServiceQuery();
         }
 
+        /// <summary>
+        /// Gets a single entity from a Azure Table.
+        /// </summary>
+        /// <typeparam name="T">Type of objects related to the Azure Tables</typeparam>
+        /// <param name="entitySetName">Azure Table name</param>
+        /// <param name="partitionKey">The entity partition key</param>
+        /// <param name="rowKey">The entity row key</param>
+        /// <returns>A single entity from the Azure Table or null if it doesn't exists</returns>
         public T Get<T>(string entitySetName, string partitionKey, string rowKey)
         {
             var query = string.Format("PartitionKey == \"{0}\" And RowKey == \"{1}\"", partitionKey, rowKey);
             return _context.CreateQuery<T>(entitySetName).Where(query).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Gets a filtered single entity from a Azure Table.
+        /// </summary>
+        /// <typeparam name="T">Type of objects related to the Azure Tables</typeparam>
+        /// <param name="entitySetName">Azure Table name</param>
+        /// <param name="filter">Lambda to filter the result</param>
+        /// <returns>A single entity from the Azure Table or null if it doesn't exists</returns>
         public T Get<T>(string entitySetName, Expression<Func<T, bool>> filter)
         {
             return _context.CreateQuery<T>(entitySetName).Where(filter).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Creates an entity in a Azure Table.
+        /// </summary>
+        /// <typeparam name="T">Type of objects related to the Azure Tables</typeparam>
+        /// <param name="entityToCreate">Entity to create in a Azure Table</param>
+        /// <param name="entitySetName">Azure Table name</param>
         public void Create<T>(T entityToCreate, string entitySetName)
         {
             _context.AddObject(entitySetName, entityToCreate);
         }
 
+        /// <summary>
+        /// Updates an entity in a Azure Table.
+        /// </summary>
+        /// <typeparam name="T">Type of objects related to the Azure Tables</typeparam>
+        /// <param name="entitySetName">Azure Table name</param>
+        /// <param name="entityToUpdate">Entity to update in a Azure Table</param>
         public void Update<T>(string entitySetName, T entityToUpdate)
         {
             var t = entityToUpdate.GetType();
             var properties = t.GetProperties();
 
             var partitionKey = (string) properties.Single(pi => pi.Name == "PartitionKey").GetValue(entityToUpdate, null);
-            var rowKey = (string) properties.Single(pi => pi.Name == "RowKey").GetValue(entityToUpdate, null); ;
+            var rowKey = (string) properties.Single(pi => pi.Name == "RowKey").GetValue(entityToUpdate, null);
 
             var entity = Get<T>(entitySetName, partitionKey, rowKey);
             
@@ -79,6 +128,13 @@ namespace CloudNotes.Repositories.Implementation
             }
         }
 
+        /// <summary>
+        /// Deletes an entity in a Azure Table.
+        /// </summary>
+        /// <typeparam name="T">Type of objects related to the Azure Tables</typeparam>
+        /// <param name="entitySetName">Azure Table name</param>
+        /// <param name="partitionKey">The entity partition key</param>
+        /// <param name="rowKey">The entity row key</param>
         public void Delete<T>(string entitySetName, string partitionKey, string rowKey)
         {
             var entityToDelete = Get<T>(entitySetName, partitionKey, rowKey);
@@ -89,6 +145,9 @@ namespace CloudNotes.Repositories.Implementation
             }
         }
 
+        /// <summary>
+        /// Submits all the changes in the Azure Tables.
+        /// </summary>
         public void SubmitChanges()
         {
             try
@@ -105,6 +164,11 @@ namespace CloudNotes.Repositories.Implementation
 
         #region Private methods
 
+        /// <summary>
+        /// Creates a more specifica Exception from a Azure Table Context Exception.
+        /// </summary>
+        /// <param name="exception">The Azure Table Context Exception</param>
+        /// <returns>Specific Exception</returns>
         private static Exception MapTableServiceContextException(Exception exception)
         {
             Exception returnException = null;

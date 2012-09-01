@@ -58,6 +58,11 @@ namespace CloudNotes.WebRole.SignalR
             Clients.BroadcastNoteChanges();
         }
 
+        public void Notify(string message)
+        {
+            Clients.Notify(message);
+        }
+
         #endregion Note methods
     }
 }

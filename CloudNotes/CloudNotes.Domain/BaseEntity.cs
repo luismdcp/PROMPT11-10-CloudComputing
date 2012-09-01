@@ -8,9 +8,9 @@ namespace CloudNotes.Domain
     {
         #region Properties
 
-        public DateTime Timestamp { get; set; }
-        public string PartitionKey { get; set; }
-        public string RowKey { get; set; }
+        public DateTime Timestamp { get; set; } // Readonly Timestamp automatically filled by the Azure Tables Context.
+        public string PartitionKey { get; set; } // Partition key of the table entity.
+        public string RowKey { get; set; }  // Row key of the table entity.
 
         #endregion Properties
 

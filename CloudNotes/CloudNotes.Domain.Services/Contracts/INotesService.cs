@@ -8,8 +8,8 @@ namespace CloudNotes.Domain.Services.Contracts
         void AddShare(Note note, string userId);
         void RemoveShare(Note note, string userId);
         void LoadNotes(TaskList taskList);
-        void CopyNote(Note note, TaskList taskListDestination);
-        void MoveNote(Note note, TaskList taskListDestination);
+        string CopyNote(Note note, TaskList taskListDestination);
+        string MoveNote(Note note, TaskList taskListDestination);
         bool HasPermissionToEdit(User user, Note note);
     }
 }

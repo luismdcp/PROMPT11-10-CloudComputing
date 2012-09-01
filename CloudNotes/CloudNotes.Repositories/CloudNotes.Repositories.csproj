@@ -45,14 +45,17 @@
     <Compile Include="ContainerBuilder.cs" />
     <Compile Include="Contracts\IFilesRepository.cs" />
     <Compile Include="Contracts\INotesRepository.cs" />
+    <Compile Include="Contracts\IOAuthRepository.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\ITaskListsRepository.cs" />
     <Compile Include="Contracts\IUsersRepository.cs" />
+    <Compile Include="Entities\OAuthEntity.cs" />
     <Compile Include="Entities\Relation\NoteShareEntity.cs" />
     <Compile Include="Entities\NoteEntity.cs" />
     <Compile Include="Entities\Relation\TaskListShareEntity.cs" />
     <Compile Include="Entities\Relation\TaskListNoteEntity.cs" />
     <Compile Include="Entities\TaskListEntity.cs" />
+    <Compile Include="Entities\TokenEntity.cs" />
     <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Extensions\Mapping.cs" />
     <Compile Include="Helpers\Dynamic.cs" />
@@ -61,6 +64,7 @@
     <Compile Include="Implementation\FilesRepository.cs" />
     <Compile Include="Implementation\NotesRepository.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
+    <Compile Include="Implementation\OAuthRepository.cs" />
     <Compile Include="Implementation\TaskListsRepository.cs" />
     <Compile Include="Implementation\UsersRepository.cs" />
     <Compile Include="Models\FileInfoItem.cs" />

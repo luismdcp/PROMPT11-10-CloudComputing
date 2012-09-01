@@ -1,0 +1,12 @@
+﻿
+td.showDragHandle {
+	background-image: url(images/updown2.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	cursor: move;
+}
+
+tr.myDragClass td {
+    color: black;
+    background-color: whitesmoke;
+}

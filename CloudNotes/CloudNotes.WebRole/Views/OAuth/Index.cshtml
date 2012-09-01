@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Register Apps";
+}
+
+<h2>Register App</h2>
+
+@using (Html.BeginForm("Register", "OAuth", FormMethod.Post, new { @class = "form-horizontal", id = "form" }))
+{
+    <div class="control-group">
+        @Html.Label("App", "App", new { @class = "control-label" })
+        <div class="controls">
+            <input type="text" id="App" class="input-xlarge" placeholder="Type the App Name" />
+        </div>
+    </div>
+    <div class="control-group">
+        @Html.Label("Redirect Uri", "RedirectUri", new { @class = "control-label" })
+        <div class="controls">
+            <input type="text" id="RedirectUri" class="input-xlarge" placeholder="Type the Redirect Uri" />
+        </div>
+    </div>
+
+    <div class="form-actions">
+        @Html.Button("submit", "Register", new { @class = "btn btn-primary", id = "submitButton" })
+    </div>
+}

@@ -5,14 +5,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CloudNotes.Domain.Entities
 {
+    /// <summary>
+    /// Class equivalent to a Trello List.
+    /// </summary>
     public class TaskList : BaseEntity, IValidatableObject
     {
         #region Properties
 
-        public String Title { get; set; }
-        public User Owner { get; set; }
-        public IList<Note> Notes { get; private set; }
-        public ICollection<User> Share { get; private set; }
+        public String Title { get; set; }   // The title or description.
+        public User Owner { get; set; } // The User that created the TaskList.
+        public IList<Note> Notes { get; private set; }  // List of Notes in the TaskList.
+        public ICollection<User> Share { get; private set; }    // List of Users that the TaskList was shared. The TaskList's creator is added to this list on creation.
 
         #endregion Properties
 
@@ -30,6 +33,13 @@ namespace CloudNotes.Domain.Entities
         {
             Title = title;
             Owner = owner;
+        }
+
+        public TaskList(string partitionKey, string rowKey, string title) : this()
+        {
+            PartitionKey = partitionKey;
+            RowKey = rowKey;
+            Title = title;
         }
 
         #endregion Constructors

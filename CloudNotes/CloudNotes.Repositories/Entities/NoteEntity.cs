@@ -2,6 +2,9 @@
 
 namespace CloudNotes.Repositories.Entities
 {
+    /// <summary>
+    /// Entity related to the Notes Azure Table.
+    /// </summary>
     public class NoteEntity : TableServiceEntity
     {
         #region Properties
