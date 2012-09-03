@@ -1,6 +1,6 @@
 ﻿using Microsoft.WindowsAzure.StorageClient;
 
-namespace CloudNotes.Repositories.Entities
+namespace CloudNotes.Repositories.Entities.OAuth
 {
     /// <summary>
     /// Entity related to the OAuthRegisteredApps Azure Table.

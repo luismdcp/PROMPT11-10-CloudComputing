@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using CloudNotes.Domain.Services.Contracts;
 using CloudNotes.Repositories.Contracts;
 using CloudNotes.Repositories.Entities;
+using CloudNotes.Repositories.Entities.OAuth;
 using CloudNotes.Repositories.Implementation;
 
 namespace CloudNotes.Domain.Services.Implementation
@@ -69,6 +70,7 @@ namespace CloudNotes.Domain.Services.Implementation
         public void Create(OAuthEntity entityToCreate)
         {
             _repository.Create(entityToCreate);
+            _unitOfWork.SubmitChanges();
         }
 
         /// <summary>
@@ -78,6 +80,7 @@ namespace CloudNotes.Domain.Services.Implementation
         public void Update(OAuthEntity entityToUpdate)
         {
             _repository.Update(entityToUpdate);
+            _unitOfWork.SubmitChanges();
         }
 
         /// <summary>
@@ -87,6 +90,7 @@ namespace CloudNotes.Domain.Services.Implementation
         public void Delete(OAuthEntity entityToDelete)
         {
             _repository.Delete(entityToDelete);
+            _unitOfWork.SubmitChanges();
         }
 
         /// <summary>
@@ -96,6 +100,7 @@ namespace CloudNotes.Domain.Services.Implementation
         public void CreateToken(TokenEntity token)
         {
             _repository.CreateToken(token);
+            _unitOfWork.SubmitChanges();
         }
 
         /// <summary>

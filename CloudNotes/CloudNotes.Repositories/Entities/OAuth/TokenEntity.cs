@@ -1,6 +1,6 @@
 ﻿using Microsoft.WindowsAzure.StorageClient;
 
-namespace CloudNotes.Repositories.Entities
+namespace CloudNotes.Repositories.Entities.OAuth
 {
     /// <summary>
     /// Entity related to the OAuthTokens Azure Table.
@@ -28,7 +28,7 @@ namespace CloudNotes.Repositories.Entities
 
         }
 
-        public TokenEntity(string clientId, string accessToken, string tokenType, double expiresIn) : this()
+        public TokenEntity(string clientId, string accessToken, string tokenType, double expiresIn) : this(clientId, accessToken)
         {
             ClientId = clientId;
             AcessToken = accessToken;

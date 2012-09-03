@@ -1,4 +1,5 @@
 ﻿using CloudNotes.Repositories.Entities;
+using CloudNotes.Repositories.Entities.OAuth;
 
 namespace CloudNotes.Repositories.Contracts
 {

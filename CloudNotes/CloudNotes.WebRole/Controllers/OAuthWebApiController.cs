@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Http;
 using CloudNotes.Domain.Services.Contracts;
 using CloudNotes.Repositories.Entities;
+using CloudNotes.Repositories.Entities.OAuth;
 using CloudNotes.WebRole.Helpers;
 using StructureMap;
 

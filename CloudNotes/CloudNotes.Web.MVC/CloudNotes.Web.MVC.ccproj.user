@@ -3,5 +3,6 @@
   <PropertyGroup>
     <ActivePublishProfile>CloudNotesProduction</ActivePublishProfile>
     <DeploymentPromptBeforeUpgrading>False</DeploymentPromptBeforeUpgrading>
+    <DeploymentPromptBeforeDeleting>False</DeploymentPromptBeforeDeleting>
   </PropertyGroup>
 </Project>

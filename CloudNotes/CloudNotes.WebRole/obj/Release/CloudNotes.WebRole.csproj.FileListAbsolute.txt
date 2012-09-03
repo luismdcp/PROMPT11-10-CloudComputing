@@ -58,7 +58,6 @@ D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\bin\System.Web.Web
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\obj\Release\CloudNotes.WebRole.csprojResolveAssemblyReference.cache
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\obj\Release\CloudNotes.WebRole.dll
 D:\Backup CloudNotes\CloudNotes\CloudNotes\CloudNotes.WebRole\obj\Release\CloudNotes.WebRole.pdb
-D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\StructureMap.xml
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.WebRole.dll
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.WebRole.pdb
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\CloudNotes.Domain.dll
@@ -100,6 +99,8 @@ D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\PagedList.Mvc.xm
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\SignalR.xml
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\SignalR.Hosting.AspNet.xml
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\SignalR.Hosting.Common.xml
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\StructureMap.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\StructureMap.xml
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Net.Http.xml
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Net.Http.Formatting.xml
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\System.Net.Http.WebRequest.xml
@@ -116,4 +117,3 @@ D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\en\Microsoft.Ide
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\obj\Release\CloudNotes.WebRole.csprojResolveAssemblyReference.cache
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\obj\Release\CloudNotes.WebRole.dll
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\obj\Release\CloudNotes.WebRole.pdb
-D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.WebRole\bin\StructureMap.pdb

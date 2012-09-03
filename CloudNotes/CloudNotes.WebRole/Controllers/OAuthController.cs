@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using CloudNotes.Domain.Services.Contracts;
 using CloudNotes.Repositories.Entities;
+using CloudNotes.Repositories.Entities.OAuth;
 using CloudNotes.WebRole.Helpers;
 
 namespace CloudNotes.WebRole.Controllers

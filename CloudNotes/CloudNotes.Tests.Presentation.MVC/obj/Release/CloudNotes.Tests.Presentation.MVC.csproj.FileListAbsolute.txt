@@ -38,6 +38,8 @@ D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Presentation.MVC\bin\R
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Presentation.MVC\bin\Release\System.Net.Http.xml
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Presentation.MVC\bin\Release\System.Web.Http.WebHost.xml
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Presentation.MVC\bin\Release\CloudNotes.Infrastructure.DependencyInjection.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Presentation.MVC\bin\Release\StructureMap.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Presentation.MVC\bin\Release\StructureMap.xml
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Presentation.MVC\bin\Release\SignalR.Hosting.Common.xml
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Presentation.MVC\bin\Release\System.Net.Http.Formatting.xml
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Tests.Presentation.MVC\bin\Release\Newtonsoft.Json.xml

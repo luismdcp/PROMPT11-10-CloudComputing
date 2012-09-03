@@ -268,6 +268,7 @@ D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNot
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\SignalR.xml
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\StructureMap.dll
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\StructureMap.pdb
+D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\StructureMap.xml
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Net.Http.dll
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Net.Http.Formatting.dll
 D:\PROMPT11-10-CloudComputing\CloudNotes\CloudNotes.Web.MVC\obj\Release\CloudNotes.WebRole\bin\System.Net.Http.Formatting.xml

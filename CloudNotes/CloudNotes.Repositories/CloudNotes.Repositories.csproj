@@ -49,13 +49,13 @@
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\ITaskListsRepository.cs" />
     <Compile Include="Contracts\IUsersRepository.cs" />
-    <Compile Include="Entities\OAuthEntity.cs" />
+    <Compile Include="Entities\OAuth\OAuthEntity.cs" />
     <Compile Include="Entities\Relation\NoteShareEntity.cs" />
     <Compile Include="Entities\NoteEntity.cs" />
     <Compile Include="Entities\Relation\TaskListShareEntity.cs" />
     <Compile Include="Entities\Relation\TaskListNoteEntity.cs" />
     <Compile Include="Entities\TaskListEntity.cs" />
-    <Compile Include="Entities\TokenEntity.cs" />
+    <Compile Include="Entities\OAuth\TokenEntity.cs" />
     <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Extensions\Mapping.cs" />
     <Compile Include="Helpers\Dynamic.cs" />

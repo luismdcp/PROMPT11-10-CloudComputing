@@ -3,6 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using CloudNotes.Repositories.Contracts;
 using CloudNotes.Repositories.Entities;
+using CloudNotes.Repositories.Entities.OAuth;
 
 namespace CloudNotes.Repositories.Implementation
 {
