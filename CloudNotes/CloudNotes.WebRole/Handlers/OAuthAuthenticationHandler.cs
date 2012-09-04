@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using CloudNotes.Domain.Services.Contracts;
 using CloudNotes.Domain.Services.Implementation;
 using CloudNotes.Repositories.Implementation;
-using StructureMap;
 
 namespace CloudNotes.WebRole.Handlers
 {
@@ -34,7 +33,7 @@ namespace CloudNotes.WebRole.Handlers
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var authenticationHeader = request.Headers.Authorization;
-            HttpResponseMessage response = null;
+            HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK);
 
             if (authenticationHeader != null)
             {

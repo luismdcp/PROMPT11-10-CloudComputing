@@ -1,47 +1,37 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="B045D6E8-373D-4F70-A29A-4452C181CB45/d:Entities/f:User.cs" caret="592" fromTop="15" />
-    <File id="B045D6E8-373D-4F70-A29A-4452C181CB45/f:BaseEntity.cs" caret="464" fromTop="12" />
-    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:FilesController.cs" caret="820" fromTop="28" />
-    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:ListsController.cs" caret="2931" fromTop="43" />
-    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:OAuthController.cs" caret="84" fromTop="2" />
-    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:TasksController.cs" caret="129" fromTop="0" />
-    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:UsersController.cs" caret="115" fromTop="3" />
-    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Helpers/f:Fieldset.cs" caret="23" fromTop="1" />
-    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Helpers/f:HtmlHelperExtensions.cs" caret="5895" fromTop="137" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Models/d:WebAPI/d:Extensions/f:Mapping.cs" caret="0" fromTop="0" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Models/f:AuthenticationInfo.cs" caret="0" fromTop="0" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:UsersService.cs" caret="1228" fromTop="13" />
-    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Entities/f:OAuthEntity.cs" caret="214" fromTop="7" />
-    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Handlers/f:OAuthAuthenticationHandler.cs" caret="0" fromTop="0" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Entities/d:Relation/f:NoteShareEntity.cs" caret="0" fromTop="0" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Entities/d:Relation/f:TaskListNoteEntity.cs" caret="0" fromTop="0" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Entities/f:NoteEntity.cs" caret="0" fromTop="0" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Entities/f:TaskListEntity.cs" caret="0" fromTop="0" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Contracts/f:IOAuthRepository.cs" caret="0" fromTop="0" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Implementation/f:OAuthRepository.cs" caret="0" fromTop="0" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:OAuthController.cs" caret="0" fromTop="0" />
     <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:OAuthWebApiController.cs" caret="0" fromTop="0" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:OAuthService.cs" caret="0" fromTop="0" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="1428" fromTop="39" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:TaskListsService.cs" caret="0" fromTop="0" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:TasksRestService.cs" caret="2090" fromTop="37" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Entities/d:OAuth/f:OAuthEntity.cs" caret="75" fromTop="2" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Contracts/f:IOAuthService.cs" caret="0" fromTop="0" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/f:TablesBuilder.cs" caret="1396" fromTop="22" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Entities/d:OAuth/f:TokenEntity.cs" caret="1066" fromTop="40" />
+    <File id="B045D6E8-373D-4F70-A29A-4452C181CB45/f:BaseEntity.cs" caret="654" fromTop="20" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Contracts/f:INotesService.cs" caret="446" fromTop="11" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="3042" fromTop="76" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:OAuthService.cs" caret="3476" fromTop="23" />
+    <File id="B045D6E8-373D-4F70-A29A-4452C181CB45/d:Entities/f:User.cs" caret="627" fromTop="18" />
+    <File id="B045D6E8-373D-4F70-A29A-4452C181CB45/d:Entities/f:TaskList.cs" caret="836" fromTop="21" />
+    <File id="B045D6E8-373D-4F70-A29A-4452C181CB45/d:Entities/f:Note.cs" caret="0" fromTop="0" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Models/d:WebAPI/f:Task.cs" caret="0" fromTop="0" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Models/d:WebAPI/f:Link.cs" caret="238" fromTop="11" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:UsersService.cs" caret="4882" fromTop="25" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Models/d:WebAPI/f:List.cs" caret="324" fromTop="14" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Models/f:AuthenticationInfo.cs" caret="747" fromTop="24" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:FilesService.cs" caret="627" fromTop="0" />
     <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:ListsRestService.cs" caret="0" fromTop="0" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:FilesService.cs" caret="3078" fromTop="81" />
-    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:TaskListsController.cs" caret="2014" fromTop="6" />
-    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:NotesController.cs" caret="3744" fromTop="8" />
-    <File id="5871F52E-169E-4E23-BAC4-57857ED65D81/f:ConcurrencyException.cs" caret="105" fromTop="4" />
-    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/f:ContainerBuilder.cs" caret="249" fromTop="9" />
-    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/f:TablesBuilder.cs" caret="1477" fromTop="24" />
-    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Extensions/f:Mapping.cs" caret="1137" fromTop="34" />
-    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Helpers/f:ShortGuid.cs" caret="0" fromTop="0" />
-    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Implementation/f:AzureTablesUnitOfWork.cs" caret="6736" fromTop="150" />
-    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Models/f:FileInfoItem.cs" caret="586" fromTop="12" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:TaskListsService.cs" caret="0" fromTop="0" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:TasksRestService.cs" caret="604" fromTop="18" />
+    <File id="1E568A42-4207-4BC1-B8D8-6E173BA5B4C9/d:Controllers/f:NotesController.cs" caret="0" fromTop="0" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Contracts/f:IService.cs" caret="0" fromTop="0" />
   </RecentFiles>
   <RecentEdits>
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="1546" fromTop="35" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="1810" fromTop="28" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="1988" fromTop="32" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="2303" fromTop="26" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="2599" fromTop="30" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="2911" fromTop="15" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="3215" fromTop="25" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="3519" fromTop="35" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="4285" fromTop="15" />
-    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="3888" fromTop="4" />
     <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="4629" fromTop="22" />
     <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="5052" fromTop="24" />
     <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:NotesService.cs" caret="4994" fromTop="5" />
@@ -62,5 +52,15 @@
     <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:FilesService.cs" caret="1991" fromTop="12" />
     <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:FilesService.cs" caret="3078" fromTop="35" />
     <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/f:ContainerBuilder.cs" caret="249" fromTop="9" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Entities/d:OAuth/f:OAuthEntity.cs" caret="310" fromTop="2" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Entities/d:OAuth/f:OAuthEntity.cs" caret="75" fromTop="2" />
+    <File id="14C19EE4-C4AD-43CB-87D6-2926387D46C9/d:Entities/d:OAuth/f:TokenEntity.cs" caret="1066" fromTop="40" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:OAuthService.cs" caret="2466" fromTop="30" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:OAuthService.cs" caret="2813" fromTop="34" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:OAuthService.cs" caret="3160" fromTop="38" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Implementation/f:OAuthService.cs" caret="3463" fromTop="42" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Models/d:WebAPI/f:List.cs" caret="318" fromTop="13" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Models/d:WebAPI/f:Link.cs" caret="595" fromTop="28" />
+    <File id="7BC60FE1-A4C9-4EFB-82A1-97909A6D4B5E/d:Models/d:WebAPI/f:Link.cs" caret="238" fromTop="11" />
   </RecentEdits>
 </RecentFiles>
